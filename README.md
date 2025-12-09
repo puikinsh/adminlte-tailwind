@@ -2,12 +2,12 @@
 
 > AdminLTE dashboard template built with Tailwind CSS
 
-[![npm version](https://img.shields.io/npm/v/@dashboardpack/tailwind.svg)](https://www.npmjs.com/package/@dashboardpack/tailwind)
+[![npm version](https://img.shields.io/npm/v/@adminlte/tailwind.svg)](https://www.npmjs.com/package/@adminlte/tailwind)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
 
-AdminLTE Tailwind is a modern admin dashboard template that combines the powerful [@dashboardpack/headless](https://github.com/puikinsh/adminlte-headless) component library with Tailwind CSS v4 for styling.
+AdminLTE Tailwind is a modern admin dashboard template that combines the powerful [@adminlte/headless](https://github.com/puikinsh/adminlte-headless) component library with Tailwind CSS v4 for styling.
 
 This provides:
 - All AdminLTE component behaviors (sidebar, treeview, cards, modals, etc.)
@@ -19,7 +19,7 @@ This provides:
 ## Installation
 
 ```bash
-npm install @dashboardpack/tailwind
+npm install @adminlte/tailwind
 ```
 
 Or clone and run locally:
@@ -41,7 +41,7 @@ npm run preview  # Preview production build
 
 ## Components
 
-This template includes styled implementations of all [@dashboardpack/headless](https://github.com/puikinsh/adminlte-headless) components:
+This template includes styled implementations of all [@adminlte/headless](https://github.com/puikinsh/adminlte-headless) components:
 
 - **Layout** - Responsive admin layout with sidebar
 - **PushMenu** - Collapsible sidebar with mobile overlay
@@ -82,7 +82,7 @@ adminlte-tailwind/
 
 ## Related Projects
 
-- [@dashboardpack/headless](https://github.com/puikinsh/adminlte-headless) - Framework-agnostic component logic
+- [@adminlte/headless](https://github.com/puikinsh/adminlte-headless) - Framework-agnostic component logic
 - [AdminLTE](https://github.com/ColorlibHQ/AdminLTE) - Original Bootstrap-based admin dashboard
 
 ## License

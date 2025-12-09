@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-AdminLTE Tailwind is a Tailwind CSS v4 implementation of the AdminLTE admin dashboard template. It uses [@dashboardpack/headless](https://github.com/puikinsh/adminlte-headless) for all component behaviors (JavaScript logic) and provides only the CSS styling layer.
+AdminLTE Tailwind is a Tailwind CSS v4 implementation of the AdminLTE admin dashboard template. It uses [@adminlte/headless](https://github.com/puikinsh/adminlte-headless) for all component behaviors (JavaScript logic) and provides only the CSS styling layer.
 
 ## Build Commands
 
@@ -16,9 +16,9 @@ npm run preview  # Preview production build
 
 ## Architecture
 
-### Dependency on @dashboardpack/headless
+### Dependency on @adminlte/headless
 
-This project uses `@dashboardpack/headless` as a dependency for all component behavior:
+This project uses `@adminlte/headless` as a dependency for all component behavior:
 - Sidebar toggle (PushMenu)
 - Treeview menus
 - Card widgets (collapse/maximize/remove)
@@ -48,7 +48,7 @@ This project uses Tailwind CSS v4 with the new CSS-based configuration:
 
 ### Data Attributes
 
-Components use `data-lte-toggle` attributes for auto-initialization (from @dashboardpack/headless):
+Components use `data-lte-toggle` attributes for auto-initialization (from @adminlte/headless):
 - `data-lte-toggle="sidebar"` - Sidebar toggle buttons
 - `data-lte-toggle="dropdown"` - Dropdown triggers
 - `data-lte-toggle="fullscreen"` - Fullscreen toggle

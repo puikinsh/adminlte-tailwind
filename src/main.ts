@@ -11,7 +11,7 @@ import {
   Dropdown,
   createModal,
   createToastManager
-} from '@dashboardpack/headless'
+} from '@adminlte/headless'
 
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
