@@ -1,0 +1,392 @@
+@import "tailwindcss";
+
+/* AdminLTE Tailwind - Theme Configuration */
+@theme {
+  /* Sidebar colors */
+  --color-sidebar: #1f2937;
+  --color-sidebar-dark: #111827;
+  --color-sidebar-light: #374151;
+
+  /* Sidebar widths */
+  --width-sidebar: 250px;
+  --width-sidebar-collapsed: 4.6rem;
+
+  /* Sidebar margins */
+  --spacing-sidebar: 250px;
+  --spacing-sidebar-collapsed: 4.6rem;
+}
+
+/* AdminLTE Tailwind - Custom Component Classes */
+
+@layer components {
+  /* Sidebar transitions */
+  .sidebar-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  /* Main content area that shifts with sidebar */
+  .main-content {
+    @apply transition-[margin] duration-300 ease-in-out;
+  }
+
+  /* Sidebar overlay for mobile - hidden by default, only shows on mobile when sidebar is open */
+  .sidebar-overlay {
+    @apply hidden;
+  }
+
+  /* Treeview menu animations */
+  .nav-treeview {
+    @apply overflow-hidden;
+  }
+
+  /* Treeview icon rotation */
+  .treeview-icon {
+    @apply transition-transform duration-300;
+  }
+
+  /* Active nav link */
+  .nav-item.menu-open > .nav-link {
+    @apply text-white bg-sidebar-light;
+  }
+
+  /* Card widget */
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200;
+  }
+
+  .card-header {
+    @apply px-4 py-3 border-b border-gray-200 flex items-center justify-between;
+  }
+
+  .card-body {
+    @apply p-4;
+  }
+
+  .card-footer {
+    @apply px-4 py-3 border-t border-gray-200 bg-gray-50;
+  }
+
+}
+
+/* Card widget states - outside @layer for specificity */
+
+/* Card maximized state (class added by headless lib) */
+.maximized-card {
+  @apply fixed z-50 overflow-auto;
+  inset: 1rem !important;
+  height: auto !important;
+  width: auto !important;
+}
+
+html.maximized-card {
+  @apply overflow-hidden;
+}
+
+html.maximized-card::before {
+  content: '';
+  @apply fixed inset-0 bg-black/50 z-40;
+}
+
+/* Card collapsed state (class added by headless lib) */
+.collapsed-card > .card-body,
+.collapsed-card > .card-footer {
+  @apply hidden;
+}
+
+/* Card animation states */
+.collapsing-card,
+.expanding-card {
+  @apply overflow-hidden;
+}
+
+/* Collapsed sidebar state - applied to body */
+.sidebar-collapse .app-sidebar {
+  width: 4.6rem;
+}
+
+.sidebar-collapse .app-sidebar .nav-link span {
+  @apply opacity-0 invisible w-0;
+}
+
+/* Hide section text, show divider when collapsed */
+.sidebar-collapse .app-sidebar .nav-section-text {
+  @apply hidden;
+}
+
+.sidebar-collapse .app-sidebar .nav-section-divider {
+  @apply block;
+}
+
+.sidebar-collapse .main-content {
+  margin-left: 4.6rem;
+}
+
+/* Hover to expand collapsed sidebar (desktop only) */
+@media (min-width: 992px) {
+  .sidebar-collapse .app-sidebar:hover {
+    width: 250px;
+    @apply shadow-2xl;
+  }
+
+  .sidebar-collapse .app-sidebar:hover .nav-link span {
+    @apply opacity-100 visible w-auto;
+  }
+
+  /* Show section text, hide divider on hover */
+  .sidebar-collapse .app-sidebar:hover .nav-section-text {
+    @apply block;
+  }
+
+  .sidebar-collapse .app-sidebar:hover .nav-section-divider {
+    @apply hidden;
+  }
+}
+
+/* Mobile: sidebar hidden by default, slides in when open */
+@media (max-width: 991px) {
+  .app-sidebar {
+    @apply -translate-x-full z-40;
+  }
+
+  body.sidebar-open .app-sidebar {
+    @apply translate-x-0;
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+  }
+
+  /* Show overlay only on mobile when sidebar is open */
+  .sidebar-overlay {
+    @apply block fixed inset-0 bg-black/50 z-30 opacity-0 invisible transition-opacity duration-300 pointer-events-none;
+  }
+
+  body.sidebar-open .sidebar-overlay {
+    @apply opacity-100 visible pointer-events-auto;
+  }
+}
+
+/* Dropdown component */
+.dropdown-menu {
+  @apply hidden;
+}
+
+.dropdown-open .dropdown-menu {
+  @apply block;
+}
+
+.dropdown-item-active {
+  @apply bg-gray-100;
+}
+
+/* Modal component */
+.modal {
+  @apply hidden;
+}
+
+.modal-open {
+  @apply flex;
+}
+
+.modal-opening .modal-backdrop {
+  animation: fadeIn 150ms ease-out;
+}
+
+.modal-opening .modal-dialog > div {
+  animation: slideIn 150ms ease-out;
+}
+
+.modal-closing .modal-backdrop {
+  animation: fadeOut 150ms ease-out;
+}
+
+.modal-closing .modal-dialog > div {
+  animation: slideOut 150ms ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideOut {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0.95); opacity: 0; }
+}
+
+body.modal-body-lock {
+  @apply overflow-hidden;
+}
+
+/* Toast container positioning */
+.toast-container {
+  @apply fixed z-50 flex flex-col gap-3 p-4 pointer-events-none;
+}
+
+.toast-container-top-right {
+  @apply top-0 right-0;
+}
+
+.toast-container-top-left {
+  @apply top-0 left-0;
+}
+
+.toast-container-top-center {
+  @apply top-0 left-1/2 -translate-x-1/2;
+}
+
+.toast-container-bottom-right {
+  @apply bottom-0 right-0;
+}
+
+.toast-container-bottom-left {
+  @apply bottom-0 left-0;
+}
+
+.toast-container-bottom-center {
+  @apply bottom-0 left-1/2 -translate-x-1/2;
+}
+
+/* Toast styles */
+.toast {
+  @apply pointer-events-auto w-80 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden;
+}
+
+.toast-content {
+  @apply flex-1;
+}
+
+.toast-title {
+  @apply font-semibold text-gray-800 text-sm;
+}
+
+.toast-message {
+  @apply text-gray-600 text-sm mt-0.5;
+}
+
+.toast-close {
+  @apply p-1 -mt-1 -mr-1 rounded hover:bg-gray-100 text-gray-400 hover:text-gray-600 text-xl leading-none;
+}
+
+.toast-icon {
+  @apply flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center;
+}
+
+.toast > .toast-content,
+.toast > .toast-icon,
+.toast > .toast-close {
+  @apply p-3;
+}
+
+.toast {
+  @apply flex items-start;
+}
+
+/* Toast variants */
+.toast-success .toast-icon {
+  @apply bg-green-100 text-green-600;
+}
+
+.toast-success .toast-icon::before {
+  content: '✓';
+  @apply font-bold;
+}
+
+.toast-error .toast-icon {
+  @apply bg-red-100 text-red-600;
+}
+
+.toast-error .toast-icon::before {
+  content: '✕';
+  @apply font-bold;
+}
+
+.toast-warning .toast-icon {
+  @apply bg-yellow-100 text-yellow-600;
+}
+
+.toast-warning .toast-icon::before {
+  content: '!';
+  @apply font-bold;
+}
+
+.toast-info .toast-icon {
+  @apply bg-blue-100 text-blue-600;
+}
+
+.toast-info .toast-icon::before {
+  content: 'i';
+  @apply font-bold;
+}
+
+/* Toast animations */
+.toast-entering {
+  animation: toastSlideIn 300ms ease-out;
+}
+
+.toast-exiting {
+  animation: toastSlideOut 300ms ease-out;
+}
+
+@keyframes toastSlideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toastSlideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Toast progress bar */
+.toast-progress {
+  @apply h-1 bg-gray-100 w-full;
+}
+
+.toast-progress-bar {
+  @apply h-full bg-blue-500;
+  animation: progressShrink linear forwards;
+}
+
+.toast-success .toast-progress-bar {
+  @apply bg-green-500;
+}
+
+.toast-error .toast-progress-bar {
+  @apply bg-red-500;
+}
+
+.toast-warning .toast-progress-bar {
+  @apply bg-yellow-500;
+}
+
+.toast-info .toast-progress-bar {
+  @apply bg-blue-500;
+}
+
+@keyframes progressShrink {
+  from { width: 100%; }
+  to { width: 0%; }
+}
