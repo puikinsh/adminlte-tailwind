@@ -1,15 +1,15 @@
 {
-  "name": "@adminlte/tailwind",
+  "name": "@dashboardpack/tailwind",
   "version": "0.1.0",
   "type": "module",
-  "description": "AdminLTE dashboard template built with Tailwind CSS and @adminlte/headless",
+  "description": "AdminLTE dashboard template built with Tailwind CSS and @dashboardpack/headless",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@adminlte/headless": "^0.1.0"
+    "@dashboardpack/headless": "^0.1.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.0",
