@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blank Page | AdminLTE Tailwind</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body class="h-full bg-gray-100">
+  <div class="app-wrapper min-h-full">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 h-14 bg-white border-b border-gray-200 z-30 flex items-center px-4">
+      <button type="button" data-lte-toggle="sidebar" class="p-2 rounded-lg hover:bg-gray-100 text-gray-600">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <a href="/" class="ml-2 text-xl font-semibold text-gray-800">
+        AdminLTE <span class="text-blue-600">Tailwind</span>
+      </a>
+      <div class="flex-1"></div>
+      <div class="dropdown relative">
+        <button type="button" data-lte-toggle="dropdown" class="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 text-gray-600">
+          <img src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff" alt="Admin" class="w-8 h-8 rounded-full">
+        </button>
+        <div class="dropdown-menu absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 hidden z-50">
+          <a href="#" class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Profile</a>
+          <a href="#" class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-gray-50">Sign out</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="app-sidebar fixed top-14 left-0 bottom-0 w-sidebar bg-sidebar text-gray-300 z-20 sidebar-transition overflow-y-auto overflow-x-hidden">
+      <nav class="sidebar-menu py-4 px-2" data-lte-toggle="treeview">
+        <ul class="space-y-1">
+          <li class="nav-item">
+            <a href="/pages/dashboard/v1.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+              </svg>
+              <span class="ml-3">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/pages/ui/general.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+              </svg>
+              <span class="ml-3">UI Elements</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/pages/forms/general.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              <span class="ml-3">Forms</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/pages/tables/general.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+              <span class="ml-3">Tables</span>
+            </a>
+          </li>
+          <li class="nav-section-header px-3 py-2 mt-4">
+            <span class="nav-section-text text-xs font-semibold text-gray-500 uppercase tracking-wider">Examples</span>
+            <hr class="nav-section-divider hidden border-t border-sidebar-light mt-2" />
+          </li>
+          <li class="nav-item">
+            <a href="/pages/examples/blank.html" class="nav-link flex items-center px-3 py-2 rounded-lg bg-sidebar-light text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              <span class="ml-3">Blank Page</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content ml-sidebar pt-14 min-h-screen transition-[margin] duration-300">
+      <div class="p-6">
+        <!-- Page Header -->
+        <div class="mb-6">
+          <h1 class="text-2xl font-semibold text-gray-800">Blank Page</h1>
+          <nav class="breadcrumb mt-1">
+            <span class="breadcrumb-item"><a href="/">Home</a></span>
+            <span class="breadcrumb-item active">Blank Page</span>
+          </nav>
+        </div>
+
+        <!-- Blank Content Area -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="text-lg font-medium text-gray-800">Starter Template</h3>
+          </div>
+          <div class="card-body">
+            <p class="text-gray-600 mb-4">
+              This is a blank page that you can use as a starting point for building your own pages.
+              It includes the basic layout structure with the navbar, sidebar, and main content area.
+            </p>
+
+            <div class="callout callout-info">
+              <h5 class="callout-title">Getting Started</h5>
+              <p class="callout-body">
+                Copy this file and customize it to create new pages. The sidebar navigation,
+                header, and footer are already set up for you.
+              </p>
+            </div>
+
+            <h4 class="font-medium text-gray-800 mt-6 mb-3">Available Components</h4>
+            <ul class="list-disc list-inside text-gray-600 space-y-1">
+              <li>Buttons (solid, outline, sizes, groups)</li>
+              <li>Cards (variants, collapsible, with ribbons)</li>
+              <li>Alerts (all color variants)</li>
+              <li>Badges (solid and light variants)</li>
+              <li>Progress bars (animated, striped)</li>
+              <li>Forms (inputs, selects, checkboxes, validation)</li>
+              <li>Tables (striped, bordered, responsive)</li>
+              <li>Modals and Toasts</li>
+              <li>Dropdowns</li>
+              <li>Pagination</li>
+              <li>And much more...</li>
+            </ul>
+
+            <h4 class="font-medium text-gray-800 mt-6 mb-3">Quick Links</h4>
+            <div class="flex flex-wrap gap-2">
+              <a href="/pages/dashboard/v1.html" class="btn btn-outline-primary">Dashboard</a>
+              <a href="/pages/ui/general.html" class="btn btn-outline-secondary">UI Elements</a>
+              <a href="/pages/forms/general.html" class="btn btn-outline-success">Forms</a>
+              <a href="/pages/tables/general.html" class="btn btn-outline-info">Tables</a>
+              <a href="/pages/auth/login.html" class="btn btn-outline-warning">Login</a>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="text-sm text-gray-500">Last updated: December 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="bg-white border-t border-gray-200 p-4 mt-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between text-sm text-gray-500">
+          <div><strong>Copyright &copy; 2024 <a href="https://adminlte.io" class="text-blue-600 hover:underline">AdminLTE.io</a>.</strong> All rights reserved.</div>
+          <div class="mt-2 md:mt-0"><b>Version</b> 4.0.0-tailwind</div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

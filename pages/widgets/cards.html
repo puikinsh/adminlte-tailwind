@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Widgets | AdminLTE Tailwind</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body class="h-full bg-gray-100">
+  <div class="app-wrapper min-h-full">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 h-14 bg-white border-b border-gray-200 z-30 flex items-center px-4">
+      <button type="button" data-lte-toggle="sidebar" class="p-2 rounded-lg hover:bg-gray-100 text-gray-600">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <a href="/" class="ml-2 text-xl font-semibold text-gray-800">
+        AdminLTE <span class="text-blue-600">Tailwind</span>
+      </a>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-2">
+        <button type="button" data-lte-toggle="fullscreen" class="p-2 rounded-lg hover:bg-gray-100 text-gray-600 hidden md:block">
+          <svg class="w-5 h-5 fullscreen-icon-expand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+          </svg>
+        </button>
+        <div class="dropdown relative">
+          <button type="button" data-lte-toggle="dropdown" class="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 text-gray-600">
+            <img src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff" alt="Admin" class="w-8 h-8 rounded-full">
+          </button>
+          <div class="dropdown-menu absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 hidden z-50">
+            <a href="#" class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Profile</a>
+            <a href="#" class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-gray-50">Sign out</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="app-sidebar fixed top-14 left-0 bottom-0 w-sidebar bg-sidebar text-gray-300 z-20 sidebar-transition overflow-y-auto overflow-x-hidden">
+      <div class="p-4 border-b border-sidebar-light">
+        <div class="flex items-center gap-3">
+          <img src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff" alt="Admin" class="w-10 h-10 rounded-full">
+          <div>
+            <p class="text-sm font-medium text-white">Admin User</p>
+            <p class="text-xs text-gray-400">Administrator</p>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-menu py-4 px-2" data-lte-toggle="treeview">
+        <ul class="space-y-1">
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+              </svg>
+              <span class="ml-3 flex-1">Dashboard</span>
+              <svg class="w-4 h-4 treeview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <ul class="nav-treeview ml-4 mt-1 space-y-1 hidden">
+              <li class="nav-item">
+                <a href="/pages/dashboard/v1.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Dashboard v1</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/dashboard/v2.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Dashboard v2</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/dashboard/v3.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Dashboard v3</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-lg bg-sidebar-light text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+              </svg>
+              <span class="ml-3 flex-1">Widgets</span>
+              <svg class="w-4 h-4 treeview-icon rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <ul class="nav-treeview ml-4 mt-1 space-y-1" style="display: block;">
+              <li class="nav-item">
+                <a href="/pages/widgets/info-box.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Info Box</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/widgets/small-box.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Small Box</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/widgets/cards.html" class="nav-link flex items-center px-3 py-2 rounded-lg text-white bg-blue-600/20 text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-3"></span>
+                  <span>Cards</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="/pages/ui/general.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+              </svg>
+              <span class="ml-3">UI Elements</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/pages/forms/general.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              <span class="ml-3">Forms</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/pages/tables/general.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+              <span class="ml-3">Tables</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content ml-sidebar pt-14 min-h-screen transition-[margin] duration-300">
+      <div class="p-6">
+        <!-- Page Header -->
+        <div class="mb-6">
+          <h1 class="text-2xl font-semibold text-gray-800">Card Widgets</h1>
+          <nav class="breadcrumb mt-1">
+            <span class="breadcrumb-item"><a href="/">Home</a></span>
+            <span class="breadcrumb-item"><a href="#">Widgets</a></span>
+            <span class="breadcrumb-item active">Cards</span>
+          </nav>
+        </div>
+
+        <!-- Basic Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Default Card</h3>
+            </div>
+            <div class="card-body">
+              <p class="text-gray-600">This is a default card with no special styling. It provides a clean and simple container for your content.</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary btn-sm">Save</button>
+              <button class="btn btn-outline-secondary btn-sm">Cancel</button>
+            </div>
+          </div>
+
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Primary Card</h3>
+            </div>
+            <div class="card-body">
+              <p class="text-gray-600">This card has a primary colored border at the top, indicating its importance or primary status.</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary btn-sm">Save</button>
+            </div>
+          </div>
+
+          <div class="card card-success">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Success Card</h3>
+            </div>
+            <div class="card-body">
+              <p class="text-gray-600">A success-styled card typically used for positive confirmations or successful operations.</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-success btn-sm">Confirm</button>
+            </div>
+          </div>
+
+          <div class="card card-warning">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Warning Card</h3>
+            </div>
+            <div class="card-body">
+              <p class="text-gray-600">Warning cards draw attention to important information that requires the user's awareness.</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-warning btn-sm">Acknowledge</button>
+            </div>
+          </div>
+
+          <div class="card card-danger">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Danger Card</h3>
+            </div>
+            <div class="card-body">
+              <p class="text-gray-600">Danger cards are used for critical alerts, errors, or destructive actions that need caution.</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-danger btn-sm">Delete</button>
+            </div>
+          </div>
+
+          <div class="card card-info">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Info Card</h3>
+            </div>
+            <div class="card-body">
+              <p class="text-gray-600">Info cards provide helpful information or tips to users without being urgent or critical.</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-info btn-sm">Learn More</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cards with Tools -->
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Cards with Tools</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Collapsible Card</h3>
+              <div class="flex items-center gap-2">
+                <button type="button" data-lte-toggle="card-collapse" class="p-1.5 rounded hover:bg-gray-100 text-gray-500">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="text-gray-600">Click the minus button in the header to collapse this card. Click it again to expand.</p>
+              <p class="text-gray-600 mt-2">This is useful for long content that users might want to hide temporarily.</p>
+            </div>
+          </div>
+
+          <div class="card card-success">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Maximizable Card</h3>
+              <div class="flex items-center gap-2">
+                <button type="button" data-lte-toggle="card-maximize" class="p-1.5 rounded hover:bg-gray-100 text-gray-500">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="text-gray-600">Click the expand button to maximize this card to fullscreen mode.</p>
+              <p class="text-gray-600 mt-2">Perfect for detailed content or data tables that need more space.</p>
+            </div>
+          </div>
+
+          <div class="card card-warning">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Removable Card</h3>
+              <div class="flex items-center gap-2">
+                <button type="button" data-lte-toggle="card-remove" class="p-1.5 rounded hover:bg-gray-100 text-gray-500">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="text-gray-600">Click the X button to remove this card from the page.</p>
+              <p class="text-gray-600 mt-2">Useful for dismissible notifications or temporary content.</p>
+            </div>
+          </div>
+
+          <div class="card card-info">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">All Tools</h3>
+              <div class="flex items-center gap-2">
+                <button type="button" data-lte-toggle="card-collapse" class="p-1.5 rounded hover:bg-gray-100 text-gray-500">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
+                  </svg>
+                </button>
+                <button type="button" data-lte-toggle="card-maximize" class="p-1.5 rounded hover:bg-gray-100 text-gray-500">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+                  </svg>
+                </button>
+                <button type="button" data-lte-toggle="card-remove" class="p-1.5 rounded hover:bg-gray-100 text-gray-500">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="text-gray-600">This card has all three tools: collapse, maximize, and remove.</p>
+              <p class="text-gray-600 mt-2">Gives users full control over their dashboard layout.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Solid Cards -->
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Solid Background Cards</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+          <div class="card bg-blue-500 text-white">
+            <div class="card-header border-blue-400">
+              <h3 class="text-lg font-medium">Blue Card</h3>
+            </div>
+            <div class="card-body">
+              <p>A solid blue background card. Great for highlighting important content or creating visual separation.</p>
+            </div>
+          </div>
+
+          <div class="card bg-green-500 text-white">
+            <div class="card-header border-green-400">
+              <h3 class="text-lg font-medium">Green Card</h3>
+            </div>
+            <div class="card-body">
+              <p>Success-themed solid card. Perfect for positive messages, confirmations, or completed statuses.</p>
+            </div>
+          </div>
+
+          <div class="card bg-yellow-500 text-white">
+            <div class="card-header border-yellow-400">
+              <h3 class="text-lg font-medium">Yellow Card</h3>
+            </div>
+            <div class="card-body">
+              <p>Warning-themed solid card. Draws attention without being as critical as red/danger cards.</p>
+            </div>
+          </div>
+
+          <div class="card bg-red-500 text-white">
+            <div class="card-header border-red-400">
+              <h3 class="text-lg font-medium">Red Card</h3>
+            </div>
+            <div class="card-body">
+              <p>Danger-themed solid card. Use for critical warnings, errors, or destructive action confirmations.</p>
+            </div>
+          </div>
+
+          <div class="card bg-purple-500 text-white">
+            <div class="card-header border-purple-400">
+              <h3 class="text-lg font-medium">Purple Card</h3>
+            </div>
+            <div class="card-body">
+              <p>A purple accent card. Useful for premium features, special content, or unique sections.</p>
+            </div>
+          </div>
+
+          <div class="card bg-gray-800 text-white">
+            <div class="card-header border-gray-700">
+              <h3 class="text-lg font-medium">Dark Card</h3>
+            </div>
+            <div class="card-body">
+              <p>A dark themed card. Creates strong contrast and works well for footer content or dark mode.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gradient Cards -->
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Gradient Cards</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="card bg-gradient-to-r from-blue-500 to-cyan-500 text-white">
+            <div class="card-header border-transparent">
+              <h3 class="text-lg font-medium">Blue to Cyan</h3>
+            </div>
+            <div class="card-body">
+              <p>Beautiful gradient from blue to cyan. Creates a modern, fresh look for your content.</p>
+            </div>
+          </div>
+
+          <div class="card bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+            <div class="card-header border-transparent">
+              <h3 class="text-lg font-medium">Purple to Pink</h3>
+            </div>
+            <div class="card-body">
+              <p>Vibrant purple to pink gradient. Perfect for creative or premium feature sections.</p>
+            </div>
+          </div>
+
+          <div class="card bg-gradient-to-r from-orange-500 to-red-500 text-white">
+            <div class="card-header border-transparent">
+              <h3 class="text-lg font-medium">Orange to Red</h3>
+            </div>
+            <div class="card-body">
+              <p>Warm orange to red gradient. Great for calls-to-action or highlighted content.</p>
+            </div>
+          </div>
+
+          <div class="card bg-gradient-to-r from-green-500 to-teal-500 text-white">
+            <div class="card-header border-transparent">
+              <h3 class="text-lg font-medium">Green to Teal</h3>
+            </div>
+            <div class="card-body">
+              <p>Natural green to teal gradient. Ideal for eco-friendly, health, or nature-related content.</p>
+            </div>
+          </div>
+
+          <div class="card bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
+            <div class="card-header border-transparent">
+              <h3 class="text-lg font-medium">Indigo to Purple</h3>
+            </div>
+            <div class="card-body">
+              <p>Deep indigo to purple gradient. Professional and sophisticated appearance.</p>
+            </div>
+          </div>
+
+          <div class="card bg-gradient-to-r from-gray-700 to-gray-900 text-white">
+            <div class="card-header border-transparent">
+              <h3 class="text-lg font-medium">Dark Gradient</h3>
+            </div>
+            <div class="card-body">
+              <p>Subtle dark gradient. Elegant and modern, works well for professional dashboards.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="bg-white border-t border-gray-200 p-4 mt-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between text-sm text-gray-500">
+          <div>
+            <strong>Copyright &copy; 2024 <a href="https://adminlte.io" class="text-blue-600 hover:underline">AdminLTE.io</a>.</strong>
+            All rights reserved.
+          </div>
+          <div class="mt-2 md:mt-0">
+            <b>Version</b> 4.0.0-tailwind
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

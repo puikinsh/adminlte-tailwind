@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modals | AdminLTE Tailwind</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body class="h-full bg-gray-100">
+  <div class="app-wrapper min-h-full">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 h-14 bg-white border-b border-gray-200 z-30 flex items-center px-4">
+      <button type="button" data-lte-toggle="sidebar" class="p-2 rounded-lg hover:bg-gray-100 text-gray-600">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <a href="/" class="ml-2 text-xl font-semibold text-gray-800">
+        AdminLTE <span class="text-blue-600">Tailwind</span>
+      </a>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-2">
+        <button type="button" data-lte-toggle="fullscreen" class="p-2 rounded-lg hover:bg-gray-100 text-gray-600 hidden md:block">
+          <svg class="w-5 h-5 fullscreen-icon-expand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+          </svg>
+        </button>
+        <div class="dropdown relative">
+          <button type="button" data-lte-toggle="dropdown" class="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 text-gray-600">
+            <img src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff" alt="Admin" class="w-8 h-8 rounded-full">
+          </button>
+          <div class="dropdown-menu absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 hidden z-50">
+            <a href="#" class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Profile</a>
+            <a href="#" class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-gray-50">Sign out</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="app-sidebar fixed top-14 left-0 bottom-0 w-sidebar bg-sidebar text-gray-300 z-20 sidebar-transition overflow-y-auto overflow-x-hidden">
+      <div class="p-4 border-b border-sidebar-light">
+        <div class="flex items-center gap-3">
+          <img src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff" alt="Admin" class="w-10 h-10 rounded-full">
+          <div>
+            <p class="text-sm font-medium text-white">Admin User</p>
+            <p class="text-xs text-gray-400">Administrator</p>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-menu py-4 px-2" data-lte-toggle="treeview">
+        <ul class="space-y-1">
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+              </svg>
+              <span class="ml-3 flex-1">Dashboard</span>
+              <svg class="w-4 h-4 treeview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <ul class="nav-treeview ml-4 mt-1 space-y-1 hidden">
+              <li class="nav-item">
+                <a href="/pages/dashboard/v1.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Dashboard v1</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-lg bg-sidebar-light text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+              </svg>
+              <span class="ml-3 flex-1">UI Elements</span>
+              <svg class="w-4 h-4 treeview-icon rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <ul class="nav-treeview ml-4 mt-1 space-y-1" style="display: block;">
+              <li class="nav-item">
+                <a href="/pages/ui/general.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>General</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/ui/buttons.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Buttons</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/ui/modals.html" class="nav-link flex items-center px-3 py-2 rounded-lg text-white bg-blue-600/20 text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-3"></span>
+                  <span>Modals</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/ui/timeline.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Timeline</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="/pages/forms/general.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              <span class="ml-3">Forms</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/pages/tables/general.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+              <span class="ml-3">Tables</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content ml-sidebar pt-14 min-h-screen transition-[margin] duration-300">
+      <div class="p-6">
+        <!-- Page Header -->
+        <div class="mb-6">
+          <h1 class="text-2xl font-semibold text-gray-800">Modals</h1>
+          <nav class="breadcrumb mt-1">
+            <span class="breadcrumb-item"><a href="/">Home</a></span>
+            <span class="breadcrumb-item"><a href="#">UI Elements</a></span>
+            <span class="breadcrumb-item active">Modals</span>
+          </nav>
+        </div>
+
+        <!-- Modal Examples -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <!-- Basic Modal -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Basic Modal</h3>
+            </div>
+            <div class="card-body">
+              <p class="text-gray-600 mb-4">A simple modal with title, body, and footer.</p>
+              <button type="button" class="btn btn-primary" data-lte-toggle="modal" data-lte-target="#basicModal">
+                Launch Modal
+              </button>
+            </div>
+          </div>
+
+          <!-- Large Modal -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Large Modal</h3>
+            </div>
+            <div class="card-body">
+              <p class="text-gray-600 mb-4">A larger modal for more content.</p>
+              <button type="button" class="btn btn-success" data-lte-toggle="modal" data-lte-target="#largeModal">
+                Launch Large Modal
+              </button>
+            </div>
+          </div>
+
+          <!-- Small Modal -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Small Modal</h3>
+            </div>
+            <div class="card-body">
+              <p class="text-gray-600 mb-4">A compact modal for simple confirmations.</p>
+              <button type="button" class="btn btn-info" data-lte-toggle="modal" data-lte-target="#smallModal">
+                Launch Small Modal
+              </button>
+            </div>
+          </div>
+
+          <!-- Danger Modal -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Danger Modal</h3>
+            </div>
+            <div class="card-body">
+              <p class="text-gray-600 mb-4">Confirmation modal for destructive actions.</p>
+              <button type="button" class="btn btn-danger" data-lte-toggle="modal" data-lte-target="#dangerModal">
+                Delete Item
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- More Modal Examples -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Form Modal -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Form Modal</h3>
+            </div>
+            <div class="card-body">
+              <p class="text-gray-600 mb-4">Modal containing a form for user input.</p>
+              <button type="button" class="btn btn-warning" data-lte-toggle="modal" data-lte-target="#formModal">
+                Open Form
+              </button>
+            </div>
+          </div>
+
+          <!-- Scrollable Modal -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Scrollable Content</h3>
+            </div>
+            <div class="card-body">
+              <p class="text-gray-600 mb-4">Modal with scrollable content area.</p>
+              <button type="button" class="btn btn-secondary" data-lte-toggle="modal" data-lte-target="#scrollModal">
+                View Content
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="bg-white border-t border-gray-200 p-4 mt-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between text-sm text-gray-500">
+          <div>
+            <strong>Copyright &copy; 2024 <a href="https://adminlte.io" class="text-blue-600 hover:underline">AdminLTE.io</a>.</strong>
+            All rights reserved.
+          </div>
+          <div class="mt-2 md:mt-0">
+            <b>Version</b> 4.0.0-tailwind
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Basic Modal -->
+  <div id="basicModal" class="modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal Title</h5>
+          <button type="button" class="modal-close" data-lte-dismiss="modal">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>This is a basic modal example. You can put any content here including text, images, forms, and more.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-lte-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Large Modal -->
+  <div id="largeModal" class="modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Large Modal</h5>
+          <button type="button" class="modal-close" data-lte-dismiss="modal">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-4">This is a large modal with more space for content. Perfect for displaying detailed information, large forms, or complex interfaces.</p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-gray-100 p-4 rounded-lg">
+              <h6 class="font-medium text-gray-800 mb-2">Section 1</h6>
+              <p class="text-gray-600 text-sm">Content for the first section goes here.</p>
+            </div>
+            <div class="bg-gray-100 p-4 rounded-lg">
+              <h6 class="font-medium text-gray-800 mb-2">Section 2</h6>
+              <p class="text-gray-600 text-sm">Content for the second section goes here.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-lte-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-success">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Small Modal -->
+  <div id="smallModal" class="modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Small Modal</h5>
+          <button type="button" class="modal-close" data-lte-dismiss="modal">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>A compact modal for quick confirmations.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-lte-dismiss="modal">No</button>
+          <button type="button" class="btn btn-primary btn-sm">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Danger Modal -->
+  <div id="dangerModal" class="modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-red-500 text-white">
+          <h5 class="modal-title">Confirm Delete</h5>
+          <button type="button" class="modal-close text-white/80 hover:text-white" data-lte-dismiss="modal">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-medium text-gray-800 mb-1">Are you sure?</h4>
+              <p class="text-gray-600">This action cannot be undone. This will permanently delete the item and all associated data.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-lte-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form Modal -->
+  <div id="formModal" class="modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add New User</h5>
+          <button type="button" class="modal-close" data-lte-dismiss="modal">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-control" placeholder="Enter full name">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-control" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Role</label>
+              <select class="form-select">
+                <option>Select role</option>
+                <option>Administrator</option>
+                <option>Editor</option>
+                <option>Viewer</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-lte-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-warning">Add User</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scrollable Modal -->
+  <div id="scrollModal" class="modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Terms and Conditions</h5>
+          <button type="button" class="modal-close" data-lte-dismiss="modal">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h6 class="font-medium text-gray-800 mb-2">1. Introduction</h6>
+          <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+          <h6 class="font-medium text-gray-800 mb-2">2. User Responsibilities</h6>
+          <p class="text-gray-600 mb-4">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+          <h6 class="font-medium text-gray-800 mb-2">3. Privacy Policy</h6>
+          <p class="text-gray-600 mb-4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+
+          <h6 class="font-medium text-gray-800 mb-2">4. Data Collection</h6>
+          <p class="text-gray-600 mb-4">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+
+          <h6 class="font-medium text-gray-800 mb-2">5. Third Party Services</h6>
+          <p class="text-gray-600 mb-4">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+
+          <h6 class="font-medium text-gray-800 mb-2">6. Limitation of Liability</h6>
+          <p class="text-gray-600">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-lte-dismiss="modal">Decline</button>
+          <button type="button" class="btn btn-primary">Accept</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

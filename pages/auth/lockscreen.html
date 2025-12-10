@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lockscreen | AdminLTE Tailwind</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body class="h-full bg-gradient-to-br from-slate-800 to-slate-900">
+  <div class="min-h-full flex items-center justify-center p-4">
+    <div class="w-full max-w-sm">
+      <!-- Lock Icon -->
+      <div class="text-center mb-6">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 mb-4">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+        </div>
+        <p class="text-white/70 text-sm">Your session is locked</p>
+      </div>
+
+      <!-- Lockscreen Card -->
+      <div class="bg-white rounded-2xl shadow-2xl p-8">
+        <!-- User Info -->
+        <div class="text-center mb-6">
+          <img src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff&size=96" alt="Admin User" class="w-24 h-24 rounded-full mx-auto mb-4 ring-4 ring-blue-100">
+          <h1 class="text-xl font-bold text-gray-800">Admin User</h1>
+          <p class="text-gray-500 text-sm">admin@example.com</p>
+        </div>
+
+        <form>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <div class="relative">
+              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                </svg>
+              </span>
+              <input type="password" class="form-control pl-10" placeholder="Enter your password" autofocus>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-full btn-lg mb-4">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/>
+            </svg>
+            Unlock
+          </button>
+
+          <div class="text-center">
+            <p class="text-gray-600 text-sm">
+              Or <a href="/pages/auth/login.html" class="text-blue-600 hover:underline font-medium">sign in as a different user</a>
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <!-- Session Info -->
+      <div class="mt-6 text-center">
+        <div class="inline-flex items-center gap-2 bg-white/10 rounded-lg px-4 py-2">
+          <svg class="w-4 h-4 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span class="text-white/70 text-sm">Session locked 5 minutes ago</span>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <p class="text-center text-white/50 text-sm mt-8">
+        &copy; 2024 AdminLTE. All rights reserved.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

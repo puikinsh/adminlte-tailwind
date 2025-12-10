@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Elements | AdminLTE Tailwind</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body class="h-full bg-gray-100">
+  <div class="app-wrapper min-h-full">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 h-14 bg-white border-b border-gray-200 z-30 flex items-center px-4">
+      <button type="button" data-lte-toggle="sidebar" class="p-2 rounded-lg hover:bg-gray-100 text-gray-600">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <a href="/" class="ml-2 text-xl font-semibold text-gray-800">
+        AdminLTE <span class="text-blue-600">Tailwind</span>
+      </a>
+      <div class="flex-1"></div>
+      <div class="dropdown relative">
+        <button type="button" data-lte-toggle="dropdown" class="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 text-gray-600">
+          <img src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff" alt="Admin" class="w-8 h-8 rounded-full">
+        </button>
+        <div class="dropdown-menu absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 hidden z-50">
+          <a href="#" class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Profile</a>
+          <a href="#" class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-gray-50">Sign out</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="app-sidebar fixed top-14 left-0 bottom-0 w-sidebar bg-sidebar text-gray-300 z-20 sidebar-transition overflow-y-auto overflow-x-hidden">
+      <nav class="sidebar-menu py-4 px-2" data-lte-toggle="treeview">
+        <ul class="space-y-1">
+          <li class="nav-item">
+            <a href="/pages/dashboard/v1.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+              </svg>
+              <span class="ml-3">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/pages/forms/general.html" class="nav-link flex items-center px-3 py-2 rounded-lg bg-sidebar-light text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              <span class="ml-3">Forms</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content ml-sidebar pt-14 min-h-screen transition-[margin] duration-300">
+      <div class="p-6">
+        <!-- Page Header -->
+        <div class="mb-6">
+          <h1 class="text-2xl font-semibold text-gray-800">Form Elements</h1>
+          <nav class="breadcrumb mt-1">
+            <span class="breadcrumb-item"><a href="/">Home</a></span>
+            <span class="breadcrumb-item active">Forms</span>
+          </nav>
+        </div>
+
+        <!-- Basic Form Elements -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Basic Form Elements</h3>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <label class="form-label">Text Input</label>
+                  <input type="text" class="form-control" placeholder="Enter text...">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Email Input</label>
+                  <input type="email" class="form-control" placeholder="name@example.com">
+                  <p class="form-text">We'll never share your email with anyone else.</p>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Password</label>
+                  <input type="password" class="form-control" placeholder="Enter password...">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Textarea</label>
+                  <textarea class="form-control" rows="3" placeholder="Enter your message..."></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Select</label>
+                  <select class="form-control">
+                    <option value="">Choose an option...</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                    <option value="4">Option 4</option>
+                    <option value="5">Option 5</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">File Input</label>
+                  <input type="file" class="form-control">
+                </div>
+
+                <div class="flex gap-2">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="card card-success">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Input Sizes</h3>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <label class="form-label">Small Input</label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Small input">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Default Input</label>
+                  <input type="text" class="form-control" placeholder="Default input">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Large Input</label>
+                  <input type="text" class="form-control form-control-lg" placeholder="Large input">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Disabled Input</label>
+                  <input type="text" class="form-control" placeholder="Disabled input" disabled>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Readonly Input</label>
+                  <input type="text" class="form-control" value="This is readonly" readonly>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checkboxes and Radios -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Checkboxes</h3>
+            </div>
+            <div class="card-body space-y-3">
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="check1" checked>
+                <label class="form-check-label" for="check1">Checked checkbox</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="check2">
+                <label class="form-check-label" for="check2">Unchecked checkbox</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="check3" disabled>
+                <label class="form-check-label" for="check3">Disabled checkbox</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="check4" checked disabled>
+                <label class="form-check-label" for="check4">Disabled checked checkbox</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Radio Buttons</h3>
+            </div>
+            <div class="card-body space-y-3">
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name="radio1" id="radio1" checked>
+                <label class="form-check-label" for="radio1">Selected radio</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name="radio1" id="radio2">
+                <label class="form-check-label" for="radio2">Unselected radio</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name="radio1" id="radio3">
+                <label class="form-check-label" for="radio3">Another radio option</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name="radio2" id="radio4" disabled>
+                <label class="form-check-label" for="radio4">Disabled radio</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input Groups -->
+        <div class="card mb-6">
+          <div class="card-header">
+            <h3 class="text-lg font-medium text-gray-800">Input Groups</h3>
+          </div>
+          <div class="card-body space-y-4">
+            <div class="input-group">
+              <span class="input-group-text">@</span>
+              <input type="text" class="form-control" placeholder="Username">
+            </div>
+
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Recipient's email">
+              <span class="input-group-text">@example.com</span>
+            </div>
+
+            <div class="input-group">
+              <span class="input-group-text">$</span>
+              <input type="text" class="form-control" placeholder="Amount">
+              <span class="input-group-text">.00</span>
+            </div>
+
+            <div class="input-group">
+              <span class="input-group-text">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+              </span>
+              <input type="text" class="form-control" placeholder="Search...">
+            </div>
+
+            <div class="input-group">
+              <span class="input-group-text">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"/>
+                </svg>
+              </span>
+              <input type="email" class="form-control" placeholder="Email address">
+              <button class="btn btn-primary">Subscribe</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Validation States -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <div class="card card-success">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Valid Input States</h3>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label class="form-label">Valid Input</label>
+                <input type="text" class="form-control is-valid" value="This is valid">
+                <p class="form-text form-text-valid">Looks good!</p>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Valid Select</label>
+                <select class="form-control is-valid">
+                  <option value="1" selected>Valid option selected</option>
+                </select>
+                <p class="form-text form-text-valid">Great choice!</p>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Valid Textarea</label>
+                <textarea class="form-control is-valid">This content is valid.</textarea>
+                <p class="form-text form-text-valid">Perfect!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-danger">
+            <div class="card-header">
+              <h3 class="text-lg font-medium text-gray-800">Invalid Input States</h3>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label class="form-label">Invalid Input</label>
+                <input type="text" class="form-control is-invalid" value="">
+                <p class="form-text form-text-invalid">Please provide a valid value.</p>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Invalid Email</label>
+                <input type="email" class="form-control is-invalid" value="invalid-email">
+                <p class="form-text form-text-invalid">Please enter a valid email address.</p>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Invalid Password</label>
+                <input type="password" class="form-control is-invalid" value="123">
+                <p class="form-text form-text-invalid">Password must be at least 8 characters.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Horizontal Form -->
+        <div class="card mb-6">
+          <div class="card-header">
+            <h3 class="text-lg font-medium text-gray-800">Horizontal Form</h3>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4 items-center">
+                <label class="form-label mb-0 md:text-right">Email</label>
+                <div class="md:col-span-3">
+                  <input type="email" class="form-control" placeholder="Enter email">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4 items-center">
+                <label class="form-label mb-0 md:text-right">Password</label>
+                <div class="md:col-span-3">
+                  <input type="password" class="form-control" placeholder="Enter password">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4 items-start">
+                <label class="form-label mb-0 md:text-right md:pt-2">Description</label>
+                <div class="md:col-span-3">
+                  <textarea class="form-control" rows="3" placeholder="Enter description"></textarea>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4 items-center">
+                <div class="md:col-start-2 md:col-span-3">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="remember">
+                    <label class="form-check-label" for="remember">Remember me</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="md:col-start-2 md:col-span-3 flex gap-2">
+                  <button type="submit" class="btn btn-primary">Sign in</button>
+                  <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Inline Form -->
+        <div class="card mb-6">
+          <div class="card-header">
+            <h3 class="text-lg font-medium text-gray-800">Inline Form</h3>
+          </div>
+          <div class="card-body">
+            <form class="flex flex-wrap items-center gap-3">
+              <div class="flex-1 min-w-[200px]">
+                <input type="text" class="form-control" placeholder="Name">
+              </div>
+              <div class="flex-1 min-w-[200px]">
+                <input type="email" class="form-control" placeholder="Email">
+              </div>
+              <div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="inlineCheck">
+                  <label class="form-check-label" for="inlineCheck">Remember me</label>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Form with Grid -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="text-lg font-medium text-gray-800">Registration Form (Grid Layout)</h3>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="form-group mb-0">
+                  <label class="form-label">First Name</label>
+                  <input type="text" class="form-control" placeholder="John">
+                </div>
+                <div class="form-group mb-0">
+                  <label class="form-label">Last Name</label>
+                  <input type="text" class="form-control" placeholder="Doe">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" placeholder="john.doe@example.com">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Address</label>
+                <input type="text" class="form-control" placeholder="1234 Main St">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Address 2</label>
+                <input type="text" class="form-control" placeholder="Apartment, studio, or floor">
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div class="form-group mb-0 md:col-span-1">
+                  <label class="form-label">City</label>
+                  <input type="text" class="form-control" placeholder="City">
+                </div>
+                <div class="form-group mb-0">
+                  <label class="form-label">State</label>
+                  <select class="form-control">
+                    <option value="">Choose...</option>
+                    <option>California</option>
+                    <option>New York</option>
+                    <option>Texas</option>
+                  </select>
+                </div>
+                <div class="form-group mb-0">
+                  <label class="form-label">Zip</label>
+                  <input type="text" class="form-control" placeholder="12345">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="terms">
+                  <label class="form-check-label" for="terms">I agree to the terms and conditions</label>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Create Account</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="bg-white border-t border-gray-200 p-4 mt-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between text-sm text-gray-500">
+          <div><strong>Copyright &copy; 2024 <a href="https://adminlte.io" class="text-blue-600 hover:underline">AdminLTE.io</a>.</strong> All rights reserved.</div>
+          <div class="mt-2 md:mt-0"><b>Version</b> 4.0.0-tailwind</div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

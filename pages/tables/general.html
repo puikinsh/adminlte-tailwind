@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tables | AdminLTE Tailwind</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body class="h-full bg-gray-100">
+  <div class="app-wrapper min-h-full">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 h-14 bg-white border-b border-gray-200 z-30 flex items-center px-4">
+      <button type="button" data-lte-toggle="sidebar" class="p-2 rounded-lg hover:bg-gray-100 text-gray-600">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <a href="/" class="ml-2 text-xl font-semibold text-gray-800">
+        AdminLTE <span class="text-blue-600">Tailwind</span>
+      </a>
+      <div class="flex-1"></div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="app-sidebar fixed top-14 left-0 bottom-0 w-sidebar bg-sidebar text-gray-300 z-20 sidebar-transition overflow-y-auto overflow-x-hidden">
+      <nav class="sidebar-menu py-4 px-2" data-lte-toggle="treeview">
+        <ul class="space-y-1">
+          <li class="nav-item">
+            <a href="/pages/dashboard/v1.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+              </svg>
+              <span class="ml-3">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/pages/tables/general.html" class="nav-link flex items-center px-3 py-2 rounded-lg bg-sidebar-light text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+              <span class="ml-3">Tables</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content ml-sidebar pt-14 min-h-screen transition-[margin] duration-300">
+      <div class="p-6">
+        <!-- Page Header -->
+        <div class="mb-6">
+          <h1 class="text-2xl font-semibold text-gray-800">Tables</h1>
+          <nav class="breadcrumb mt-1">
+            <span class="breadcrumb-item"><a href="/">Home</a></span>
+            <span class="breadcrumb-item active">Tables</span>
+          </nav>
+        </div>
+
+        <!-- Simple Table -->
+        <div class="card mb-6">
+          <div class="card-header">
+            <h3 class="text-lg font-medium text-gray-800">Simple Table</h3>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>
+                      <div class="flex items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=3b82f6&color=fff" class="w-8 h-8 rounded-full" alt="John Doe">
+                        <span>John Doe</span>
+                      </div>
+                    </td>
+                    <td>john@example.com</td>
+                    <td>Admin</td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>
+                      <div class="flex gap-1">
+                        <button class="btn btn-sm btn-outline-primary">Edit</button>
+                        <button class="btn btn-sm btn-outline-danger">Delete</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>
+                      <div class="flex items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=Jane+Smith&background=10b981&color=fff" class="w-8 h-8 rounded-full" alt="Jane Smith">
+                        <span>Jane Smith</span>
+                      </div>
+                    </td>
+                    <td>jane@example.com</td>
+                    <td>Editor</td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>
+                      <div class="flex gap-1">
+                        <button class="btn btn-sm btn-outline-primary">Edit</button>
+                        <button class="btn btn-sm btn-outline-danger">Delete</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>
+                      <div class="flex items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=Bob+Johnson&background=ef4444&color=fff" class="w-8 h-8 rounded-full" alt="Bob Johnson">
+                        <span>Bob Johnson</span>
+                      </div>
+                    </td>
+                    <td>bob@example.com</td>
+                    <td>User</td>
+                    <td><span class="badge badge-warning">Pending</span></td>
+                    <td>
+                      <div class="flex gap-1">
+                        <button class="btn btn-sm btn-outline-primary">Edit</button>
+                        <button class="btn btn-sm btn-outline-danger">Delete</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>
+                      <div class="flex items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=Alice+Brown&background=8b5cf6&color=fff" class="w-8 h-8 rounded-full" alt="Alice Brown">
+                        <span>Alice Brown</span>
+                      </div>
+                    </td>
+                    <td>alice@example.com</td>
+                    <td>User</td>
+                    <td><span class="badge badge-danger">Inactive</span></td>
+                    <td>
+                      <div class="flex gap-1">
+                        <button class="btn btn-sm btn-outline-primary">Edit</button>
+                        <button class="btn btn-sm btn-outline-danger">Delete</button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Striped Table -->
+        <div class="card mb-6">
+          <div class="card-header">
+            <h3 class="text-lg font-medium text-gray-800">Striped Table</h3>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Sales</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>iPhone 15 Pro</td>
+                    <td>Electronics</td>
+                    <td>$999.00</td>
+                    <td>156</td>
+                    <td>1,234</td>
+                  </tr>
+                  <tr>
+                    <td>MacBook Air M3</td>
+                    <td>Electronics</td>
+                    <td>$1,099.00</td>
+                    <td>89</td>
+                    <td>567</td>
+                  </tr>
+                  <tr>
+                    <td>AirPods Pro</td>
+                    <td>Accessories</td>
+                    <td>$249.00</td>
+                    <td>423</td>
+                    <td>2,345</td>
+                  </tr>
+                  <tr>
+                    <td>iPad Pro 12.9</td>
+                    <td>Electronics</td>
+                    <td>$1,099.00</td>
+                    <td>67</td>
+                    <td>456</td>
+                  </tr>
+                  <tr>
+                    <td>Apple Watch Ultra</td>
+                    <td>Wearables</td>
+                    <td>$799.00</td>
+                    <td>234</td>
+                    <td>789</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bordered Table -->
+        <div class="card mb-6">
+          <div class="card-header">
+            <h3 class="text-lg font-medium text-gray-800">Bordered Table</h3>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Task</th>
+                    <th>Assigned To</th>
+                    <th>Due Date</th>
+                    <th>Priority</th>
+                    <th>Progress</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Design mockups</td>
+                    <td>John Doe</td>
+                    <td>Dec 15, 2024</td>
+                    <td><span class="badge badge-solid-danger">High</span></td>
+                    <td>
+                      <div class="progress progress-sm">
+                        <div class="progress-bar progress-bar-success" style="width: 80%"></div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Backend API</td>
+                    <td>Jane Smith</td>
+                    <td>Dec 20, 2024</td>
+                    <td><span class="badge badge-solid-warning">Medium</span></td>
+                    <td>
+                      <div class="progress progress-sm">
+                        <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Documentation</td>
+                    <td>Bob Johnson</td>
+                    <td>Dec 25, 2024</td>
+                    <td><span class="badge badge-solid-info">Low</span></td>
+                    <td>
+                      <div class="progress progress-sm">
+                        <div class="progress-bar progress-bar-info" style="width: 25%"></div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compact Table -->
+        <div class="card mb-6">
+          <div class="card-header">
+            <h3 class="text-lg font-medium text-gray-800">Compact Table</h3>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Order</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#1001</td>
+                    <td>ORD-2024-001</td>
+                    <td>John Doe</td>
+                    <td>Dec 1, 2024</td>
+                    <td>$125.00</td>
+                    <td><span class="badge badge-sm badge-success">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td>#1002</td>
+                    <td>ORD-2024-002</td>
+                    <td>Jane Smith</td>
+                    <td>Dec 2, 2024</td>
+                    <td>$89.00</td>
+                    <td><span class="badge badge-sm badge-warning">Processing</span></td>
+                  </tr>
+                  <tr>
+                    <td>#1003</td>
+                    <td>ORD-2024-003</td>
+                    <td>Bob Johnson</td>
+                    <td>Dec 3, 2024</td>
+                    <td>$234.00</td>
+                    <td><span class="badge badge-sm badge-info">Shipped</span></td>
+                  </tr>
+                  <tr>
+                    <td>#1004</td>
+                    <td>ORD-2024-004</td>
+                    <td>Alice Brown</td>
+                    <td>Dec 4, 2024</td>
+                    <td>$567.00</td>
+                    <td><span class="badge badge-sm badge-danger">Cancelled</span></td>
+                  </tr>
+                  <tr>
+                    <td>#1005</td>
+                    <td>ORD-2024-005</td>
+                    <td>Charlie Wilson</td>
+                    <td>Dec 5, 2024</td>
+                    <td>$432.00</td>
+                    <td><span class="badge badge-sm badge-success">Completed</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer flex items-center justify-between">
+            <p class="text-sm text-gray-600">Showing 1 to 5 of 50 entries</p>
+            <nav class="pagination">
+              <span class="page-item disabled"><span class="page-link">Prev</span></span>
+              <span class="page-item active"><span class="page-link">1</span></span>
+              <span class="page-item"><a href="#" class="page-link">2</a></span>
+              <span class="page-item"><a href="#" class="page-link">3</a></span>
+              <span class="page-item"><a href="#" class="page-link">Next</a></span>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Table with Selection -->
+        <div class="card">
+          <div class="card-header flex items-center justify-between">
+            <h3 class="text-lg font-medium text-gray-800">Table with Selection</h3>
+            <div class="flex gap-2">
+              <button class="btn btn-sm btn-outline-danger" disabled>
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+                Delete Selected
+              </button>
+              <button class="btn btn-sm btn-primary">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+                Add New
+              </button>
+            </div>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th class="w-12">
+                      <input type="checkbox" class="form-check-input">
+                    </th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Position</th>
+                    <th>Salary</th>
+                    <th>Start Date</th>
+                    <th class="w-24">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="checkbox" class="form-check-input"></td>
+                    <td>
+                      <div class="flex items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=Michael+Scott&background=3b82f6&color=fff" class="w-8 h-8 rounded-full" alt="">
+                        <div>
+                          <p class="font-medium text-gray-800">Michael Scott</p>
+                          <p class="text-xs text-gray-500">michael@dundermifflin.com</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Sales</td>
+                    <td>Regional Manager</td>
+                    <td>$85,000</td>
+                    <td>Mar 24, 2005</td>
+                    <td>
+                      <div class="dropdown relative">
+                        <button type="button" data-lte-toggle="dropdown" class="btn btn-sm btn-outline-secondary">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
+                          </svg>
+                        </button>
+                        <div class="dropdown-menu absolute right-0 top-full mt-1 w-32 bg-white rounded-lg shadow-lg border border-gray-200 py-1 hidden z-50">
+                          <a href="#" class="dropdown-item block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50">View</a>
+                          <a href="#" class="dropdown-item block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50">Edit</a>
+                          <a href="#" class="dropdown-item block px-3 py-1.5 text-sm text-red-600 hover:bg-gray-50">Delete</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" class="form-check-input"></td>
+                    <td>
+                      <div class="flex items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=Jim+Halpert&background=10b981&color=fff" class="w-8 h-8 rounded-full" alt="">
+                        <div>
+                          <p class="font-medium text-gray-800">Jim Halpert</p>
+                          <p class="text-xs text-gray-500">jim@dundermifflin.com</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Sales</td>
+                    <td>Salesman</td>
+                    <td>$65,000</td>
+                    <td>Oct 1, 2004</td>
+                    <td>
+                      <div class="dropdown relative">
+                        <button type="button" data-lte-toggle="dropdown" class="btn btn-sm btn-outline-secondary">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
+                          </svg>
+                        </button>
+                        <div class="dropdown-menu absolute right-0 top-full mt-1 w-32 bg-white rounded-lg shadow-lg border border-gray-200 py-1 hidden z-50">
+                          <a href="#" class="dropdown-item block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50">View</a>
+                          <a href="#" class="dropdown-item block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50">Edit</a>
+                          <a href="#" class="dropdown-item block px-3 py-1.5 text-sm text-red-600 hover:bg-gray-50">Delete</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" class="form-check-input"></td>
+                    <td>
+                      <div class="flex items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=Pam+Beesly&background=ec4899&color=fff" class="w-8 h-8 rounded-full" alt="">
+                        <div>
+                          <p class="font-medium text-gray-800">Pam Beesly</p>
+                          <p class="text-xs text-gray-500">pam@dundermifflin.com</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Admin</td>
+                    <td>Receptionist</td>
+                    <td>$35,000</td>
+                    <td>May 5, 2001</td>
+                    <td>
+                      <div class="dropdown relative">
+                        <button type="button" data-lte-toggle="dropdown" class="btn btn-sm btn-outline-secondary">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
+                          </svg>
+                        </button>
+                        <div class="dropdown-menu absolute right-0 top-full mt-1 w-32 bg-white rounded-lg shadow-lg border border-gray-200 py-1 hidden z-50">
+                          <a href="#" class="dropdown-item block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50">View</a>
+                          <a href="#" class="dropdown-item block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50">Edit</a>
+                          <a href="#" class="dropdown-item block px-3 py-1.5 text-sm text-red-600 hover:bg-gray-50">Delete</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" class="form-check-input"></td>
+                    <td>
+                      <div class="flex items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=Dwight+Schrute&background=f59e0b&color=fff" class="w-8 h-8 rounded-full" alt="">
+                        <div>
+                          <p class="font-medium text-gray-800">Dwight Schrute</p>
+                          <p class="text-xs text-gray-500">dwight@dundermifflin.com</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Sales</td>
+                    <td>Assistant to the Regional Manager</td>
+                    <td>$70,000</td>
+                    <td>Jan 15, 2003</td>
+                    <td>
+                      <div class="dropdown relative">
+                        <button type="button" data-lte-toggle="dropdown" class="btn btn-sm btn-outline-secondary">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
+                          </svg>
+                        </button>
+                        <div class="dropdown-menu absolute right-0 top-full mt-1 w-32 bg-white rounded-lg shadow-lg border border-gray-200 py-1 hidden z-50">
+                          <a href="#" class="dropdown-item block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50">View</a>
+                          <a href="#" class="dropdown-item block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50">Edit</a>
+                          <a href="#" class="dropdown-item block px-3 py-1.5 text-sm text-red-600 hover:bg-gray-50">Delete</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="bg-white border-t border-gray-200 p-4 mt-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between text-sm text-gray-500">
+          <div><strong>Copyright &copy; 2024 <a href="https://adminlte.io" class="text-blue-600 hover:underline">AdminLTE.io</a>.</strong> All rights reserved.</div>
+          <div class="mt-2 md:mt-0"><b>Version</b> 4.0.0-tailwind</div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

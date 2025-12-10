@@ -2,6 +2,7 @@
  * AdminLTE Tailwind - Main Entry Point
  */
 
+// TODO: Replace with '@adminlte/headless' when the package is published to npm
 import {
   createLayout,
   createPushMenu,
@@ -11,7 +12,7 @@ import {
   Dropdown,
   createModal,
   createToastManager
-} from '@adminlte/headless'
+} from './lib/headless-stub'
 
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
