@@ -65,6 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
     el.classList.remove('hidden')
   })
 
+  // Auto-detect and highlight active menu item based on current URL
+  initActiveMenuItem()
+
   const treeview = createTreeview('.sidebar-menu', {
     accordion: true,
     animationSpeed: 300,
@@ -189,3 +192,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
   console.log('AdminLTE Tailwind initialized!')
 })
+
+/**
+ * Automatically detect and highlight the active menu item based on current URL.
+ * Opens parent treeview menus and applies active styling to the current page link.
+ */
+function initActiveMenuItem() {
+  const currentPath = window.location.pathname
+  const sidebarMenu = document.querySelector('.sidebar-menu')
+
+  if (!sidebarMenu) return
+
+  // Find all nav links in the sidebar
+  const navLinks = sidebarMenu.querySelectorAll('.nav-link[href]')
+
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href')
+    if (!href || href === '#') return
+
+    // Check if this link matches the current page
+    // Handle both exact matches and path matches (ignoring query strings)
+    const linkPath = new URL(href, window.location.origin).pathname
+    const isActive = currentPath === linkPath || currentPath.endsWith(linkPath)
+
+    if (isActive) {
+      // Check if this is a submenu item (inside a treeview)
+      const parentTreeview = link.closest('.nav-treeview')
+
+      if (parentTreeview) {
+        // This is a submenu item - style it as active
+        link.classList.remove('hover:bg-sidebar-light', 'text-gray-400')
+        link.classList.add('text-white', 'bg-blue-600/20')
+
+        // Change the bullet point to blue
+        const bullet = link.querySelector('span.rounded-full')
+        if (bullet) {
+          bullet.classList.remove('bg-gray-500')
+          bullet.classList.add('bg-blue-500')
+        }
+
+        // Find and open the parent treeview menu
+        const parentNavItem = parentTreeview.closest('.nav-item.has-treeview')
+        if (parentNavItem) {
+          // Add menu-open class to parent
+          parentNavItem.classList.add('menu-open')
+
+          // Show the submenu
+          ;(parentTreeview as HTMLElement).style.display = 'block'
+
+          // Style the parent nav-link
+          const parentLink = parentNavItem.querySelector(':scope > .nav-link')
+          if (parentLink) {
+            parentLink.classList.remove('hover:bg-sidebar-light', 'text-gray-300')
+            parentLink.classList.add('bg-sidebar-light', 'text-white')
+
+            // Rotate the treeview icon
+            const icon = parentLink.querySelector('.treeview-icon')
+            icon?.classList.add('rotate-90')
+          }
+        }
+      } else {
+        // This is a top-level menu item (no parent treeview)
+        link.classList.remove('hover:bg-sidebar-light', 'text-gray-300')
+        link.classList.add('bg-sidebar-light', 'text-white')
+      }
+    }
+  })
+}

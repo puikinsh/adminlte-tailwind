@@ -8,48 +8,292 @@
 </head>
 <body class="h-full bg-gray-100">
   <div class="app-wrapper min-h-full">
-    <!-- Navbar -->
+        <!-- Navbar -->
     <nav class="fixed top-0 left-0 right-0 h-14 bg-white border-b border-gray-200 z-30 flex items-center px-4">
-      <button type="button" data-lte-toggle="sidebar" class="p-2 rounded-lg hover:bg-gray-100 text-gray-600">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
-      <a href="/" class="ml-2 text-xl font-semibold text-gray-800">
-        AdminLTE <span class="text-blue-600">Tailwind</span>
-      </a>
-      <div class="flex-1"></div>
-      <div class="dropdown relative">
-        <button type="button" data-lte-toggle="dropdown" class="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 text-gray-600">
-          <img src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff" alt="Admin" class="w-8 h-8 rounded-full">
+      <!-- Left section -->
+      <div class="flex items-center">
+        <!-- Sidebar Toggle -->
+        <button type="button" data-lte-toggle="sidebar" class="p-2 rounded-lg hover:bg-gray-100 text-gray-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
         </button>
-        <div class="dropdown-menu absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 hidden z-50">
-          <a href="#" class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Profile</a>
-          <a href="#" class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-gray-50">Sign out</a>
+
+        <!-- Nav Links -->
+        <a href="/" class="nav-link px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hidden sm:block">Home</a>
+        <a href="#" class="nav-link px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hidden sm:block">Contact</a>
+      </div>
+
+      <!-- Search -->
+      <div class="hidden md:flex ml-4 flex-1 max-w-md">
+        <div class="relative w-full">
+          <input type="text" placeholder="Search..." class="form-control pl-10">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Spacer -->
+      <div class="flex-1"></div>
+
+      <!-- Right nav items -->
+      <div class="flex items-center gap-1">
+        <!-- Messages Dropdown -->
+        <div class="dropdown relative">
+          <button type="button" data-lte-toggle="dropdown" class="p-2 rounded-lg hover:bg-gray-100 text-gray-600 relative">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+            </svg>
+            <span class="absolute top-0.5 right-0.5 w-4 h-4 bg-red-500 rounded-full text-[10px] text-white flex items-center justify-center font-medium">3</span>
+          </button>
+          <div class="dropdown-menu absolute right-0 top-full mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-200 py-2 hidden z-50">
+            <div class="px-4 py-2 border-b border-gray-200 flex justify-between items-center">
+              <span class="text-sm font-medium text-gray-800">Messages</span>
+              <span class="badge badge-primary">3 New</span>
+            </div>
+            <a href="#" class="dropdown-item flex items-start gap-3 px-4 py-3 hover:bg-gray-50">
+              <img src="https://ui-avatars.com/api/?name=John+Doe&background=3b82f6&color=fff&size=40" alt="John Doe" class="w-10 h-10 rounded-full">
+              <div class="flex-1 min-w-0">
+                <div class="flex justify-between">
+                  <p class="text-sm font-medium text-gray-800 truncate">John Doe</p>
+                  <span class="text-xs text-gray-500">5 min</span>
+                </div>
+                <p class="text-xs text-gray-500 truncate">Hey, I wanted to ask about the project...</p>
+              </div>
+            </a>
+            <a href="#" class="dropdown-item flex items-start gap-3 px-4 py-3 hover:bg-gray-50">
+              <img src="https://ui-avatars.com/api/?name=Alice+Smith&background=22c55e&color=fff&size=40" alt="Alice Smith" class="w-10 h-10 rounded-full">
+              <div class="flex-1 min-w-0">
+                <div class="flex justify-between">
+                  <p class="text-sm font-medium text-gray-800 truncate">Alice Smith</p>
+                  <span class="text-xs text-gray-500">2 hrs</span>
+                </div>
+                <p class="text-xs text-gray-500 truncate">The meeting has been rescheduled to...</p>
+              </div>
+            </a>
+            <a href="#" class="dropdown-item flex items-start gap-3 px-4 py-3 hover:bg-gray-50">
+              <img src="https://ui-avatars.com/api/?name=Bob+Wilson&background=f59e0b&color=fff&size=40" alt="Bob Wilson" class="w-10 h-10 rounded-full">
+              <div class="flex-1 min-w-0">
+                <div class="flex justify-between">
+                  <p class="text-sm font-medium text-gray-800 truncate">Bob Wilson</p>
+                  <span class="text-xs text-gray-500">4 hrs</span>
+                </div>
+                <p class="text-xs text-gray-500 truncate">Can you review the latest changes?</p>
+              </div>
+            </a>
+            <div class="border-t border-gray-200 mt-2 pt-2">
+              <a href="#" class="dropdown-item block px-4 py-2 text-sm text-center text-blue-600 hover:bg-gray-50">See All Messages</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notifications Dropdown -->
+        <div class="dropdown relative">
+          <button type="button" data-lte-toggle="dropdown" class="p-2 rounded-lg hover:bg-gray-100 text-gray-600 relative">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+            </svg>
+            <span class="absolute top-0.5 right-0.5 w-4 h-4 bg-yellow-500 rounded-full text-[10px] text-white flex items-center justify-center font-medium">5</span>
+          </button>
+          <div class="dropdown-menu absolute right-0 top-full mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-200 py-2 hidden z-50">
+            <div class="px-4 py-2 border-b border-gray-200">
+              <span class="text-sm font-medium text-gray-800">5 Notifications</span>
+            </div>
+            <a href="#" class="dropdown-item flex items-start gap-3 px-4 py-3 hover:bg-gray-50">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-800">4 new messages</p>
+                <p class="text-xs text-gray-500">3 mins ago</p>
+              </div>
+            </a>
+            <a href="#" class="dropdown-item flex items-start gap-3 px-4 py-3 hover:bg-gray-50">
+              <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-800">8 friend requests</p>
+                <p class="text-xs text-gray-500">12 hours ago</p>
+              </div>
+            </a>
+            <a href="#" class="dropdown-item flex items-start gap-3 px-4 py-3 hover:bg-gray-50">
+              <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-800">3 reports generated</p>
+                <p class="text-xs text-gray-500">2 days ago</p>
+              </div>
+            </a>
+            <div class="border-t border-gray-200 mt-2 pt-2">
+              <a href="#" class="dropdown-item block px-4 py-2 text-sm text-center text-blue-600 hover:bg-gray-50">See All Notifications</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fullscreen toggle -->
+        <button type="button" data-lte-toggle="fullscreen" class="p-2 rounded-lg hover:bg-gray-100 text-gray-600 hidden md:block">
+          <svg class="w-5 h-5 fullscreen-icon-expand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+          </svg>
+          <svg class="w-5 h-5 fullscreen-icon-collapse hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 9V4H4m0 0l5 5M9 15v5H4m0 0l5-5m11-5h-5V4m0 0l5 5m-5 11h5v-5m0 0l-5 5"/>
+          </svg>
+        </button>
+
+        <!-- User Dropdown -->
+        <div class="dropdown relative ml-1">
+          <button type="button" data-lte-toggle="dropdown" class="flex items-center p-1.5 rounded-lg hover:bg-gray-100">
+            <img src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff" alt="Admin" class="w-8 h-8 rounded-full">
+          </button>
+          <div class="dropdown-menu absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 hidden z-50">
+            <div class="px-4 py-2 border-b border-gray-200">
+              <p class="text-sm font-medium text-gray-800">Admin User</p>
+              <p class="text-xs text-gray-500">Administrator</p>
+            </div>
+            <a href="#" class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+              </svg>
+              Profile
+            </a>
+            <a href="#" class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              Settings
+            </a>
+            <div class="border-t border-gray-200 my-1"></div>
+            <a href="#" class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-gray-50">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+              </svg>
+              Sign out
+            </a>
+          </div>
         </div>
       </div>
     </nav>
 
     <!-- Sidebar -->
-    <aside class="app-sidebar fixed top-14 left-0 bottom-0 w-sidebar bg-sidebar text-gray-300 z-20 sidebar-transition overflow-y-auto overflow-x-hidden">
-      <nav class="sidebar-menu py-4 px-2" data-lte-toggle="treeview">
+    <aside class="app-sidebar fixed top-14 left-0 bottom-0 w-sidebar bg-sidebar text-gray-300 z-20 sidebar-transition overflow-x-hidden flex flex-col">
+      <nav class="sidebar-menu py-4 px-2 flex-1 overflow-y-auto" data-lte-toggle="treeview">
         <ul class="space-y-1">
-          <li class="nav-item">
-            <a href="/pages/dashboard/v1.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+          <!-- Dashboard -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
               <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
               </svg>
-              <span class="ml-3">Dashboard</span>
+              <span class="ml-3 flex-1">Dashboard</span>
+              <svg class="w-4 h-4 treeview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
             </a>
+            <ul class="nav-treeview ml-4 mt-1 space-y-1 hidden">
+              <li class="nav-item">
+                <a href="/pages/dashboard/v1.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Dashboard v1</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/dashboard/v2.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Dashboard v2</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/dashboard/v3.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Dashboard v3</span>
+                </a>
+              </li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a href="/pages/ui/general.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+
+          <!-- Widgets -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+              </svg>
+              <span class="ml-3 flex-1">Widgets</span>
+              <svg class="w-4 h-4 treeview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <ul class="nav-treeview ml-4 mt-1 space-y-1 hidden">
+              <li class="nav-item">
+                <a href="/pages/widgets/info-box.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Info Box</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/widgets/small-box.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Small Box</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/widgets/cards.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Cards</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- UI Elements -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
               <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
               </svg>
-              <span class="ml-3">UI Elements</span>
+              <span class="ml-3 flex-1">UI Elements</span>
+              <svg class="w-4 h-4 treeview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
             </a>
+            <ul class="nav-treeview ml-4 mt-1 space-y-1 hidden">
+              <li class="nav-item">
+                <a href="/pages/ui/general.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>General</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/ui/buttons.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Buttons</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/ui/modals.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Modals</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/ui/timeline.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Timeline</span>
+                </a>
+              </li>
+            </ul>
           </li>
+
+          <!-- Forms -->
           <li class="nav-item">
             <a href="/pages/forms/general.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
               <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,6 +302,8 @@
               <span class="ml-3">Forms</span>
             </a>
           </li>
+
+          <!-- Tables -->
           <li class="nav-item">
             <a href="/pages/tables/general.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
               <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -66,12 +312,76 @@
               <span class="ml-3">Tables</span>
             </a>
           </li>
+
+          <!-- Section Header -->
           <li class="nav-section-header px-3 py-2 mt-4">
             <span class="nav-section-text text-xs font-semibold text-gray-500 uppercase tracking-wider">Examples</span>
             <hr class="nav-section-divider hidden border-t border-sidebar-light mt-2" />
           </li>
+
+          <!-- Authentication -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+              <span class="ml-3 flex-1">Auth Pages</span>
+              <svg class="w-4 h-4 treeview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <ul class="nav-treeview ml-4 mt-1 space-y-1 hidden">
+              <li class="nav-item">
+                <a href="/pages/auth/login.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Login</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/auth/register.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Register</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/auth/lockscreen.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Lockscreen</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Error Pages -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+              <span class="ml-3 flex-1">Error Pages</span>
+              <svg class="w-4 h-4 treeview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <ul class="nav-treeview ml-4 mt-1 space-y-1 hidden">
+              <li class="nav-item">
+                <a href="/pages/examples/404.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Error 404</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pages/examples/500.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
+                  <span>Error 500</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Blank Page -->
           <li class="nav-item">
-            <a href="/pages/examples/blank.html" class="nav-link flex items-center px-3 py-2 rounded-lg bg-sidebar-light text-white">
+            <a href="/pages/examples/blank.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
               <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
               </svg>
@@ -80,7 +390,19 @@
           </li>
         </ul>
       </nav>
-    </aside>
+
+    
+      <!-- User Panel -->
+      <div class="p-4 border-t border-sidebar-light flex-shrink-0">
+        <div class="flex items-center gap-3">
+          <img src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff" alt="Admin" class="w-10 h-10 rounded-full">
+          <div>
+            <p class="text-sm font-medium text-white">Admin User</p>
+            <p class="text-xs text-gray-400">Administrator</p>
+          </div>
+        </div>
+      </div>
+</aside>
 
     <div class="sidebar-overlay"></div>
 
@@ -146,7 +468,7 @@
       </div>
 
       <!-- Footer -->
-      <footer class="bg-white border-t border-gray-200 p-4 mt-6">
+      <footer class="bg-white border-t border-gray-200 p-4">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between text-sm text-gray-500">
           <div><strong>Copyright &copy; 2026 <a href="https://adminlte.io" class="text-blue-600 hover:underline">AdminLTE.io</a>.</strong> All rights reserved.</div>
           <div class="mt-2 md:mt-0"><b>Version</b> 4.0.0-tailwind</div>

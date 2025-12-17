@@ -44,7 +44,17 @@
 
   /* Main content area that shifts with sidebar */
   .main-content {
-    @apply transition-[margin] duration-300 ease-in-out;
+    @apply transition-[margin] duration-300 ease-in-out flex flex-col;
+  }
+
+  /* Content area grows to fill space, pushing footer down */
+  .main-content > div:first-child {
+    @apply flex-1;
+  }
+
+  /* Ensure minimum spacing above footer */
+  .main-content > footer {
+    @apply pt-6;
   }
 
   /* Sidebar overlay for mobile - hidden by default */
