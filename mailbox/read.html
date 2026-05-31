@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blank Page | AdminLTE Tailwind</title>
+  <title>Read Mail | AdminLTE Tailwind</title>
   <link rel="stylesheet" href="/src/styles.css">
 </head>
 <body class="h-full bg-gray-100">
@@ -597,58 +597,36 @@
       <div class="p-6">
         <!-- Page Header -->
         <div class="mb-6">
-          <h1 class="text-2xl font-semibold text-gray-800">Blank Page</h1>
+          <h1 class="text-2xl font-semibold text-gray-800">Read Mail</h1>
           <nav class="breadcrumb mt-1">
             <span class="breadcrumb-item"><a href="/">Home</a></span>
-            <span class="breadcrumb-item active">Blank Page</span>
+            <span class="breadcrumb-item active">Read Mail</span>
           </nav>
         </div>
 
-        <!-- Blank Content Area -->
         <div class="card">
           <div class="card-header">
-            <h3 class="text-lg font-medium text-gray-800">Starter Template</h3>
+            <h3 class="text-lg font-medium text-gray-800">Q1 Roadmap Review</h3>
+            <div class="flex gap-1">
+              <button class="btn btn-xs btn-outline-secondary" title="Reply">Reply</button>
+              <button class="btn btn-xs btn-outline-secondary" title="Forward">Forward</button>
+            </div>
           </div>
           <div class="card-body">
-            <p class="text-gray-600 mb-4">
-              This is a blank page that you can use as a starting point for building your own pages.
-              It includes the basic layout structure with the navbar, sidebar, and main content area.
-            </p>
-
-            <div class="callout callout-info">
-              <h5 class="callout-title">Getting Started</h5>
-              <p class="callout-body">
-                Copy this file and customize it to create new pages. The sidebar navigation,
-                header, and footer are already set up for you.
-              </p>
+            <div class="flex items-center gap-3 pb-4 border-b border-gray-200 mb-4">
+              <img src="https://ui-avatars.com/api/?name=Sarah+Bullock&background=10b981&color=fff&size=44" class="w-11 h-11 rounded-full">
+              <div class="flex-1"><p class="font-medium text-gray-800">Sarah Bullock <span class="text-gray-400 font-normal text-sm">&lt;sarah@example.com&gt;</span></p><p class="text-xs text-gray-500">To: me &middot; Feb 14, 2026, 9:32 AM</p></div>
             </div>
-
-            <h4 class="font-medium text-gray-800 mt-6 mb-3">Available Components</h4>
-            <ul class="list-disc list-inside text-gray-600 space-y-1">
-              <li>Buttons (solid, outline, sizes, groups)</li>
-              <li>Cards (variants, collapsible, with ribbons)</li>
-              <li>Alerts (all color variants)</li>
-              <li>Badges (solid and light variants)</li>
-              <li>Progress bars (animated, striped)</li>
-              <li>Forms (inputs, selects, checkboxes, validation)</li>
-              <li>Tables (striped, bordered, responsive)</li>
-              <li>Modals and Toasts</li>
-              <li>Dropdowns</li>
-              <li>Pagination</li>
-              <li>And much more...</li>
-            </ul>
-
-            <h4 class="font-medium text-gray-800 mt-6 mb-3">Quick Links</h4>
-            <div class="flex flex-wrap gap-2">
-              <a href="/index.html" class="btn btn-outline-primary">Dashboard</a>
-              <a href="/UI/general.html" class="btn btn-outline-secondary">UI Elements</a>
-              <a href="/forms/elements.html" class="btn btn-outline-success">Forms</a>
-              <a href="/tables/simple.html" class="btn btn-outline-info">Tables</a>
-              <a href="/examples/login.html" class="btn btn-outline-warning">Login</a>
+            <div class="prose-sm text-gray-700 space-y-3 text-sm">
+              <p>Hi team,</p>
+              <p>Thanks for putting together the Q1 roadmap. Overall it looks solid — I especially like the focus on the dashboard refresh and the new reporting module.</p>
+              <p>A couple of notes: can we move the mobile work up a sprint? And let's sync on the API timeline before locking dates.</p>
+              <p>Best,<br>Sarah</p>
             </div>
           </div>
           <div class="card-footer">
-            <span class="text-sm text-gray-500">Last updated: December 2026</span>
+            <textarea class="form-control mb-2" rows="3" placeholder="Reply..."></textarea>
+            <button class="btn btn-primary">Send Reply</button>
           </div>
         </div>
       </div>

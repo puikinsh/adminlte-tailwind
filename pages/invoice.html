@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blank Page | AdminLTE Tailwind</title>
+  <title>Invoice | AdminLTE Tailwind</title>
   <link rel="stylesheet" href="/src/styles.css">
 </head>
 <body class="h-full bg-gray-100">
@@ -597,58 +597,56 @@
       <div class="p-6">
         <!-- Page Header -->
         <div class="mb-6">
-          <h1 class="text-2xl font-semibold text-gray-800">Blank Page</h1>
+          <h1 class="text-2xl font-semibold text-gray-800">Invoice</h1>
           <nav class="breadcrumb mt-1">
             <span class="breadcrumb-item"><a href="/">Home</a></span>
-            <span class="breadcrumb-item active">Blank Page</span>
+            <span class="breadcrumb-item active">Invoice</span>
           </nav>
         </div>
 
-        <!-- Blank Content Area -->
         <div class="card">
           <div class="card-header">
-            <h3 class="text-lg font-medium text-gray-800">Starter Template</h3>
+            <h3 class="text-lg font-medium text-gray-800">Invoice <span class="text-gray-400 font-normal">#INV-2026-014</span></h3>
+            <span class="badge badge-success">Paid</span>
           </div>
           <div class="card-body">
-            <p class="text-gray-600 mb-4">
-              This is a blank page that you can use as a starting point for building your own pages.
-              It includes the basic layout structure with the navbar, sidebar, and main content area.
-            </p>
-
-            <div class="callout callout-info">
-              <h5 class="callout-title">Getting Started</h5>
-              <p class="callout-body">
-                Copy this file and customize it to create new pages. The sidebar navigation,
-                header, and footer are already set up for you.
-              </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+              <div>
+                <p class="text-xs uppercase tracking-wider text-gray-400 mb-1">From</p>
+                <p class="font-semibold text-gray-800">AdminLTE Inc.</p>
+                <p class="text-sm text-gray-600">795 Folsom Ave, Suite 600<br>San Francisco, CA 94107</p>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wider text-gray-400 mb-1">To</p>
+                <p class="font-semibold text-gray-800">Jane Cooper</p>
+                <p class="text-sm text-gray-600">123 Market St<br>Springfield, IL 62704</p>
+              </div>
+              <div class="md:text-right">
+                <p class="text-sm text-gray-600">Invoice Date: <span class="font-medium text-gray-800">Feb 14, 2026</span></p>
+                <p class="text-sm text-gray-600">Due Date: <span class="font-medium text-gray-800">Feb 28, 2026</span></p>
+              </div>
             </div>
-
-            <h4 class="font-medium text-gray-800 mt-6 mb-3">Available Components</h4>
-            <ul class="list-disc list-inside text-gray-600 space-y-1">
-              <li>Buttons (solid, outline, sizes, groups)</li>
-              <li>Cards (variants, collapsible, with ribbons)</li>
-              <li>Alerts (all color variants)</li>
-              <li>Badges (solid and light variants)</li>
-              <li>Progress bars (animated, striped)</li>
-              <li>Forms (inputs, selects, checkboxes, validation)</li>
-              <li>Tables (striped, bordered, responsive)</li>
-              <li>Modals and Toasts</li>
-              <li>Dropdowns</li>
-              <li>Pagination</li>
-              <li>And much more...</li>
-            </ul>
-
-            <h4 class="font-medium text-gray-800 mt-6 mb-3">Quick Links</h4>
-            <div class="flex flex-wrap gap-2">
-              <a href="/index.html" class="btn btn-outline-primary">Dashboard</a>
-              <a href="/UI/general.html" class="btn btn-outline-secondary">UI Elements</a>
-              <a href="/forms/elements.html" class="btn btn-outline-success">Forms</a>
-              <a href="/tables/simple.html" class="btn btn-outline-info">Tables</a>
-              <a href="/examples/login.html" class="btn btn-outline-warning">Login</a>
+            <div class="table-responsive">
+              <table class="table">
+                <thead><tr><th>#</th><th>Item</th><th>Qty</th><th>Unit Price</th><th class="text-right">Total</th></tr></thead>
+                <tbody>
+                  <tr><td>1</td><td>Dashboard Pro License</td><td>1</td><td>$199.00</td><td class="text-right">$199.00</td></tr>
+                  <tr><td>2</td><td>Priority Support (1 yr)</td><td>1</td><td>$99.00</td><td class="text-right">$99.00</td></tr>
+                  <tr><td>3</td><td>Extra Seats</td><td>5</td><td>$19.00</td><td class="text-right">$95.00</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="flex justify-end mt-4">
+              <div class="w-full max-w-xs space-y-1 text-sm">
+                <div class="flex justify-between"><span class="text-gray-600">Subtotal</span><span class="text-gray-800">$393.00</span></div>
+                <div class="flex justify-between"><span class="text-gray-600">Tax (8%)</span><span class="text-gray-800">$31.44</span></div>
+                <div class="flex justify-between font-semibold text-base border-t border-gray-200 pt-1 mt-1"><span class="text-gray-800">Total</span><span class="text-blue-600">$424.44</span></div>
+              </div>
             </div>
           </div>
-          <div class="card-footer">
-            <span class="text-sm text-gray-500">Last updated: December 2026</span>
+          <div class="card-footer flex gap-2 justify-end">
+            <button class="btn btn-outline-secondary" onclick="window.print()">Print</button>
+            <button class="btn btn-primary">Send Invoice</button>
           </div>
         </div>
       </div>

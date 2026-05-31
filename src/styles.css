@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Class-based dark mode (toggled on <html> by src/theme.ts) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* AdminLTE Tailwind - Theme Configuration */
 @theme {
   /* Primary colors */
@@ -14,10 +17,10 @@
   --color-primary-800: #1e40af;
   --color-primary-900: #1e3a8a;
 
-  /* Sidebar colors */
-  --color-sidebar: #1f2937;
-  --color-sidebar-dark: #111827;
-  --color-sidebar-light: #374151;
+  /* Sidebar colors (match original AdminLTE dark slate) */
+  --color-sidebar: #343a40;
+  --color-sidebar-dark: #2b3035;
+  --color-sidebar-light: #454d55;
 
   /* Sidebar widths */
   --width-sidebar: 250px;
@@ -75,6 +78,11 @@
   /* Active nav link */
   .nav-item.menu-open > .nav-link {
     @apply text-white bg-sidebar-light;
+  }
+
+  /* Rotate the treeview chevron when its menu is open */
+  .nav-item.menu-open > .nav-link .treeview-icon {
+    @apply rotate-90;
   }
 
   /* ----------------------------------------
@@ -1112,8 +1120,14 @@ html.maximized-card::before {
   width: 4.6rem;
 }
 
-.sidebar-collapse .app-sidebar .nav-link span {
-  @apply opacity-0 invisible w-0;
+/* Collapsed rail: show only centered parent icons */
+.sidebar-collapse .app-sidebar .nav-link {
+  @apply justify-center px-2;
+}
+
+.sidebar-collapse .app-sidebar .nav-link span,
+.sidebar-collapse .app-sidebar .treeview-icon {
+  @apply hidden;
 }
 
 .sidebar-collapse .app-sidebar .nav-section-text {
@@ -1124,8 +1138,34 @@ html.maximized-card::before {
   @apply block;
 }
 
+/* Collapse any open submenu so it doesn't spill into the narrow rail.
+   !important overrides the inline display:block set by the treeview JS. */
+.sidebar-collapse .app-sidebar .nav-treeview {
+  display: none !important;
+}
+
 .sidebar-collapse .main-content {
   margin-left: 4.6rem;
+}
+
+/* Brand/logo box shrinks in sync with the collapsed sidebar */
+.sidebar-collapse .app-brand {
+  width: 4.6rem;
+}
+
+.sidebar-collapse .app-brand .brand-text {
+  @apply opacity-0 invisible w-0;
+}
+
+/* Keep brand aligned when collapsed sidebar hover-expands (desktop) */
+@media (min-width: 992px) {
+  body.sidebar-collapse:has(.app-sidebar:hover) .app-brand {
+    width: 250px;
+  }
+
+  body.sidebar-collapse:has(.app-sidebar:hover) .app-brand .brand-text {
+    @apply opacity-100 visible w-auto;
+  }
 }
 
 /* Hover to expand collapsed sidebar (desktop only) */
@@ -1135,8 +1175,13 @@ html.maximized-card::before {
     @apply shadow-2xl;
   }
 
-  .sidebar-collapse .app-sidebar:hover .nav-link span {
-    @apply opacity-100 visible w-auto;
+  .sidebar-collapse .app-sidebar:hover .nav-link {
+    @apply justify-start px-3;
+  }
+
+  .sidebar-collapse .app-sidebar:hover .nav-link span,
+  .sidebar-collapse .app-sidebar:hover .treeview-icon {
+    @apply block;
   }
 
   .sidebar-collapse .app-sidebar:hover .nav-section-text {
@@ -1145,6 +1190,11 @@ html.maximized-card::before {
 
   .sidebar-collapse .app-sidebar:hover .nav-section-divider {
     @apply hidden;
+  }
+
+  /* Re-open only the submenus that were open before collapsing */
+  .sidebar-collapse .app-sidebar:hover .nav-item.menu-open > .nav-treeview {
+    display: block !important;
   }
 }
 
@@ -1445,3 +1495,385 @@ body.modal-body-lock {
 .overlay-light {
   @apply bg-white/75;
 }
+
+/* Accessibility: skip link + keyboard focus ring */
+.skip-link {
+  @apply sr-only;
+}
+.skip-link:focus {
+  @apply not-sr-only fixed top-2 left-2 z-[200] bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg no-underline;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Form validation states */
+.invalid-feedback {
+  @apply hidden text-sm text-red-600 mt-1;
+}
+.form-control.is-invalid,
+.is-invalid {
+  border-color: #ef4444 !important;
+}
+.form-control.is-valid,
+.is-valid {
+  border-color: #22c55e !important;
+}
+
+/* Form wizard stepper */
+.wizard-dot {
+  @apply flex items-center justify-center w-9 h-9 rounded-full bg-gray-200 text-gray-500 text-sm font-semibold shrink-0 transition-colors;
+}
+.wizard-dot.wizard-dot-active {
+  @apply bg-blue-500 text-white;
+}
+.wizard-line {
+  @apply flex-1 h-0.5 bg-gray-200 mx-2;
+}
+.dark .wizard-dot { background-color: var(--d-surface-2); color: var(--d-text-3); }
+.dark .wizard-dot.wizard-dot-active { background-color: #3b82f6; color: #fff; }
+.dark .wizard-line { background-color: var(--d-border); }
+
+/* Card refresh: loading overlay shown over a card while it "reloads" */
+.card-refresh-overlay {
+  @apply absolute inset-0 z-20 flex items-center justify-center rounded-lg;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.dark .card-refresh-overlay {
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+/* Direct Chat: contacts pane slides in over the messages */
+.direct-chat-contacts {
+  transform: translateX(101%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.direct-chat.direct-chat-contacts-open .direct-chat-contacts {
+  transform: translateX(0);
+}
+
+/* ---- simple-datatables: align with the template + dark mode ---- */
+.datatable-top,
+.datatable-bottom {
+  @apply flex flex-wrap items-center justify-between gap-3 py-3 text-sm text-gray-600;
+}
+.datatable-selector,
+.datatable-input {
+  @apply border border-gray-300 rounded-md px-2 py-1.5 text-sm bg-white text-gray-700;
+}
+.datatable-pagination ul {
+  @apply flex flex-wrap gap-1;
+}
+.datatable-pagination a {
+  @apply block px-3 py-1.5 rounded-md text-sm text-gray-600 hover:bg-gray-100;
+}
+.datatable-pagination .datatable-active a {
+  @apply bg-blue-500 text-white;
+}
+.datatable-pagination .datatable-disabled a {
+  @apply opacity-40 cursor-not-allowed;
+}
+.datatable-sorter {
+  @apply cursor-pointer;
+}
+
+.dark .datatable-top,
+.dark .datatable-bottom { color: var(--d-text-2); }
+.dark .datatable-selector,
+.dark .datatable-input {
+  background-color: var(--d-surface-2);
+  border-color: var(--d-border);
+  color: var(--d-text);
+}
+.dark .datatable-pagination a { color: var(--d-text-2); }
+.dark .datatable-pagination a:hover { background-color: rgba(255, 255, 255, 0.06); }
+
+/* ============================================
+   RTL SUPPORT
+   `dir="rtl"` on <html> reverses flex order automatically; these rules flip the
+   physical layout (fixed sidebar side, content margins, paddings) that doesn't.
+   ============================================ */
+[dir="rtl"] .app-sidebar {
+  left: auto;
+  right: 0;
+}
+[dir="rtl"] .main-content {
+  margin-left: 0;
+  margin-right: var(--width-sidebar);
+}
+[dir="rtl"] .sidebar-collapse .main-content {
+  margin-left: 0;
+  margin-right: 4.6rem;
+}
+/* Header: brand sits flush to the right edge in RTL */
+[dir="rtl"] nav.bg-white {
+  padding-right: 0;
+  padding-left: 1rem;
+}
+[dir="rtl"] .app-brand {
+  margin-right: 0;
+}
+/* Sidebar menu icon spacing flips */
+[dir="rtl"] .sidebar-menu .nav-link span.ml-3 {
+  margin-left: 0;
+  margin-right: 0.75rem;
+}
+[dir="rtl"] .nav-treeview {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+/* Dropdown menus anchor to the opposite edge */
+[dir="rtl"] .dropdown-menu.right-0 {
+  right: auto;
+  left: 0;
+}
+
+@media (max-width: 991px) {
+  [dir="rtl"] .app-sidebar {
+    transform: translateX(100%);
+  }
+  [dir="rtl"] body.sidebar-open .app-sidebar {
+    transform: translateX(0);
+  }
+  [dir="rtl"] .main-content {
+    margin-right: 0;
+  }
+}
+
+/* ============================================
+   DARK MODE
+   Unlayered rules (win over Tailwind's layered utilities) that remap the
+   template's light surfaces, text and borders when <html> has `.dark`.
+   ============================================ */
+.dark {
+  --d-body: #1a1d21;
+  --d-surface: #2b3035;
+  --d-surface-2: #343a40;
+  --d-elevated: #3a4046;
+  --d-border: #3d444b;
+  --d-text: #e9ecef;
+  --d-text-2: #adb5bd;
+  --d-text-3: #868e96;
+  color-scheme: dark;
+}
+
+.dark body {
+  background-color: var(--d-body);
+  color: var(--d-text-2);
+}
+
+/* Surfaces */
+.dark .bg-white { background-color: var(--d-surface); }
+.dark .bg-gray-50 { background-color: var(--d-surface-2); }
+.dark .bg-gray-100 { background-color: var(--d-body); }
+.dark .bg-gray-200 { background-color: var(--d-elevated); }
+.dark nav.bg-white { background-color: var(--d-surface); }
+
+/* Cards / panels */
+.dark .card { background-color: var(--d-surface); border-color: var(--d-border); }
+.dark .card-header,
+.dark .card-footer { border-color: var(--d-border); }
+.dark .card-footer { background-color: rgba(0, 0, 0, 0.18); }
+
+/* Borders & dividers */
+.dark .border-gray-100,
+.dark .border-gray-200,
+.dark .border-gray-300 { border-color: var(--d-border); }
+.dark .divide-gray-100 > :not([hidden]) ~ :not([hidden]),
+.dark .divide-gray-200 > :not([hidden]) ~ :not([hidden]) { border-color: var(--d-border); }
+
+/* Text */
+.dark .text-gray-900,
+.dark .text-gray-800 { color: var(--d-text); }
+.dark .text-gray-700,
+.dark .text-gray-600 { color: var(--d-text-2); }
+.dark .text-gray-500,
+.dark .text-gray-400 { color: var(--d-text-3); }
+
+/* Hover surfaces */
+.dark .hover\:bg-gray-50:hover,
+.dark .hover\:bg-gray-100:hover { background-color: rgba(255, 255, 255, 0.06); }
+
+/* Forms */
+.dark .form-control,
+.dark input:not([type="checkbox"]):not([type="radio"]),
+.dark textarea,
+.dark select {
+  background-color: var(--d-surface-2);
+  border-color: var(--d-border);
+  color: var(--d-text);
+}
+.dark .form-control::placeholder,
+.dark input::placeholder,
+.dark textarea::placeholder { color: var(--d-text-3); }
+
+/* Dropdown menus & search palette */
+.dark .dropdown-menu { background-color: var(--d-surface-2); border-color: var(--d-border); }
+.dark #search-overlay .search-panel { background-color: var(--d-surface); border-color: var(--d-border); }
+.dark #search-overlay .search-input { color: var(--d-text); }
+.dark #search-overlay kbd { background-color: var(--d-surface-2); border-color: var(--d-border); color: var(--d-text-2); }
+.dark .search-item.bg-blue-50 { background-color: rgba(59, 130, 246, 0.18) !important; }
+
+/* Tables */
+.dark table { color: var(--d-text-2); }
+.dark thead.bg-gray-50,
+.dark .bg-gray-50 { background-color: var(--d-surface-2); }
+
+/* .table component bakes its header/borders/hover via @apply (no utility class
+   on the element), so the remaps above can't reach them — handle explicitly. */
+.dark .table thead { background-color: var(--d-surface-2); }
+.dark .table th { color: var(--d-text-2); border-color: var(--d-border); }
+.dark .table td { border-color: var(--d-border); }
+.dark .table tbody tr:hover { background-color: rgba(255, 255, 255, 0.04); }
+.dark .table-striped tbody tr:nth-child(odd) { background-color: rgba(255, 255, 255, 0.03); }
+.dark .table-bordered,
+.dark .table-bordered th,
+.dark .table-bordered td { border-color: var(--d-border); }
+.dark .table-hover tbody tr:hover { background-color: rgba(255, 255, 255, 0.06); }
+
+/* Search trigger button in the header */
+.dark [data-search-trigger] { background-color: var(--d-surface-2); border-color: var(--d-border); }
+.dark [data-search-trigger] kbd { background-color: var(--d-surface); border-color: var(--d-border); }
+
+/* ============================================
+   DARK MODE — component & accent coverage
+   These classes bake their light surfaces/text via @apply (so the element never
+   carries a `bg-white`/`text-gray-*` class and the generic remaps above can't
+   reach them) — or use accent utilities the remaps deliberately skip. Handle them
+   explicitly here so widgets, cards, badges and tints stay consistent in dark mode.
+   ============================================ */
+
+/* Soft colored tints — literal bg-*-50/100 utilities (file tiles, active rows,
+   highlights). Badges bake these via @apply so they are unaffected here. */
+.dark .bg-blue-50,
+.dark .bg-blue-100 { background-color: rgba(59, 130, 246, 0.16); }
+/* Opacity-suffixed tint (e.g. unread mail row's `bg-blue-50/50`) — a distinct
+   class the rule above can't match, so it needs its own dark override. */
+.dark .bg-blue-50\/50 { background-color: rgba(59, 130, 246, 0.14); }
+.dark .bg-green-50,
+.dark .bg-green-100 { background-color: rgba(34, 197, 94, 0.16); }
+.dark .bg-red-50,
+.dark .bg-red-100 { background-color: rgba(239, 68, 68, 0.16); }
+.dark .bg-yellow-50,
+.dark .bg-yellow-100 { background-color: rgba(234, 179, 8, 0.16); }
+.dark .bg-purple-50,
+.dark .bg-purple-100 { background-color: rgba(168, 85, 247, 0.16); }
+.dark .bg-orange-50,
+.dark .bg-orange-100 { background-color: rgba(249, 115, 22, 0.16); }
+.dark .bg-indigo-50,
+.dark .bg-indigo-100 { background-color: rgba(99, 102, 241, 0.16); }
+.dark .bg-cyan-50,
+.dark .bg-cyan-100 { background-color: rgba(6, 182, 212, 0.16); }
+.dark .bg-teal-50,
+.dark .bg-teal-100 { background-color: rgba(20, 184, 166, 0.16); }
+.dark .bg-pink-50,
+.dark .bg-pink-100 { background-color: rgba(236, 72, 153, 0.16); }
+
+/* Lift mid-tone accent text so it stays legible on dark surfaces */
+.dark .text-blue-600,
+.dark .text-blue-700 { color: #60a5fa; }
+.dark .text-green-600,
+.dark .text-green-700 { color: #4ade80; }
+.dark .text-red-600,
+.dark .text-red-700,
+.dark .text-red-800 { color: #f87171; }
+.dark .text-yellow-600,
+.dark .text-yellow-700 { color: #facc15; }
+.dark .text-purple-600,
+.dark .text-purple-700 { color: #c084fc; }
+.dark .text-orange-600,
+.dark .text-orange-700 { color: #fb923c; }
+.dark .text-cyan-600,
+.dark .text-cyan-700 { color: #22d3ee; }
+.dark .text-indigo-600,
+.dark .text-indigo-700 { color: #818cf8; }
+.dark .text-teal-600,
+.dark .text-teal-700 { color: #2dd4bf; }
+.dark .text-pink-600,
+.dark .text-pink-700 { color: #f472b6; }
+
+/* Info boxes. The text overrides skip boxes that opt into white text
+   (gradient/solid-colored boxes set `text-white`) so their labels stay legible. */
+.dark .info-box { background-color: var(--d-surface); border-color: var(--d-border); }
+.dark .info-box:not(.text-white) .info-box-text { color: var(--d-text-3); }
+.dark .info-box:not(.text-white) .info-box-number { color: var(--d-text); }
+
+/* Callouts (variants bake their own colored bg) */
+.dark .callout { background-color: var(--d-surface-2); }
+.dark .callout-primary { background-color: rgba(59, 130, 246, 0.12); }
+.dark .callout-success { background-color: rgba(34, 197, 94, 0.12); }
+.dark .callout-danger { background-color: rgba(239, 68, 68, 0.12); }
+.dark .callout-warning { background-color: rgba(234, 179, 8, 0.12); }
+.dark .callout-info { background-color: rgba(6, 182, 212, 0.12); }
+.dark .callout-title { color: var(--d-text); }
+.dark .callout-body { color: var(--d-text-2); }
+
+/* Timeline */
+.dark .timeline-content { background-color: var(--d-surface); border-color: var(--d-border); }
+.dark .timeline-time { color: var(--d-text-3); }
+.dark .timeline-title { color: var(--d-text); }
+.dark .timeline-body { color: var(--d-text-2); }
+.dark .timeline-marker { border-color: var(--d-surface); }
+
+/* Pagination */
+.dark .page-link { background-color: var(--d-surface); border-color: var(--d-border); color: var(--d-text-2); }
+.dark .page-link:hover { background-color: var(--d-surface-2); color: #60a5fa; }
+.dark .page-item.disabled .page-link:hover { background-color: var(--d-surface); color: var(--d-text-2); }
+
+/* List groups */
+.dark .list-group { background-color: var(--d-surface); border-color: var(--d-border); }
+.dark .list-group-item { border-color: var(--d-border); }
+.dark .list-group-item-action:hover { background-color: rgba(255, 255, 255, 0.06); }
+
+/* Accordion */
+.dark .accordion { background-color: var(--d-surface); border-color: var(--d-border); }
+.dark .accordion-item { border-color: var(--d-border); }
+.dark .accordion-button { color: var(--d-text-2); }
+.dark .accordion-button:hover,
+.dark .accordion-button[aria-expanded="true"] { background-color: var(--d-surface-2); }
+.dark .accordion-body { color: var(--d-text-2); }
+
+/* Avatar (text initials) */
+.dark .avatar { background-color: var(--d-elevated); color: var(--d-text-2); }
+
+/* Input-group addon */
+.dark .input-group-text { background-color: var(--d-surface-2); border-color: var(--d-border); color: var(--d-text-2); }
+
+/* Form label & help text */
+.dark .form-label { color: var(--d-text-2); }
+.dark .form-text { color: var(--d-text-3); }
+
+/* Secondary / outline-secondary buttons */
+.dark .btn-secondary { background-color: var(--d-surface-2); color: var(--d-text); }
+.dark .btn-secondary:hover { background-color: var(--d-elevated); }
+.dark .btn-outline-secondary { border-color: var(--d-border); color: var(--d-text-2); }
+.dark .btn-outline-secondary:hover { background-color: var(--d-surface-2); color: var(--d-text); }
+
+/* Popover & tooltip */
+.dark .popover { background-color: var(--d-surface-2); border-color: var(--d-border); }
+.dark .popover-header { background-color: var(--d-surface); border-color: var(--d-border); color: var(--d-text); }
+.dark .popover-body { color: var(--d-text-2); }
+
+/* Toasts */
+.dark .toast { background-color: var(--d-surface-2); border-color: var(--d-border); }
+.dark .toast-title { color: var(--d-text); }
+.dark .toast-message { color: var(--d-text-2); }
+.dark .toast-close { color: var(--d-text-3); }
+.dark .toast-close:hover { color: var(--d-text); }
+
+/* Badges — soft variants bake light tints; re-tint for dark legibility */
+.dark .badge-primary { background-color: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+.dark .badge-success { background-color: rgba(34, 197, 94, 0.2); color: #86efac; }
+.dark .badge-danger { background-color: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+.dark .badge-warning { background-color: rgba(234, 179, 8, 0.2); color: #fde047; }
+.dark .badge-info { background-color: rgba(6, 182, 212, 0.2); color: #67e8f9; }
+.dark .badge-secondary { background-color: var(--d-surface-2); color: var(--d-text-2); }
+.dark .badge-light { background-color: var(--d-surface-2); border-color: var(--d-border); color: var(--d-text-2); }

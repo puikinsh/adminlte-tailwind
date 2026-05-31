@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blank Page | AdminLTE Tailwind</title>
+  <title>Projects | AdminLTE Tailwind</title>
   <link rel="stylesheet" href="/src/styles.css">
 </head>
 <body class="h-full bg-gray-100">
@@ -597,58 +597,55 @@
       <div class="p-6">
         <!-- Page Header -->
         <div class="mb-6">
-          <h1 class="text-2xl font-semibold text-gray-800">Blank Page</h1>
+          <h1 class="text-2xl font-semibold text-gray-800">Projects</h1>
           <nav class="breadcrumb mt-1">
             <span class="breadcrumb-item"><a href="/">Home</a></span>
-            <span class="breadcrumb-item active">Blank Page</span>
+            <span class="breadcrumb-item active">Projects</span>
           </nav>
         </div>
 
-        <!-- Blank Content Area -->
         <div class="card">
           <div class="card-header">
-            <h3 class="text-lg font-medium text-gray-800">Starter Template</h3>
+            <h3 class="text-lg font-medium text-gray-800">Projects</h3>
+            <button class="btn btn-primary btn-sm">+ New Project</button>
           </div>
-          <div class="card-body">
-            <p class="text-gray-600 mb-4">
-              This is a blank page that you can use as a starting point for building your own pages.
-              It includes the basic layout structure with the navbar, sidebar, and main content area.
-            </p>
-
-            <div class="callout callout-info">
-              <h5 class="callout-title">Getting Started</h5>
-              <p class="callout-body">
-                Copy this file and customize it to create new pages. The sidebar navigation,
-                header, and footer are already set up for you.
-              </p>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table">
+                <thead><tr><th>Project</th><th>Team</th><th>Progress</th><th>Status</th><th class="text-right">Actions</th></tr></thead>
+                <tbody>
+                  
+                  <tr>
+                    <td class="font-medium text-gray-800">Website Redesign</td>
+                    <td><div class="flex -space-x-2"><img src="https://ui-avatars.com/api/?name=Jane%20Cooper&size=32" class="w-8 h-8 rounded-full border-2 border-white" title="Jane Cooper"><img src="https://ui-avatars.com/api/?name=Mike%20Ross&size=32" class="w-8 h-8 rounded-full border-2 border-white" title="Mike Ross"><img src="https://ui-avatars.com/api/?name=Sara%20Lee&size=32" class="w-8 h-8 rounded-full border-2 border-white" title="Sara Lee"></div></td>
+                    <td><div class="flex items-center gap-2"><div class="progress progress-sm w-32"><div class="progress-bar progress-bar-primary" style="width:78%"></div></div><span class="text-xs text-gray-500">78%</span></div></td>
+                    <td><span class="badge badge-primary">In Progress</span></td>
+                    <td class="text-right"><button class="btn btn-xs btn-outline-secondary">View</button></td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-gray-800">Mobile App v2</td>
+                    <td><div class="flex -space-x-2"><img src="https://ui-avatars.com/api/?name=Tom%20Hardy&size=32" class="w-8 h-8 rounded-full border-2 border-white" title="Tom Hardy"><img src="https://ui-avatars.com/api/?name=Anna%20Bell&size=32" class="w-8 h-8 rounded-full border-2 border-white" title="Anna Bell"></div></td>
+                    <td><div class="flex items-center gap-2"><div class="progress progress-sm w-32"><div class="progress-bar progress-bar-primary" style="width:45%"></div></div><span class="text-xs text-gray-500">45%</span></div></td>
+                    <td><span class="badge badge-primary">In Progress</span></td>
+                    <td class="text-right"><button class="btn btn-xs btn-outline-secondary">View</button></td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-gray-800">Marketing Site</td>
+                    <td><div class="flex -space-x-2"><img src="https://ui-avatars.com/api/?name=Leo%20King&size=32" class="w-8 h-8 rounded-full border-2 border-white" title="Leo King"></div></td>
+                    <td><div class="flex items-center gap-2"><div class="progress progress-sm w-32"><div class="progress-bar progress-bar-primary" style="width:100%"></div></div><span class="text-xs text-gray-500">100%</span></div></td>
+                    <td><span class="badge badge-success">Completed</span></td>
+                    <td class="text-right"><button class="btn btn-xs btn-outline-secondary">View</button></td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-gray-800">API Platform</td>
+                    <td><div class="flex -space-x-2"><img src="https://ui-avatars.com/api/?name=Dana%20Scott&size=32" class="w-8 h-8 rounded-full border-2 border-white" title="Dana Scott"><img src="https://ui-avatars.com/api/?name=Raj%20Patel&size=32" class="w-8 h-8 rounded-full border-2 border-white" title="Raj Patel"></div></td>
+                    <td><div class="flex items-center gap-2"><div class="progress progress-sm w-32"><div class="progress-bar progress-bar-primary" style="width:12%"></div></div><span class="text-xs text-gray-500">12%</span></div></td>
+                    <td><span class="badge badge-warning">On Hold</span></td>
+                    <td class="text-right"><button class="btn btn-xs btn-outline-secondary">View</button></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-
-            <h4 class="font-medium text-gray-800 mt-6 mb-3">Available Components</h4>
-            <ul class="list-disc list-inside text-gray-600 space-y-1">
-              <li>Buttons (solid, outline, sizes, groups)</li>
-              <li>Cards (variants, collapsible, with ribbons)</li>
-              <li>Alerts (all color variants)</li>
-              <li>Badges (solid and light variants)</li>
-              <li>Progress bars (animated, striped)</li>
-              <li>Forms (inputs, selects, checkboxes, validation)</li>
-              <li>Tables (striped, bordered, responsive)</li>
-              <li>Modals and Toasts</li>
-              <li>Dropdowns</li>
-              <li>Pagination</li>
-              <li>And much more...</li>
-            </ul>
-
-            <h4 class="font-medium text-gray-800 mt-6 mb-3">Quick Links</h4>
-            <div class="flex flex-wrap gap-2">
-              <a href="/index.html" class="btn btn-outline-primary">Dashboard</a>
-              <a href="/UI/general.html" class="btn btn-outline-secondary">UI Elements</a>
-              <a href="/forms/elements.html" class="btn btn-outline-success">Forms</a>
-              <a href="/tables/simple.html" class="btn btn-outline-info">Tables</a>
-              <a href="/examples/login.html" class="btn btn-outline-warning">Login</a>
-            </div>
-          </div>
-          <div class="card-footer">
-            <span class="text-sm text-gray-500">Last updated: December 2026</span>
           </div>
         </div>
       </div>

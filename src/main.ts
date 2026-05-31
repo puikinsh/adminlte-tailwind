@@ -2,13 +2,10 @@
  * AdminLTE Tailwind - Main Entry Point
  */
 
-// TODO: Replace with '@adminlte/headless' when the package is published to npm
+// Core component behaviours come from the published @adminlte/headless package.
+// Dropdown, Modal and Toast aren't in that package yet, so they stay local.
+import { initAll } from '@adminlte/headless'
 import {
-  createLayout,
-  createPushMenu,
-  createTreeview,
-  createFullScreen,
-  CardWidget,
   Dropdown,
   createModal,
   createToastManager
@@ -18,107 +15,27 @@ import {
 document.addEventListener('DOMContentLoaded', () => {
   console.log('AdminLTE Tailwind initializing...')
 
-  // Initialize Layout
-  const layout = createLayout(document.body, {
-    classNames: {
-      holdTransition: 'hold-transition',
-      appLoaded: 'app-loaded'
-    }
-  })
-  layout?.init()
-
-  // Initialize PushMenu (Sidebar)
-  const sidebar = createPushMenu('.app-sidebar', {
-    sidebarBreakpoint: 991, // Match Tailwind's lg breakpoint
-    enablePersistence: true,
-    storageKey: 'adminlte.sidebar.state',
-    classNames: {
-      sidebarCollapse: 'sidebar-collapse',
-      sidebarOpen: 'sidebar-open',
-      sidebarOverlay: 'sidebar-overlay',
-      menuOpen: 'menu-open'
-    },
-    selectors: {
-      toggle: '[data-lte-toggle="sidebar"]',
-      appWrapper: '.app-wrapper'
-    }
-  })
-
-  if (sidebar) {
-    sidebar.init()
-    sidebar.createOverlay()
-
-    // Log sidebar events for debugging
-    sidebar.on('toggle', ({ isOpen }) => {
-      console.log('Sidebar toggled:', isOpen ? 'open' : 'closed')
-    })
-
-    sidebar.on('breakpointChange', ({ isMobile }) => {
-      console.log('Breakpoint changed:', isMobile ? 'mobile' : 'desktop')
-    })
-  }
-
-  // Initialize Treeview (sidebar menu)
-  // First, hide all submenus with display:none (headless lib expects this, not Tailwind's hidden class)
+  // Submenus start hidden via display:none (the treeview animates display,
+  // not Tailwind's `hidden` class).
   document.querySelectorAll('.nav-treeview').forEach(el => {
     (el as HTMLElement).style.display = 'none'
     el.classList.remove('hidden')
   })
 
-  // Auto-detect and highlight active menu item based on current URL
+  // Initialise core AdminLTE behaviours via the headless package:
+  // Layout, PushMenu, Treeview, CardWidget, DirectChat, FullScreen.
+  // Accessibility is handled by our own a11y module, so it's disabled here.
+  initAll({ accessibility: false })
+
+  // Auto-detect and highlight the active menu item (opens its parent treeview)
   initActiveMenuItem()
 
-  const treeview = createTreeview('.sidebar-menu', {
-    accordion: true,
-    animationSpeed: 300,
-    classNames: {
-      menuOpen: 'menu-open'
-    },
-    selectors: {
-      navItem: '.nav-item',
-      navLink: '.nav-link',
-      treeviewMenu: '.nav-treeview'
-    }
+  // Swap the fullscreen icon when the browser fullscreen state changes
+  document.addEventListener('fullscreenchange', () => {
+    const isFs = !!document.fullscreenElement
+    document.querySelector('.fullscreen-icon-expand')?.classList.toggle('hidden', isFs)
+    document.querySelector('.fullscreen-icon-collapse')?.classList.toggle('hidden', !isFs)
   })
-
-  if (treeview) {
-    treeview.init()
-
-    // Handle treeview icon rotation on expand/collapse
-    treeview.on('expanded', ({ item }) => {
-      const icon = item.querySelector('.treeview-icon')
-      icon?.classList.add('rotate-90')
-    })
-
-    treeview.on('collapsed', ({ item }) => {
-      const icon = item.querySelector('.treeview-icon')
-      icon?.classList.remove('rotate-90')
-    })
-  }
-
-  // Initialize Card Widgets
-  const cards = CardWidget.initAll()
-  console.log(`Initialized ${cards.length} card widget(s)`)
-
-  // Initialize Fullscreen
-  const fullscreen = createFullScreen('[data-lte-toggle="fullscreen"]')
-  if (fullscreen) {
-    fullscreen.init()
-
-    fullscreen.on('toggle', ({ isFullscreen }) => {
-      // Toggle icon visibility
-      const expandIcon = document.querySelector('.fullscreen-icon-expand')
-      const collapseIcon = document.querySelector('.fullscreen-icon-collapse')
-
-      if (isFullscreen) {
-        expandIcon?.classList.add('hidden')
-        collapseIcon?.classList.remove('hidden')
-      } else {
-        expandIcon?.classList.remove('hidden')
-        collapseIcon?.classList.add('hidden')
-      }
-    })
-  }
 
   // Initialize Dropdowns
   const dropdowns = Dropdown.initAll({
@@ -190,6 +107,58 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
 
+  // Card refresh: show a spinner overlay for a moment, then clear it
+  document.querySelectorAll('[data-lte-toggle="card-refresh"]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.card') as HTMLElement | null
+      if (!card || card.querySelector('.card-refresh-overlay')) return
+      card.style.position = 'relative'
+      const overlay = document.createElement('div')
+      overlay.className = 'card-refresh-overlay'
+      overlay.innerHTML =
+        '<svg class="w-8 h-8 animate-spin text-blue-500" fill="none" viewBox="0 0 24 24">' +
+        '<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>' +
+        '<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.37 0 0 5.37 0 12h4z"></path></svg>'
+      card.appendChild(overlay)
+      setTimeout(() => overlay.remove(), 1500)
+    })
+  })
+
+  // Accessibility helpers (skip link, aria-labels)
+  import('./a11y').then(({ default: initA11y }) => initA11y())
+
+  // Custom thin sidebar scrollbar (OverlayScrollbars)
+  if (document.querySelector('.sidebar-menu')) {
+    import('./scrollbar').then(({ default: initScrollbars }) => initScrollbars())
+  }
+
+  // Color mode (light / dark / auto)
+  import('./theme').then(({ default: initTheme }) => initTheme())
+
+  // Command-K search palette (lightweight, available on every page)
+  import('./search').then(({ default: initSearch }) => initSearch())
+
+  // Data tables (sortable / searchable / paginated) — only where present
+  if (document.querySelector('table[data-datatable]')) {
+    import('./tables').then(({ default: initTables }) => initTables())
+  }
+
+  // Form validation & wizard — only where present
+  if (document.querySelector('form[data-validate], [data-wizard]')) {
+    import('./forms').then(({ default: initForms }) => initForms())
+  }
+
+  // Interactive calendar — only on the calendar page
+  if (document.querySelector('#calendar-grid')) {
+    import('./calendar').then(({ default: initCalendar }) => initCalendar())
+  }
+
+  // Lazy-load charts/maps only on pages that contain a visualisation container.
+  // Keeps ApexCharts/jsVectorMap out of the bundle for pages that don't need them.
+  if (document.querySelector('#revenue-chart, #visitors-chart, #sales-donut, #revenue-bar, #world-map')) {
+    import('./charts').then(({ default: initCharts }) => initCharts())
+  }
+
   console.log('AdminLTE Tailwind initialized!')
 })
 
@@ -198,7 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
  * Opens parent treeview menus and applies active styling to the current page link.
  */
 function initActiveMenuItem() {
-  const currentPath = window.location.pathname
+  // Treat the site root as /index.html so the dashboard link highlights correctly
+  const currentPath = window.location.pathname === '/' ? '/index.html' : window.location.pathname
   const sidebarMenu = document.querySelector('.sidebar-menu')
 
   if (!sidebarMenu) return
