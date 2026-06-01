@@ -24,4 +24,16 @@ export default function initA11y() {
   document.querySelectorAll<HTMLElement>('button[title]:not([aria-label])').forEach((btn) => {
     if (!btn.textContent?.trim()) btn.setAttribute('aria-label', btn.getAttribute('title')!)
   })
+
+  // Label icon-only toggles that have no tooltip to derive a name from.
+  const TOGGLE_LABELS: Record<string, string> = {
+    sidebar: 'Toggle sidebar',
+    fullscreen: 'Toggle fullscreen'
+  }
+  document.querySelectorAll<HTMLElement>('[data-lte-toggle]').forEach((btn) => {
+    if (btn.getAttribute('aria-label') || btn.getAttribute('title') || btn.textContent?.trim()) return
+    const type = btn.getAttribute('data-lte-toggle') || ''
+    if (TOGGLE_LABELS[type]) btn.setAttribute('aria-label', TOGGLE_LABELS[type])
+    else if (type === 'dropdown' && btn.querySelector('img')) btn.setAttribute('aria-label', 'Open user menu')
+  })
 }
