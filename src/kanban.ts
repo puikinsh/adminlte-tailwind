@@ -25,7 +25,7 @@ function addButtonOf(list: HTMLElement): HTMLElement | null {
 }
 
 function updateCounts(board: HTMLElement) {
-  columns(board).forEach(col => {
+  columns(board).forEach((col) => {
     const list = listOf(col)
     const badge = col.querySelector('.badge')
     if (list && badge) badge.textContent = String(cardsOf(list).length)
@@ -34,7 +34,7 @@ function updateCounts(board: HTMLElement) {
 
 // Find the card that should come *after* the drop point for a given cursor Y.
 function cardAfter(list: HTMLElement, y: number): HTMLElement | null {
-  const cards = cardsOf(list).filter(c => c !== dragged)
+  const cards = cardsOf(list).filter((c) => c !== dragged)
   let closest: { offset: number; el: HTMLElement | null } = { offset: -Infinity, el: null }
   for (const card of cards) {
     const box = card.getBoundingClientRect()
@@ -45,7 +45,7 @@ function cardAfter(list: HTMLElement, y: number): HTMLElement | null {
 }
 
 function highlightColumn(board: HTMLElement, active: HTMLElement | null) {
-  columns(board).forEach(col => {
+  columns(board).forEach((col) => {
     const box = col.firstElementChild as HTMLElement | null
     box?.classList.toggle('ring-2', box === active)
     box?.classList.toggle('ring-blue-400', box === active)
@@ -85,10 +85,10 @@ function createCard(): HTMLElement {
   card.className = 'card cursor-move'
   card.innerHTML =
     '<div class="card-body p-4">' +
-      '<div class="flex items-start justify-between mb-2">' +
-        '<span class="badge badge-secondary">Task</span>' +
-      '</div>' +
-      '<h6 class="font-medium text-gray-800 outline-none" contenteditable="true">New task</h6>' +
+    '<div class="flex items-start justify-between mb-2">' +
+    '<span class="badge badge-secondary">Task</span>' +
+    '</div>' +
+    '<h6 class="font-medium text-gray-800 outline-none" contenteditable="true">New task</h6>' +
     '</div>'
   return card
 }
@@ -120,8 +120,14 @@ function wireAddButton(list: HTMLElement, board: HTMLElement) {
     }
     title.addEventListener('blur', finish)
     title.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') { e.preventDefault(); title.blur() }
-      if (e.key === 'Escape') { title.textContent = ''; title.blur() }
+      if (e.key === 'Enter') {
+        e.preventDefault()
+        title.blur()
+      }
+      if (e.key === 'Escape') {
+        title.textContent = ''
+        title.blur()
+      }
     })
   })
 }
@@ -130,10 +136,10 @@ export default function initKanban() {
   const board = document.getElementById('kanban-board')
   if (!board) return
 
-  columns(board).forEach(col => {
+  columns(board).forEach((col) => {
     const list = listOf(col)
     if (!list) return
-    cardsOf(list).forEach(card => makeDraggable(card, board))
+    cardsOf(list).forEach((card) => makeDraggable(card, board))
     wireList(list, board)
     wireAddButton(list, board)
   })

@@ -27,22 +27,19 @@ const NO_FLASH =
   "d=v==='dark'||(v==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches);" +
   "document.documentElement.classList.toggle('dark',d);" +
   "document.documentElement.setAttribute('dir',localStorage.getItem('adminlte.dir')==='rtl'?'rtl':'ltr');" +
-  "}catch(e){}})();</script>"
+  '}catch(e){}})();</script>'
 
 function themeNoFlash() {
   return {
     name: 'theme-no-flash',
     transformIndexHtml(html) {
       return html.replace('</head>', NO_FLASH + '\n</head>')
-    },
+    }
   }
 }
 
 export default defineConfig({
-  plugins: [
-    tailwindcss(),
-    themeNoFlash()
-  ],
+  plugins: [tailwindcss(), themeNoFlash()],
   build: {
     // ApexCharts + jsVectorMap form a large vendor chunk, but it's lazy-loaded
     // only on pages with a visualisation — so the size warning is benign here.

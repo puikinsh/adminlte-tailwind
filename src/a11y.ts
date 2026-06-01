@@ -31,9 +31,11 @@ export default function initA11y() {
     fullscreen: 'Toggle fullscreen'
   }
   document.querySelectorAll<HTMLElement>('[data-lte-toggle]').forEach((btn) => {
-    if (btn.getAttribute('aria-label') || btn.getAttribute('title') || btn.textContent?.trim()) return
+    if (btn.getAttribute('aria-label') || btn.getAttribute('title') || btn.textContent?.trim())
+      return
     const type = btn.getAttribute('data-lte-toggle') || ''
     if (TOGGLE_LABELS[type]) btn.setAttribute('aria-label', TOGGLE_LABELS[type])
-    else if (type === 'dropdown' && btn.querySelector('img')) btn.setAttribute('aria-label', 'Open user menu')
+    else if (type === 'dropdown' && btn.querySelector('img'))
+      btn.setAttribute('aria-label', 'Open user menu')
   })
 }

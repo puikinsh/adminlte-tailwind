@@ -5,11 +5,7 @@
 // Core component behaviours come from the published @adminlte/headless package.
 // Dropdown, Modal and Toast aren't in that package yet, so they stay local.
 import { initAll } from '@adminlte/headless'
-import {
-  Dropdown,
-  createModal,
-  createToastManager
-} from './lib/headless-stub'
+import { Dropdown, createModal, createToastManager } from './lib/headless-stub'
 
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Submenus start hidden via display:none (the treeview animates display,
   // not Tailwind's `hidden` class).
-  document.querySelectorAll('.nav-treeview').forEach(el => {
-    (el as HTMLElement).style.display = 'none'
+  document.querySelectorAll('.nav-treeview').forEach((el) => {
+    ;(el as HTMLElement).style.display = 'none'
     el.classList.remove('hidden')
   })
 
@@ -160,7 +156,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Lazy-load charts/maps only on pages that contain a visualisation container.
   // Keeps ApexCharts/jsVectorMap out of the bundle for pages that don't need them.
-  if (document.querySelector('#revenue-chart, #visitors-chart, #sales-donut, #revenue-bar, #world-map')) {
+  if (
+    document.querySelector(
+      '#revenue-chart, #visitors-chart, #sales-donut, #revenue-bar, #world-map'
+    )
+  ) {
     import('./charts').then(({ default: initCharts }) => initCharts())
   }
 
@@ -181,7 +181,7 @@ function initActiveMenuItem() {
   // Find all nav links in the sidebar
   const navLinks = sidebarMenu.querySelectorAll('.nav-link[href]')
 
-  navLinks.forEach(link => {
+  navLinks.forEach((link) => {
     const href = link.getAttribute('href')
     if (!href || href === '#') return
 

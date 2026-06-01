@@ -16,7 +16,7 @@ const COLORS = {
   success: '#22c55e', // green-500
   warning: '#eab308', // yellow-500
   danger: '#ef4444', // red-500
-  gray: '#9ca3af', // gray-400
+  gray: '#9ca3af' // gray-400
 }
 
 const GRID = { borderColor: '#f1f5f9', strokeDashArray: 4 }
@@ -31,9 +31,15 @@ function initSalesAreaChart() {
   const options: any = {
     series: [
       { name: 'This Month', data: [28, 48, 40, 19, 86, 27, 90] },
-      { name: 'Last Month', data: [65, 59, 80, 81, 56, 55, 40] },
+      { name: 'Last Month', data: [65, 59, 80, 81, 56, 55, 40] }
     ],
-    chart: { height: 215, type: 'area', toolbar: { show: false }, fontFamily: 'inherit', foreColor: '#94a3b8' },
+    chart: {
+      height: 215,
+      type: 'area',
+      toolbar: { show: false },
+      fontFamily: 'inherit',
+      foreColor: '#94a3b8'
+    },
     colors: [COLORS.primary, COLORS.gray],
     fill: { type: 'gradient', gradient: { opacityFrom: 0.4, opacityTo: 0.05 } },
     dataLabels: { enabled: false },
@@ -42,11 +48,19 @@ function initSalesAreaChart() {
     grid: GRID,
     xaxis: {
       type: 'datetime',
-      categories: ['2024-01-01', '2024-02-01', '2024-03-01', '2024-04-01', '2024-05-01', '2024-06-01', '2024-07-01'],
-      ...AXIS_BORDER,
+      categories: [
+        '2024-01-01',
+        '2024-02-01',
+        '2024-03-01',
+        '2024-04-01',
+        '2024-05-01',
+        '2024-06-01',
+        '2024-07-01'
+      ],
+      ...AXIS_BORDER
     },
     yaxis: { labels: { formatter: (v: number) => '$' + v + 'k' } },
-    tooltip: { x: { format: 'MMMM yyyy' } },
+    tooltip: { x: { format: 'MMMM yyyy' } }
   }
   new ApexCharts(target, options).render()
 }
@@ -58,16 +72,22 @@ function initVisitorsAreaChart() {
   const options: any = {
     series: [
       { name: 'This Week', data: [31, 40, 28, 51, 42, 85, 77] },
-      { name: 'Last Week', data: [11, 32, 45, 32, 34, 52, 41] },
+      { name: 'Last Week', data: [11, 32, 45, 32, 34, 52, 41] }
     ],
-    chart: { height: 290, type: 'area', toolbar: { show: false }, fontFamily: 'inherit', foreColor: '#94a3b8' },
+    chart: {
+      height: 290,
+      type: 'area',
+      toolbar: { show: false },
+      fontFamily: 'inherit',
+      foreColor: '#94a3b8'
+    },
     colors: [COLORS.primary, COLORS.success],
     fill: { type: 'gradient', gradient: { opacityFrom: 0.4, opacityTo: 0.05 } },
     dataLabels: { enabled: false },
     legend: { position: 'top', horizontalAlign: 'right' },
     stroke: { curve: 'smooth', width: 2 },
     grid: GRID,
-    xaxis: { categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], ...AXIS_BORDER },
+    xaxis: { categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], ...AXIS_BORDER }
   }
   new ApexCharts(target, options).render()
 }
@@ -90,12 +110,12 @@ function initSalesDonut() {
           size: '65%',
           labels: {
             show: true,
-            total: { show: true, label: 'Total', formatter: () => '$29,100' },
-          },
-        },
-      },
+            total: { show: true, label: 'Total', formatter: () => '$29,100' }
+          }
+        }
+      }
     },
-    tooltip: { y: { formatter: (v: number) => '$' + v.toLocaleString() } },
+    tooltip: { y: { formatter: (v: number) => '$' + v.toLocaleString() } }
   }
   new ApexCharts(target, options).render()
 }
@@ -107,9 +127,15 @@ function initRevenueBarChart() {
   const options: any = {
     series: [
       { name: 'Revenue', data: [44, 55, 57, 56, 61, 58, 63, 60] },
-      { name: 'Expenses', data: [26, 34, 35, 30, 40, 36, 42, 38] },
+      { name: 'Expenses', data: [26, 34, 35, 30, 40, 36, 42, 38] }
     ],
-    chart: { height: 260, type: 'bar', toolbar: { show: false }, fontFamily: 'inherit', foreColor: '#94a3b8' },
+    chart: {
+      height: 260,
+      type: 'bar',
+      toolbar: { show: false },
+      fontFamily: 'inherit',
+      foreColor: '#94a3b8'
+    },
     colors: [COLORS.primary, COLORS.gray],
     plotOptions: { bar: { borderRadius: 4, columnWidth: '55%' } },
     dataLabels: { enabled: false },
@@ -117,7 +143,7 @@ function initRevenueBarChart() {
     stroke: { show: true, width: 2, colors: ['transparent'] },
     grid: GRID,
     xaxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'], ...AXIS_BORDER },
-    yaxis: { labels: { formatter: (v: number) => '$' + v + 'k' } },
+    yaxis: { labels: { formatter: (v: number) => '$' + v + 'k' } }
   }
   new ApexCharts(target, options).render()
 }
@@ -141,19 +167,19 @@ async function initWorldMap() {
     zoomOnScroll: false,
     regionStyle: {
       initial: { fill: '#e2e8f0', stroke: '#fff', strokeWidth: 0.4 },
-      hover: { fill: COLORS.primary },
+      hover: { fill: COLORS.primary }
     },
     markers: [
       { name: 'United States', coords: [40.71, -74.0] },
       { name: 'United Kingdom', coords: [51.5, -0.12] },
       { name: 'Brazil', coords: [-15.78, -47.92] },
       { name: 'India', coords: [21.0, 78.0] },
-      { name: 'Australia', coords: [-33.86, 151.2] },
+      { name: 'Australia', coords: [-33.86, 151.2] }
     ],
     markerStyle: {
       initial: { fill: COLORS.danger, stroke: '#fff', strokeWidth: 1, r: 5 },
-      hover: { fill: COLORS.warning },
-    },
+      hover: { fill: COLORS.warning }
+    }
   })
 
   // jsVectorMap does not re-fit on its own. Redraw whenever the container

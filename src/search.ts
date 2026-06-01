@@ -15,41 +15,181 @@ interface SearchItem {
 
 // In-memory index of every page in the template.
 const PAGES: SearchItem[] = [
-  { title: 'Dashboard v1', path: '/index.html', category: 'Dashboards', keywords: 'home main analytics overview' },
-  { title: 'Dashboard v2', path: '/index2.html', category: 'Dashboards', keywords: 'analytics visitors' },
-  { title: 'Dashboard v3', path: '/index3.html', category: 'Dashboards', keywords: 'analytics ecommerce revenue' },
-  { title: 'Small Box', path: '/widgets/small-box.html', category: 'Widgets', keywords: 'stat box number' },
+  {
+    title: 'Dashboard v1',
+    path: '/index.html',
+    category: 'Dashboards',
+    keywords: 'home main analytics overview'
+  },
+  {
+    title: 'Dashboard v2',
+    path: '/index2.html',
+    category: 'Dashboards',
+    keywords: 'analytics visitors'
+  },
+  {
+    title: 'Dashboard v3',
+    path: '/index3.html',
+    category: 'Dashboards',
+    keywords: 'analytics ecommerce revenue'
+  },
+  {
+    title: 'Small Box',
+    path: '/widgets/small-box.html',
+    category: 'Widgets',
+    keywords: 'stat box number'
+  },
   { title: 'Info Box', path: '/widgets/info-box.html', category: 'Widgets', keywords: 'stat icon' },
   { title: 'Cards', path: '/widgets/cards.html', category: 'Widgets', keywords: 'panel box' },
-  { title: 'General UI', path: '/UI/general.html', category: 'UI Elements', keywords: 'alerts badges callouts progress accordion tabs' },
-  { title: 'Timeline', path: '/UI/timeline.html', category: 'UI Elements', keywords: 'activity history' },
+  {
+    title: 'General UI',
+    path: '/UI/general.html',
+    category: 'UI Elements',
+    keywords: 'alerts badges callouts progress accordion tabs'
+  },
+  {
+    title: 'Timeline',
+    path: '/UI/timeline.html',
+    category: 'UI Elements',
+    keywords: 'activity history'
+  },
   { title: 'Buttons', path: '/UI/buttons.html', category: 'UI Elements', keywords: 'btn actions' },
-  { title: 'Modals', path: '/UI/modals.html', category: 'UI Elements', keywords: 'dialog popup overlay' },
-  { title: 'Form Elements', path: '/forms/elements.html', category: 'Forms & Tables', keywords: 'input validation select checkbox' },
-  { title: 'Tables', path: '/tables/simple.html', category: 'Forms & Tables', keywords: 'data grid rows' },
-  { title: 'Calendar', path: '/pages/calendar.html', category: 'Apps', keywords: 'events schedule dates' },
-  { title: 'Kanban Board', path: '/pages/kanban.html', category: 'Apps', keywords: 'tasks board drag' },
-  { title: 'Profile', path: '/pages/profile.html', category: 'Apps', keywords: 'user account settings' },
-  { title: 'Contacts', path: '/pages/contacts.html', category: 'Apps', keywords: 'people directory' },
-  { title: 'Gallery', path: '/pages/gallery.html', category: 'Apps', keywords: 'images photos media' },
-  { title: 'Mailbox', path: '/mailbox/inbox.html', category: 'Apps', keywords: 'email inbox messages' },
-  { title: 'Compose Mail', path: '/mailbox/compose.html', category: 'Apps', keywords: 'email write new message' },
-  { title: 'Read Mail', path: '/mailbox/read.html', category: 'Apps', keywords: 'email message view' },
+  {
+    title: 'Modals',
+    path: '/UI/modals.html',
+    category: 'UI Elements',
+    keywords: 'dialog popup overlay'
+  },
+  {
+    title: 'Form Elements',
+    path: '/forms/elements.html',
+    category: 'Forms & Tables',
+    keywords: 'input validation select checkbox'
+  },
+  {
+    title: 'Tables',
+    path: '/tables/simple.html',
+    category: 'Forms & Tables',
+    keywords: 'data grid rows'
+  },
+  {
+    title: 'Calendar',
+    path: '/pages/calendar.html',
+    category: 'Apps',
+    keywords: 'events schedule dates'
+  },
+  {
+    title: 'Kanban Board',
+    path: '/pages/kanban.html',
+    category: 'Apps',
+    keywords: 'tasks board drag'
+  },
+  {
+    title: 'Profile',
+    path: '/pages/profile.html',
+    category: 'Apps',
+    keywords: 'user account settings'
+  },
+  {
+    title: 'Contacts',
+    path: '/pages/contacts.html',
+    category: 'Apps',
+    keywords: 'people directory'
+  },
+  {
+    title: 'Gallery',
+    path: '/pages/gallery.html',
+    category: 'Apps',
+    keywords: 'images photos media'
+  },
+  {
+    title: 'Mailbox',
+    path: '/mailbox/inbox.html',
+    category: 'Apps',
+    keywords: 'email inbox messages'
+  },
+  {
+    title: 'Compose Mail',
+    path: '/mailbox/compose.html',
+    category: 'Apps',
+    keywords: 'email write new message'
+  },
+  {
+    title: 'Read Mail',
+    path: '/mailbox/read.html',
+    category: 'Apps',
+    keywords: 'email message view'
+  },
   { title: 'Chat', path: '/pages/chat.html', category: 'Apps', keywords: 'messages conversation' },
-  { title: 'File Manager', path: '/pages/file-manager.html', category: 'Apps', keywords: 'files folders storage' },
-  { title: 'Invoice', path: '/pages/invoice.html', category: 'Pages', keywords: 'bill payment receipt' },
-  { title: 'Pricing', path: '/pages/pricing.html', category: 'Pages', keywords: 'plans tiers subscription' },
-  { title: 'Projects', path: '/pages/projects.html', category: 'Pages', keywords: 'tasks team progress' },
-  { title: 'Settings', path: '/pages/settings.html', category: 'Pages', keywords: 'preferences account config' },
+  {
+    title: 'File Manager',
+    path: '/pages/file-manager.html',
+    category: 'Apps',
+    keywords: 'files folders storage'
+  },
+  {
+    title: 'Invoice',
+    path: '/pages/invoice.html',
+    category: 'Pages',
+    keywords: 'bill payment receipt'
+  },
+  {
+    title: 'Pricing',
+    path: '/pages/pricing.html',
+    category: 'Pages',
+    keywords: 'plans tiers subscription'
+  },
+  {
+    title: 'Projects',
+    path: '/pages/projects.html',
+    category: 'Pages',
+    keywords: 'tasks team progress'
+  },
+  {
+    title: 'Settings',
+    path: '/pages/settings.html',
+    category: 'Pages',
+    keywords: 'preferences account config'
+  },
   { title: 'FAQ', path: '/pages/faq.html', category: 'Pages', keywords: 'help questions support' },
-  { title: 'Maintenance', path: '/pages/maintenance.html', category: 'Pages', keywords: 'down offline coming soon' },
-  { title: 'Icons', path: '/UI/icons.html', category: 'UI Elements', keywords: 'svg glyphs symbols' },
-  { title: 'Login', path: '/examples/login.html', category: 'Auth', keywords: 'sign in authentication' },
-  { title: 'Register', path: '/examples/register.html', category: 'Auth', keywords: 'sign up create account' },
-  { title: 'Lock Screen', path: '/examples/lockscreen.html', category: 'Auth', keywords: 'lock password' },
-  { title: 'Blank Page', path: '/pages/blank.html', category: 'Other', keywords: 'starter template empty' },
+  {
+    title: 'Maintenance',
+    path: '/pages/maintenance.html',
+    category: 'Pages',
+    keywords: 'down offline coming soon'
+  },
+  {
+    title: 'Icons',
+    path: '/UI/icons.html',
+    category: 'UI Elements',
+    keywords: 'svg glyphs symbols'
+  },
+  {
+    title: 'Login',
+    path: '/examples/login.html',
+    category: 'Auth',
+    keywords: 'sign in authentication'
+  },
+  {
+    title: 'Register',
+    path: '/examples/register.html',
+    category: 'Auth',
+    keywords: 'sign up create account'
+  },
+  {
+    title: 'Lock Screen',
+    path: '/examples/lockscreen.html',
+    category: 'Auth',
+    keywords: 'lock password'
+  },
+  {
+    title: 'Blank Page',
+    path: '/pages/blank.html',
+    category: 'Other',
+    keywords: 'starter template empty'
+  },
   { title: 'Error 404', path: '/pages/404.html', category: 'Other', keywords: 'not found missing' },
-  { title: 'Error 500', path: '/pages/500.html', category: 'Other', keywords: 'server error' },
+  { title: 'Error 500', path: '/pages/500.html', category: 'Other', keywords: 'server error' }
 ]
 
 const ICON_SEARCH =
@@ -65,7 +205,10 @@ let selected = 0
 let isOpen = false
 
 function escapeHtml(s: string): string {
-  return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!))
+  return s.replace(
+    /[&<>"']/g,
+    (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!
+  )
 }
 
 function navigate(path: string) {
@@ -112,14 +255,16 @@ function render(query: string) {
 
   for (const [category, list] of groups) {
     const header = document.createElement('div')
-    header.className = 'px-4 pt-3 pb-1 text-[11px] font-semibold uppercase tracking-wider text-gray-400'
+    header.className =
+      'px-4 pt-3 pb-1 text-[11px] font-semibold uppercase tracking-wider text-gray-400'
     header.textContent = category
     resultsEl.appendChild(header)
 
     for (const item of list) {
       const el = document.createElement('a')
       el.href = item.path
-      el.className = 'search-item flex items-center gap-3 mx-2 px-2 py-2 rounded-lg cursor-pointer text-gray-700 no-underline'
+      el.className =
+        'search-item flex items-center gap-3 mx-2 px-2 py-2 rounded-lg cursor-pointer text-gray-700 no-underline'
       el.innerHTML =
         `<span class="flex items-center justify-center w-8 h-8 rounded-lg bg-gray-100 text-gray-500 shrink-0">${ICON_PAGE}</span>` +
         `<span class="flex-1 min-w-0"><span class="block text-sm font-medium truncate">${escapeHtml(item.title)}</span>` +
@@ -203,14 +348,17 @@ export default function initSearch() {
   document.addEventListener('keydown', (e) => {
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault()
-      isOpen ? close() : open()
+      if (isOpen) close()
+      else open()
     } else if (e.key === 'Escape' && isOpen) {
       close()
     }
   })
 
   // Header trigger button(s)
-  document.querySelectorAll('[data-search-trigger]').forEach((b) => b.addEventListener('click', open))
+  document
+    .querySelectorAll('[data-search-trigger]')
+    .forEach((b) => b.addEventListener('click', open))
 
   // Show the right modifier hint for the platform
   const isMac = /Mac|iPhone|iPad/.test(navigator.platform)

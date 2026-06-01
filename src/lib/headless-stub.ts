@@ -17,7 +17,7 @@ class EventEmitter {
   }
 
   emit(event: string, data?: any): void {
-    this.events.get(event)?.forEach(cb => cb(data))
+    this.events.get(event)?.forEach((cb) => cb(data))
   }
 }
 
@@ -55,12 +55,14 @@ export function createPushMenu(selector: string, options?: any) {
       }
 
       // Set up toggle buttons
-      document.querySelectorAll(options?.selectors?.toggle || '[data-lte-toggle="sidebar"]').forEach(btn => {
-        btn.addEventListener('click', (e: Event) => {
-          e.preventDefault()
-          this.toggle()
+      document
+        .querySelectorAll(options?.selectors?.toggle || '[data-lte-toggle="sidebar"]')
+        .forEach((btn) => {
+          btn.addEventListener('click', (e: Event) => {
+            e.preventDefault()
+            this.toggle()
+          })
         })
-      })
 
       // Handle resize
       window.addEventListener('resize', () => {
@@ -111,9 +113,11 @@ export function createTreeview(selector: string, options?: any) {
 
   return {
     init() {
-      menu.querySelectorAll(options?.selectors?.navLink || '.nav-link').forEach(link => {
+      menu.querySelectorAll(options?.selectors?.navLink || '.nav-link').forEach((link) => {
         const item = link.closest(options?.selectors?.navItem || '.nav-item')
-        const submenu = item?.querySelector(options?.selectors?.treeviewMenu || '.nav-treeview') as HTMLElement
+        const submenu = item?.querySelector(
+          options?.selectors?.treeviewMenu || '.nav-treeview'
+        ) as HTMLElement
 
         if (submenu) {
           link.addEventListener('click', (e: Event) => {
@@ -124,14 +128,18 @@ export function createTreeview(selector: string, options?: any) {
             // Accordion: close siblings
             if (options?.accordion) {
               const parent = item?.parentElement
-              parent?.querySelectorAll(`.${options?.classNames?.menuOpen || 'menu-open'}`).forEach((openItem: Element) => {
-                if (openItem !== item) {
-                  openItem.classList.remove(options?.classNames?.menuOpen || 'menu-open')
-                  const openSubmenu = openItem.querySelector(options?.selectors?.treeviewMenu || '.nav-treeview') as HTMLElement
-                  if (openSubmenu) openSubmenu.style.display = 'none'
-                  emitter.emit('collapsed', { item: openItem })
-                }
-              })
+              parent
+                ?.querySelectorAll(`.${options?.classNames?.menuOpen || 'menu-open'}`)
+                .forEach((openItem: Element) => {
+                  if (openItem !== item) {
+                    openItem.classList.remove(options?.classNames?.menuOpen || 'menu-open')
+                    const openSubmenu = openItem.querySelector(
+                      options?.selectors?.treeviewMenu || '.nav-treeview'
+                    ) as HTMLElement
+                    if (openSubmenu) openSubmenu.style.display = 'none'
+                    emitter.emit('collapsed', { item: openItem })
+                  }
+                })
             }
 
             if (isOpen) {
@@ -186,7 +194,7 @@ export class CardWidget {
     const cards: CardWidget[] = []
 
     // Collapse buttons
-    document.querySelectorAll('[data-lte-toggle="card-collapse"]').forEach(btn => {
+    document.querySelectorAll('[data-lte-toggle="card-collapse"]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const card = btn.closest('.card')
         const body = card?.querySelector('.card-body')
@@ -205,7 +213,7 @@ export class CardWidget {
     })
 
     // Maximize buttons
-    document.querySelectorAll('[data-lte-toggle="card-maximize"]').forEach(btn => {
+    document.querySelectorAll('[data-lte-toggle="card-maximize"]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const card = btn.closest('.card')
         const icon = btn.querySelector('i')
@@ -218,7 +226,7 @@ export class CardWidget {
     })
 
     // Remove buttons
-    document.querySelectorAll('[data-lte-toggle="card-remove"]').forEach(btn => {
+    document.querySelectorAll('[data-lte-toggle="card-remove"]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const card = btn.closest('.card')
         card?.remove()
@@ -234,8 +242,10 @@ export class Dropdown {
   static initAll(options?: any) {
     const dropdowns: Dropdown[] = []
 
-    document.querySelectorAll(options?.selectors?.dropdown || '.dropdown').forEach(dropdown => {
-      const toggle = dropdown.querySelector(options?.selectors?.toggle || '[data-lte-toggle="dropdown"]')
+    document.querySelectorAll(options?.selectors?.dropdown || '.dropdown').forEach((dropdown) => {
+      const toggle = dropdown.querySelector(
+        options?.selectors?.toggle || '[data-lte-toggle="dropdown"]'
+      )
       const menu = dropdown.querySelector(options?.selectors?.menu || '.dropdown-menu')
 
       if (toggle && menu) {
@@ -271,14 +281,17 @@ export function createModal(selector: string, options?: any) {
   return {
     init() {
       // Close button
-      modal.querySelectorAll('[data-dismiss="modal"]').forEach(btn => {
+      modal.querySelectorAll('[data-dismiss="modal"]').forEach((btn) => {
         btn.addEventListener('click', () => this.close())
       })
 
       // Close on escape
       if (options?.closeOnEscape) {
         document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && modal.classList.contains(options?.classNames?.open || 'modal-open')) {
+          if (
+            e.key === 'Escape' &&
+            modal.classList.contains(options?.classNames?.open || 'modal-open')
+          ) {
             this.close()
           }
         })

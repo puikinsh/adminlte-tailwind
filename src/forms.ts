@@ -10,7 +10,8 @@ type Field = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 
 function validateField(field: Field): boolean {
   const valid = field.checkValidity()
-  const isToggle = field instanceof HTMLInputElement && (field.type === 'checkbox' || field.type === 'radio')
+  const isToggle =
+    field instanceof HTMLInputElement && (field.type === 'checkbox' || field.type === 'radio')
   field.classList.toggle('is-invalid', !valid)
   field.classList.toggle('is-valid', valid && !isToggle && field.value.trim() !== '')
   const feedback = field.closest('div')?.querySelector<HTMLElement>('.invalid-feedback')

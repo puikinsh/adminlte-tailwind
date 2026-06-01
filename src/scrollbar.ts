@@ -15,8 +15,8 @@ export default function initScrollbars() {
       scrollbars: {
         theme: 'os-theme-light',
         autoHide: 'leave',
-        autoHideDelay: 300,
-      },
+        autoHideDelay: 300
+      }
     })
   })
 }

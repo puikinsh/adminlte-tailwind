@@ -18,8 +18,8 @@ export default function initTables() {
         placeholder: 'Search...',
         perPage: 'entries per page',
         noRows: 'No entries found',
-        info: 'Showing {start} to {end} of {rows} entries',
-      },
+        info: 'Showing {start} to {end} of {rows} entries'
+      }
     })
   })
 }
