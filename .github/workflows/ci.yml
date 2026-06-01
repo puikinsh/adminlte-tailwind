@@ -11,8 +11,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # Maintained Node LTS lines (Node 20 reached EOL in April 2026).
-        node-version: [22, 24]
+        # Maintained Node versions: 22 & 24 (LTS) plus 26 (current).
+        # Node 20 and earlier reached end-of-life by April 2026.
+        node-version: [22, 24, 26]
     steps:
       - uses: actions/checkout@v6
 
