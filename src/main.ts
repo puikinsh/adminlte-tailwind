@@ -153,6 +153,11 @@ document.addEventListener('DOMContentLoaded', () => {
     import('./calendar').then(({ default: initCalendar }) => initCalendar())
   }
 
+  // Kanban drag-and-drop — only on the kanban page
+  if (document.querySelector('#kanban-board')) {
+    import('./kanban').then(({ default: initKanban }) => initKanban())
+  }
+
   // Lazy-load charts/maps only on pages that contain a visualisation container.
   // Keeps ApexCharts/jsVectorMap out of the bundle for pages that don't need them.
   if (document.querySelector('#revenue-chart, #visitors-chart, #sales-donut, #revenue-bar, #world-map')) {
