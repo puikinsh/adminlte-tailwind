@@ -1157,6 +1157,19 @@ html.maximized-card::before {
   @apply opacity-0 invisible w-0;
 }
 
+/* The brand sits in the navbar over its light bottom border (border-gray-200),
+   which reads as a bright line under the dark brand. Cover it with a subtle
+   sidebar-toned divider instead. box-shadow avoids any layout shift. */
+.app-brand {
+  box-shadow: 0 1px 0 0 var(--color-sidebar-light);
+}
+
+/* Header sidebar toggle (hamburger): slightly smaller icon */
+[data-lte-toggle="sidebar"] svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
 /* Keep brand aligned when collapsed sidebar hover-expands (desktop) */
 @media (min-width: 992px) {
   body.sidebar-collapse:has(.app-sidebar:hover) .app-brand {
@@ -1673,6 +1686,9 @@ textarea:focus-visible,
 /* Surfaces */
 .dark .bg-white { background-color: var(--d-surface); }
 .dark .bg-gray-50 { background-color: var(--d-surface-2); }
+/* Opacity-suffixed neutral tint (e.g. calendar out-of-month cells `bg-gray-50/40`):
+   darken instead of lighten so they read as recessed on dark surfaces. */
+.dark .bg-gray-50\/40 { background-color: rgba(0, 0, 0, 0.15); }
 .dark .bg-gray-100 { background-color: var(--d-body); }
 .dark .bg-gray-200 { background-color: var(--d-elevated); }
 .dark nav.bg-white { background-color: var(--d-surface); }
@@ -1768,6 +1784,8 @@ textarea:focus-visible,
 .dark .bg-purple-100 { background-color: rgba(168, 85, 247, 0.16); }
 .dark .bg-orange-50,
 .dark .bg-orange-100 { background-color: rgba(249, 115, 22, 0.16); }
+.dark .bg-amber-50,
+.dark .bg-amber-100 { background-color: rgba(245, 158, 11, 0.16); }
 .dark .bg-indigo-50,
 .dark .bg-indigo-100 { background-color: rgba(99, 102, 241, 0.16); }
 .dark .bg-cyan-50,
@@ -1791,6 +1809,8 @@ textarea:focus-visible,
 .dark .text-purple-700 { color: #c084fc; }
 .dark .text-orange-600,
 .dark .text-orange-700 { color: #fb923c; }
+.dark .text-amber-600,
+.dark .text-amber-700 { color: #fbbf24; }
 .dark .text-cyan-600,
 .dark .text-cyan-700 { color: #22d3ee; }
 .dark .text-indigo-600,
@@ -1877,3 +1897,65 @@ textarea:focus-visible,
 .dark .badge-info { background-color: rgba(6, 182, 212, 0.2); color: #67e8f9; }
 .dark .badge-secondary { background-color: var(--d-surface-2); color: var(--d-text-2); }
 .dark .badge-light { background-color: var(--d-surface-2); border-color: var(--d-border); color: var(--d-text-2); }
+
+/* Progress tracks (baked bg-gray-200 escapes the remaps) */
+.dark .progress { background-color: rgba(255, 255, 255, 0.1); }
+.dark .toast-progress { background-color: rgba(255, 255, 255, 0.1); }
+
+/* Toggle switch — unchecked track */
+.dark .form-switch-unchecked { background-color: var(--d-elevated); }
+
+/* Breadcrumbs (on every page): active crumb baked text-gray-700 = dark-on-dark */
+.dark .breadcrumb-item { color: var(--d-text-3); }
+.dark .breadcrumb-item.active { color: var(--d-text); }
+.dark .breadcrumb-item a { color: #60a5fa; }
+.dark .breadcrumb-item a:hover { color: #93c5fd; }
+
+/* Light & outline-dark buttons */
+.dark .btn-light { background-color: var(--d-surface-2); color: var(--d-text); }
+.dark .btn-light:hover { background-color: var(--d-elevated); }
+.dark .btn-outline-dark { border-color: var(--d-text-3); color: var(--d-text); }
+
+/* Active dropdown item, secondary link, light loading overlay */
+.dark .dropdown-item-active { background-color: rgba(255, 255, 255, 0.08); }
+.dark .link-secondary { color: var(--d-text-2); }
+.dark .link-secondary:hover { color: var(--d-text); }
+.dark .overlay-light { background-color: rgba(26, 29, 33, 0.75); }
+
+/* Alerts (variants bake light bg/border/text via @apply) */
+.dark .alert-primary { background-color: rgba(59, 130, 246, 0.12); border-color: rgba(59, 130, 246, 0.3); color: #93c5fd; }
+.dark .alert-success { background-color: rgba(34, 197, 94, 0.12); border-color: rgba(34, 197, 94, 0.3); color: #86efac; }
+.dark .alert-danger { background-color: rgba(239, 68, 68, 0.12); border-color: rgba(239, 68, 68, 0.3); color: #fca5a5; }
+.dark .alert-warning { background-color: rgba(234, 179, 8, 0.12); border-color: rgba(234, 179, 8, 0.3); color: #fde047; }
+.dark .alert-info { background-color: rgba(6, 182, 212, 0.12); border-color: rgba(6, 182, 212, 0.3); color: #67e8f9; }
+.dark .alert-secondary,
+.dark .alert-light { background-color: var(--d-surface-2); border-color: var(--d-border); color: var(--d-text-2); }
+
+/* Outline-light button */
+.dark .btn-outline-light { border-color: var(--d-border); color: var(--d-text-2); }
+.dark .btn-outline-light:hover { background-color: rgba(255, 255, 255, 0.06); }
+
+/* Nav tabs & pills */
+.dark .nav-tabs { border-color: var(--d-border); }
+.dark .nav-tabs .nav-link { color: var(--d-text-3); }
+.dark .nav-tabs .nav-link:hover { color: var(--d-text-2); }
+.dark .nav-tabs .nav-link.active { color: #60a5fa; border-color: #60a5fa; }
+.dark .nav-pills .nav-link { color: var(--d-text-2); }
+.dark .nav-pills .nav-link:hover { background-color: rgba(255, 255, 255, 0.06); }
+
+/* Form check (custom checkbox/radio) */
+.dark .form-check-input { background-color: var(--d-surface-2); border-color: var(--d-border); }
+.dark .form-check-label { color: var(--d-text-2); }
+
+/* Divider with rule lines */
+.dark .divider { color: var(--d-text-3); }
+.dark .divider::before,
+.dark .divider::after { border-color: var(--d-border); }
+
+/* Empty state */
+.dark .empty-state-icon { color: var(--d-text-3); }
+.dark .empty-state-title { color: var(--d-text); }
+.dark .empty-state-text { color: var(--d-text-3); }
+
+/* Timeline connector line */
+.dark .timeline::before { background-color: var(--d-border); }
