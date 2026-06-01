@@ -52,22 +52,31 @@ let uid = 0
 const nextId = () => `ev-${++uid}`
 
 function seed() {
-  const n = new Date()
-  const y = n.getFullYear()
-  const m = n.getMonth()
-  const mk = (day: number, title: string, color: ColorKey, opts: Partial<CalEvent> = {}): CalEvent => ({
-    id: nextId(), title, color, start: iso(y, m, day), allDay: true, ...opts
+  const base = new Date()
+  const y = base.getFullYear()
+  const m = base.getMonth()
+  const fixed = (day: number) => iso(y, m, day) // pin to current month (keeps the grid populated)
+  const fromToday = (off: number) => { // relative to today (keeps "Upcoming" populated regardless of date)
+    const d = new Date(base); d.setDate(base.getDate() + off)
+    return iso(d.getFullYear(), d.getMonth(), d.getDate())
+  }
+  const mk = (start: string, title: string, color: ColorKey, opts: Partial<CalEvent> = {}): CalEvent => ({
+    id: nextId(), title, color, start, allDay: true, ...opts
   })
   events = [
-    mk(3, 'Team Standup', 'blue', { allDay: false, time: '09:30', description: 'Daily sync with the product team.' }),
-    mk(5, 'Dentist Appointment', 'green', { allDay: false, time: '14:00' }),
-    mk(9, 'Project Launch', 'red', { description: 'Ship v4.0 to production 🚀' }),
-    mk(9, 'Marketing Review', 'amber', { allDay: false, time: '16:00' }),
-    mk(12, 'Design Conference', 'purple', { end: iso(y, m, 13), description: 'Two-day design & UX conference downtown.' }),
-    mk(18, 'Quarterly Deadline', 'red', { allDay: false, time: '17:00' }),
-    mk(20, 'Sprint Planning', 'blue', { allDay: false, time: '10:00' }),
-    mk(20, 'Team Lunch', 'green', { allDay: false, time: '12:30' }),
-    mk(25, 'Release Notes Due', 'amber' )
+    // Pinned to the current month so the grid always looks full
+    mk(fixed(3), 'Team Standup', 'blue', { allDay: false, time: '09:30', description: 'Daily sync with the product team.' }),
+    mk(fixed(6), 'Dentist Appointment', 'green', { allDay: false, time: '14:00' }),
+    mk(fixed(11), 'Project Launch', 'red', { description: 'Ship v4.0 to production 🚀' }),
+    mk(fixed(12), 'Design Conference', 'purple', { end: fixed(13), description: 'Two-day design & UX conference downtown.' }),
+    mk(fixed(25), 'Payroll Run', 'amber'),
+    // Anchored around today so the agenda & Upcoming panel always have items
+    mk(fromToday(0), '1:1 with Manager', 'blue', { allDay: false, time: '11:00' }),
+    mk(fromToday(2), 'Sprint Planning', 'blue', { allDay: false, time: '10:00' }),
+    mk(fromToday(2), 'Team Lunch', 'green', { allDay: false, time: '12:30' }),
+    mk(fromToday(5), 'Quarterly Review', 'red', { allDay: false, time: '15:00' }),
+    mk(fromToday(9), 'Product Webinar', 'purple', { allDay: false, time: '16:00', description: 'Live demo of the new dashboard.' }),
+    mk(fromToday(14), 'Release Notes Due', 'amber')
   ]
 }
 
@@ -128,7 +137,7 @@ function renderMonth() {
     const cellBorder = (i % 7 !== 6 ? 'border-r ' : '') + (i < 35 ? 'border-b ' : '')
 
     html += `<div data-date="${dISO}"
-      class="cal-cell min-h-[7rem] p-1.5 ${cellBorder}border-gray-200 ${inMonth ? '' : 'bg-gray-50/40'} cursor-pointer hover:bg-gray-50 transition-colors">
+      class="cal-cell min-h-28 p-1.5 ${cellBorder}border-gray-200 ${inMonth ? '' : 'bg-gray-50/40'} cursor-pointer hover:bg-gray-50 transition-colors">
       <div class="flex justify-end mb-1"><span class="${numClasses}">${d.getDate()}</span></div>
       <div class="space-y-1">${shown.map(pill).join('')}${extra > 0
         ? `<button type="button" data-more class="block w-full text-left text-[11px] text-gray-500 hover:text-blue-600 px-1.5">+${extra} more</button>`
@@ -139,19 +148,21 @@ function renderMonth() {
 }
 
 function renderList() {
-  const today = todayISO()
-  const upcoming = events
+  // Agenda for the displayed month (like FullCalendar's listMonth view).
+  const y = cursor.getFullYear()
+  const m = cursor.getMonth()
+  const inMonth = events
     .filter(e => !hiddenColors.has(e.color))
-    .filter(e => (e.end || e.start) >= today)
+    .filter(e => { const d = parseISO(e.start); return d.getFullYear() === y && d.getMonth() === m })
     .sort((a, b) => a.start.localeCompare(b.start) || (a.time || '').localeCompare(b.time || ''))
 
-  if (!upcoming.length) {
-    listWrap.innerHTML = `<div class="p-10 text-center text-gray-500 text-sm">No upcoming events. Click a day to add one.</div>`
+  if (!inMonth.length) {
+    listWrap.innerHTML = `<div class="p-10 text-center text-gray-500 text-sm">No events in ${MONTHS[m]}. Click a day in Month view to add one.</div>`
     return
   }
   // group by start date
   const groups: Record<string, CalEvent[]> = {}
-  upcoming.forEach(e => { (groups[e.start] ||= []).push(e) })
+  inMonth.forEach(e => { (groups[e.start] ||= []).push(e) })
 
   listWrap.innerHTML = Object.keys(groups).sort().map(dateISO => {
     const d = parseISO(dateISO)
