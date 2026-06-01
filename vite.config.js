@@ -44,6 +44,9 @@ export default defineConfig({
     themeNoFlash()
   ],
   build: {
+    // ApexCharts + jsVectorMap form a large vendor chunk, but it's lazy-loaded
+    // only on pages with a visualisation — so the size warning is benign here.
+    chunkSizeWarningLimit: 800,
     rollupOptions: {
       input: htmlInputs()
     }
