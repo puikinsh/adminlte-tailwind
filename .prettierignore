@@ -3,7 +3,5 @@ node_modules
 public
 package-lock.json
 
-# HTML, CSS and Markdown are hand-maintained; Prettier only formats JS/TS/JSON
-*.html
-*.css
-*.md
+# Project instructions file — hand-maintained, not formatted
+CLAUDE.md

@@ -1,90 +1,138 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="h-full">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lockscreen | AdminLTE Tailwind</title>
-  <meta name="description" content="Lockscreen · AdminLTE Tailwind — a responsive, dark-mode admin dashboard template built with Tailwind CSS v4.">
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#1a1d21" media="(prefers-color-scheme: dark)">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="AdminLTE Tailwind">
-  <meta property="og:title" content="Lockscreen | AdminLTE Tailwind">
-  <meta property="og:description" content="Lockscreen · AdminLTE Tailwind — a responsive, dark-mode admin dashboard template built with Tailwind CSS v4.">
-  <meta property="og:image" content="/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Lockscreen | AdminLTE Tailwind">
-  <meta name="twitter:description" content="Lockscreen · AdminLTE Tailwind — a responsive, dark-mode admin dashboard template built with Tailwind CSS v4.">
-  <meta name="twitter:image" content="/og-image.png">
-  <link rel="stylesheet" href="/src/styles.css">
-</head>
-<body class="h-full bg-gradient-to-br from-slate-800 to-slate-900">
-  <div class="min-h-full flex items-center justify-center p-4">
-    <div class="w-full max-w-sm">
-      <!-- Lock Icon -->
-      <div class="text-center mb-6">
-        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 mb-4">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-          </svg>
-        </div>
-        <p class="text-white/70 text-sm">Your session is locked</p>
-      </div>
-
-      <!-- Lockscreen Card -->
-      <div class="bg-white rounded-2xl shadow-2xl p-8">
-        <!-- User Info -->
-        <div class="text-center mb-6">
-          <img src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff&size=96" alt="Admin User" class="w-24 h-24 rounded-full mx-auto mb-4 ring-4 ring-blue-100">
-          <h1 class="text-xl font-bold text-gray-800">Admin User</h1>
-          <p class="text-gray-500 text-sm">admin@example.com</p>
-        </div>
-
-        <form>
-          <div class="form-group">
-            <label class="form-label">Password</label>
-            <div class="relative">
-              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                </svg>
-              </span>
-              <input type="password" class="form-control pl-10" placeholder="Enter your password" autofocus>
-            </div>
-          </div>
-
-          <button type="submit" class="btn btn-primary w-full btn-lg mb-4">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lockscreen | AdminLTE Tailwind</title>
+    <meta
+      name="description"
+      content="Lockscreen · AdminLTE Tailwind — a responsive, dark-mode admin dashboard template built with Tailwind CSS v4."
+    />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1d21" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AdminLTE Tailwind" />
+    <meta property="og:title" content="Lockscreen | AdminLTE Tailwind" />
+    <meta
+      property="og:description"
+      content="Lockscreen · AdminLTE Tailwind — a responsive, dark-mode admin dashboard template built with Tailwind CSS v4."
+    />
+    <meta property="og:image" content="/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Lockscreen | AdminLTE Tailwind" />
+    <meta
+      name="twitter:description"
+      content="Lockscreen · AdminLTE Tailwind — a responsive, dark-mode admin dashboard template built with Tailwind CSS v4."
+    />
+    <meta name="twitter:image" content="/og-image.png" />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body class="h-full bg-gradient-to-br from-slate-800 to-slate-900">
+    <div class="flex min-h-full items-center justify-center p-4">
+      <div class="w-full max-w-sm">
+        <!-- Lock Icon -->
+        <div class="mb-6 text-center">
+          <div
+            class="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/10"
+          >
+            <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              />
             </svg>
-            Unlock
-          </button>
-
-          <div class="text-center">
-            <p class="text-gray-600 text-sm">
-              Or <a href="/examples/login.html" class="text-blue-600 hover:underline font-medium">sign in as a different user</a>
-            </p>
           </div>
-        </form>
-      </div>
-
-      <!-- Session Info -->
-      <div class="mt-6 text-center">
-        <div class="inline-flex items-center gap-2 bg-white/10 rounded-lg px-4 py-2">
-          <svg class="w-4 h-4 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-          </svg>
-          <span class="text-white/70 text-sm">Session locked 5 minutes ago</span>
+          <p class="text-sm text-white/70">Your session is locked</p>
         </div>
-      </div>
 
-      <!-- Footer -->
-      <p class="text-center text-white/50 text-sm mt-8">
-        &copy; 2026 AdminLTE. All rights reserved.
-      </p>
+        <!-- Lockscreen Card -->
+        <div class="rounded-2xl bg-white p-8 shadow-2xl">
+          <!-- User Info -->
+          <div class="mb-6 text-center">
+            <img
+              src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff&size=96"
+              alt="Admin User"
+              class="mx-auto mb-4 h-24 w-24 rounded-full ring-4 ring-blue-100"
+            />
+            <h1 class="text-xl font-bold text-gray-800">Admin User</h1>
+            <p class="text-sm text-gray-500">admin@example.com</p>
+          </div>
+
+          <form>
+            <div class="form-group">
+              <label class="form-label">Password</label>
+              <div class="relative">
+                <span class="absolute top-1/2 left-3 -translate-y-1/2 text-gray-400">
+                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                    />
+                  </svg>
+                </span>
+                <input
+                  type="password"
+                  class="form-control pl-10"
+                  placeholder="Enter your password"
+                  autofocus
+                />
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg mb-4 w-full">
+              <svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
+                />
+              </svg>
+              Unlock
+            </button>
+
+            <div class="text-center">
+              <p class="text-sm text-gray-600">
+                Or
+                <a href="/examples/login.html" class="font-medium text-blue-600 hover:underline"
+                  >sign in as a different user</a
+                >
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <!-- Session Info -->
+        <div class="mt-6 text-center">
+          <div class="inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2">
+            <svg
+              class="h-4 w-4 text-white/70"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span class="text-sm text-white/70">Session locked 5 minutes ago</span>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <p class="mt-8 text-center text-sm text-white/50">
+          &copy; 2026 AdminLTE. All rights reserved.
+        </p>
+      </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>

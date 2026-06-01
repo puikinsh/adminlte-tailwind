@@ -10,6 +10,7 @@
 AdminLTE Tailwind is a modern admin dashboard template that combines the powerful [@adminlte/headless](https://github.com/puikinsh/adminlte-headless) component library with Tailwind CSS v4 for styling.
 
 This provides:
+
 - All AdminLTE component behaviors (sidebar, treeview, cards, modals, etc.)
 - Modern Tailwind CSS v4 styling
 - Fully responsive design
@@ -58,7 +59,7 @@ This template includes styled implementations of all [@adminlte/headless](https:
 Customize colors and theme variables in `src/styles.css`:
 
 ```css
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-primary-50: #eff6ff;

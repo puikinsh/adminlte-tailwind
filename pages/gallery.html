@@ -1,759 +1,1360 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="h-full">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery | AdminLTE Tailwind</title>
-  <meta name="description" content="Gallery · AdminLTE Tailwind — a responsive, dark-mode admin dashboard template built with Tailwind CSS v4.">
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#1a1d21" media="(prefers-color-scheme: dark)">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="AdminLTE Tailwind">
-  <meta property="og:title" content="Gallery | AdminLTE Tailwind">
-  <meta property="og:description" content="Gallery · AdminLTE Tailwind — a responsive, dark-mode admin dashboard template built with Tailwind CSS v4.">
-  <meta property="og:image" content="/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Gallery | AdminLTE Tailwind">
-  <meta name="twitter:description" content="Gallery · AdminLTE Tailwind — a responsive, dark-mode admin dashboard template built with Tailwind CSS v4.">
-  <meta name="twitter:image" content="/og-image.png">
-  <link rel="stylesheet" href="/src/styles.css">
-</head>
-<body class="h-full bg-gray-100">
-  <div class="app-wrapper min-h-full">
-        <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 h-14 bg-white border-b border-gray-200 z-30 flex items-center pr-4">
-      <!-- Brand Logo -->
-      <a href="/" class="app-brand flex items-center gap-2.5 h-full w-sidebar shrink-0 px-3 bg-sidebar text-white sidebar-transition overflow-hidden">
-        <img src="/assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image w-9 h-9 rounded-full opacity-75 shadow" />
-        <span class="brand-text text-xl font-light whitespace-nowrap">AdminLTE</span>
-      </a>
-
-      <!-- Left section -->
-      <div class="flex items-center pl-2">
-        <!-- Sidebar Toggle -->
-        <button type="button" data-lte-toggle="sidebar" class="p-2 rounded-lg hover:bg-gray-100 text-gray-600">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-
-        <!-- Brand -->
-        <a href="/" class="ml-2 text-xl font-semibold text-gray-800">
-          AdminLTE <span class="text-blue-600">Tailwind</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery | AdminLTE Tailwind</title>
+    <meta
+      name="description"
+      content="Gallery · AdminLTE Tailwind — a responsive, dark-mode admin dashboard template built with Tailwind CSS v4."
+    />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1d21" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AdminLTE Tailwind" />
+    <meta property="og:title" content="Gallery | AdminLTE Tailwind" />
+    <meta
+      property="og:description"
+      content="Gallery · AdminLTE Tailwind — a responsive, dark-mode admin dashboard template built with Tailwind CSS v4."
+    />
+    <meta property="og:image" content="/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gallery | AdminLTE Tailwind" />
+    <meta
+      name="twitter:description"
+      content="Gallery · AdminLTE Tailwind — a responsive, dark-mode admin dashboard template built with Tailwind CSS v4."
+    />
+    <meta name="twitter:image" content="/og-image.png" />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body class="h-full bg-gray-100">
+    <div class="app-wrapper min-h-full">
+      <!-- Navbar -->
+      <nav
+        class="fixed top-0 right-0 left-0 z-30 flex h-14 items-center border-b border-gray-200 bg-white pr-4"
+      >
+        <!-- Brand Logo -->
+        <a
+          href="/"
+          class="app-brand sidebar-transition flex h-full w-sidebar shrink-0 items-center gap-2.5 overflow-hidden bg-sidebar px-3 text-white"
+        >
+          <img
+            src="/assets/img/AdminLTELogo.png"
+            alt="AdminLTE Logo"
+            class="brand-image h-9 w-9 rounded-full opacity-75 shadow"
+          />
+          <span class="brand-text text-xl font-light whitespace-nowrap">AdminLTE</span>
         </a>
-      </div>
 
-      <!-- Spacer -->
-      <div class="flex-1"></div>
-
-      <!-- Right nav items -->
-      <div class="flex items-center gap-1">
-        <!-- User Dropdown -->
-        <div class="dropdown relative">
-          <button type="button" data-lte-toggle="dropdown" class="flex items-center p-1.5 rounded-lg hover:bg-gray-100">
-            <img src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff" alt="Admin" class="w-8 h-8 rounded-full">
+        <!-- Left section -->
+        <div class="flex items-center pl-2">
+          <!-- Sidebar Toggle -->
+          <button
+            type="button"
+            data-lte-toggle="sidebar"
+            class="rounded-lg p-2 text-gray-600 hover:bg-gray-100"
+          >
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
           </button>
-          <div class="dropdown-menu absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 hidden z-50">
-            <div class="px-4 py-2 border-b border-gray-200">
-              <p class="text-sm font-medium text-gray-800">Admin User</p>
-              <p class="text-xs text-gray-500">Administrator</p>
+
+          <!-- Brand -->
+          <a href="/" class="ml-2 text-xl font-semibold text-gray-800">
+            AdminLTE <span class="text-blue-600">Tailwind</span>
+          </a>
+        </div>
+
+        <!-- Spacer -->
+        <div class="flex-1"></div>
+
+        <!-- Right nav items -->
+        <div class="flex items-center gap-1">
+          <!-- User Dropdown -->
+          <div class="dropdown relative">
+            <button
+              type="button"
+              data-lte-toggle="dropdown"
+              class="flex items-center rounded-lg p-1.5 hover:bg-gray-100"
+            >
+              <img
+                src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff"
+                alt="Admin"
+                class="h-8 w-8 rounded-full"
+              />
+            </button>
+            <div
+              class="dropdown-menu absolute top-full right-0 z-50 mt-2 hidden w-48 rounded-lg border border-gray-200 bg-white py-2 shadow-lg"
+            >
+              <div class="border-b border-gray-200 px-4 py-2">
+                <p class="text-sm font-medium text-gray-800">Admin User</p>
+                <p class="text-xs text-gray-500">Administrator</p>
+              </div>
+              <a
+                href="#"
+                class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                >Profile</a
+              >
+              <a
+                href="#"
+                class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-gray-50"
+                >Sign out</a
+              >
             </div>
-            <a href="#" class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Profile</a>
-            <a href="#" class="dropdown-item flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-gray-50">Sign out</a>
           </div>
         </div>
-      </div>
-    </nav>
-
-    <!-- Sidebar -->
-    <aside class="app-sidebar fixed top-14 left-0 bottom-0 w-sidebar bg-sidebar text-gray-300 z-20 sidebar-transition overflow-x-hidden flex flex-col">
-      <nav class="sidebar-menu py-4 px-2 flex-1 overflow-y-auto" data-lte-toggle="treeview">
-        <ul class="space-y-1">
-          <!-- Dashboard -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
-              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-              </svg>
-              <span class="ml-3 flex-1">Dashboard</span>
-              <svg class="w-4 h-4 treeview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
-            </a>
-            <ul class="nav-treeview ml-4 mt-1 space-y-1 hidden">
-              <li class="nav-item">
-                <a href="/index.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Dashboard v1</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/index2.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Dashboard v2</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/index3.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Dashboard v3</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <!-- Widgets -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
-              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
-              </svg>
-              <span class="ml-3 flex-1">Widgets</span>
-              <svg class="w-4 h-4 treeview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
-            </a>
-            <ul class="nav-treeview ml-4 mt-1 space-y-1 hidden">
-              <li class="nav-item">
-                <a href="/widgets/info-box.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Info Box</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/widgets/small-box.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Small Box</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/widgets/cards.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Cards</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <!-- UI Elements -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
-              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
-              </svg>
-              <span class="ml-3 flex-1">UI Elements</span>
-              <svg class="w-4 h-4 treeview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
-            </a>
-            <ul class="nav-treeview ml-4 mt-1 space-y-1 hidden">
-              <li class="nav-item">
-                <a href="/UI/general.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>General</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/UI/buttons.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Buttons</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/UI/modals.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Modals</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/UI/timeline.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Timeline</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/UI/icons.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Icons</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <!-- Forms -->
-          <li class="nav-item">
-            <a href="/forms/elements.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
-              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-              </svg>
-              <span class="ml-3">Forms</span>
-            </a>
-          </li>
-
-          <!-- Tables -->
-          <li class="nav-item">
-            <a href="/tables/simple.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
-              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-              </svg>
-              <span class="ml-3">Tables</span>
-            </a>
-          </li>
-
-          <!-- Apps Section -->
-          <li class="nav-section-header px-3 py-2 mt-4">
-            <span class="nav-section-text text-xs font-semibold text-gray-500 uppercase tracking-wider">Apps</span>
-            <hr class="nav-section-divider hidden border-t border-sidebar-light mt-2" />
-          </li>
-
-          <!-- Mailbox -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
-              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              </svg>
-              <span class="ml-3 flex-1">Mailbox</span>
-              <svg class="w-4 h-4 treeview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
-            </a>
-            <ul class="nav-treeview ml-4 mt-1 space-y-1 hidden">
-              <li class="nav-item">
-                <a href="/mailbox/inbox.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Inbox</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/mailbox/compose.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Compose</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/mailbox/read.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Read Mail</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <!-- Chat -->
-          <li class="nav-item">
-            <a href="/pages/chat.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
-              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-              </svg>
-              <span class="ml-3">Chat</span>
-            </a>
-          </li>
-
-          <!-- Calendar -->
-          <li class="nav-item">
-            <a href="/pages/calendar.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
-              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-              </svg>
-              <span class="ml-3">Calendar</span>
-            </a>
-          </li>
-
-          <!-- Kanban -->
-          <li class="nav-item">
-            <a href="/pages/kanban.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
-              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v8a1 1 0 01-1 1h-4a1 1 0 01-1-1V5z"/>
-              </svg>
-              <span class="ml-3">Kanban Board</span>
-            </a>
-          </li>
-
-          <!-- File Manager -->
-          <li class="nav-item">
-            <a href="/pages/file-manager.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
-              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
-              </svg>
-              <span class="ml-3">File Manager</span>
-            </a>
-          </li>
-
-          <!-- Pages Section -->
-          <li class="nav-section-header px-3 py-2 mt-4">
-            <span class="nav-section-text text-xs font-semibold text-gray-500 uppercase tracking-wider">Pages</span>
-            <hr class="nav-section-divider hidden border-t border-sidebar-light mt-2" />
-          </li>
-
-          <!-- Pages -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
-              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-              </svg>
-              <span class="ml-3 flex-1">Pages</span>
-              <svg class="w-4 h-4 treeview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
-            </a>
-            <ul class="nav-treeview ml-4 mt-1 space-y-1 hidden">
-              <li class="nav-item">
-                <a href="/pages/profile.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Profile</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/pages/contacts.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Contacts</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/pages/gallery.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Gallery</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/pages/projects.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Projects</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/pages/invoice.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Invoice</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/pages/pricing.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Pricing</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/pages/settings.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Settings</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/pages/faq.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>FAQ</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/pages/maintenance.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Maintenance</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <!-- Section Header -->
-          <li class="nav-section-header px-3 py-2 mt-4">
-            <span class="nav-section-text text-xs font-semibold text-gray-500 uppercase tracking-wider">Examples</span>
-            <hr class="nav-section-divider hidden border-t border-sidebar-light mt-2" />
-          </li>
-
-          <!-- Authentication -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
-              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-              </svg>
-              <span class="ml-3 flex-1">Auth Pages</span>
-              <svg class="w-4 h-4 treeview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
-            </a>
-            <ul class="nav-treeview ml-4 mt-1 space-y-1 hidden">
-              <li class="nav-item">
-                <a href="/examples/login.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Login</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/examples/register.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Register</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/examples/lockscreen.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Lockscreen</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <!-- Error Pages -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
-              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-              </svg>
-              <span class="ml-3 flex-1">Error Pages</span>
-              <svg class="w-4 h-4 treeview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
-            </a>
-            <ul class="nav-treeview ml-4 mt-1 space-y-1 hidden">
-              <li class="nav-item">
-                <a href="/pages/404.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Error 404</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/pages/500.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-400 hover:text-white text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3"></span>
-                  <span>Error 500</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <!-- Blank Page -->
-          <li class="nav-item">
-            <a href="/pages/blank.html" class="nav-link flex items-center px-3 py-2 rounded-lg hover:bg-sidebar-light text-gray-300 hover:text-white">
-              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-              </svg>
-              <span class="ml-3">Blank Page</span>
-            </a>
-          </li>
-        </ul>
       </nav>
 
-    
-      <!-- User Panel -->
-      <div class="p-4 border-t border-sidebar-light flex-shrink-0">
-        <div class="flex items-center gap-3">
-          <img src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff" alt="Admin" class="w-10 h-10 rounded-full">
-          <div>
-            <p class="text-sm font-medium text-white">Admin User</p>
-            <p class="text-xs text-gray-400">Administrator</p>
+      <!-- Sidebar -->
+      <aside
+        class="app-sidebar sidebar-transition fixed top-14 bottom-0 left-0 z-20 flex w-sidebar flex-col overflow-x-hidden bg-sidebar text-gray-300"
+      >
+        <nav class="sidebar-menu flex-1 overflow-y-auto px-2 py-4" data-lte-toggle="treeview">
+          <ul class="space-y-1">
+            <!-- Dashboard -->
+            <li class="nav-item has-treeview">
+              <a
+                href="#"
+                class="nav-link flex items-center rounded-lg px-3 py-2 text-gray-300 hover:bg-sidebar-light hover:text-white"
+              >
+                <svg
+                  class="h-5 w-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                  />
+                </svg>
+                <span class="ml-3 flex-1">Dashboard</span>
+                <svg
+                  class="treeview-icon h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+              <ul class="nav-treeview mt-1 ml-4 hidden space-y-1">
+                <li class="nav-item">
+                  <a
+                    href="/index.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Dashboard v1</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/index2.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Dashboard v2</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/index3.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Dashboard v3</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Widgets -->
+            <li class="nav-item has-treeview">
+              <a
+                href="#"
+                class="nav-link flex items-center rounded-lg px-3 py-2 text-gray-300 hover:bg-sidebar-light hover:text-white"
+              >
+                <svg
+                  class="h-5 w-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
+                  />
+                </svg>
+                <span class="ml-3 flex-1">Widgets</span>
+                <svg
+                  class="treeview-icon h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+              <ul class="nav-treeview mt-1 ml-4 hidden space-y-1">
+                <li class="nav-item">
+                  <a
+                    href="/widgets/info-box.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Info Box</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/widgets/small-box.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Small Box</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/widgets/cards.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Cards</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- UI Elements -->
+            <li class="nav-item has-treeview">
+              <a
+                href="#"
+                class="nav-link flex items-center rounded-lg px-3 py-2 text-gray-300 hover:bg-sidebar-light hover:text-white"
+              >
+                <svg
+                  class="h-5 w-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+                  />
+                </svg>
+                <span class="ml-3 flex-1">UI Elements</span>
+                <svg
+                  class="treeview-icon h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+              <ul class="nav-treeview mt-1 ml-4 hidden space-y-1">
+                <li class="nav-item">
+                  <a
+                    href="/UI/general.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>General</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/UI/buttons.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Buttons</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/UI/modals.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Modals</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/UI/timeline.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Timeline</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/UI/icons.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Icons</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Forms -->
+            <li class="nav-item">
+              <a
+                href="/forms/elements.html"
+                class="nav-link flex items-center rounded-lg px-3 py-2 text-gray-300 hover:bg-sidebar-light hover:text-white"
+              >
+                <svg
+                  class="h-5 w-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+                <span class="ml-3">Forms</span>
+              </a>
+            </li>
+
+            <!-- Tables -->
+            <li class="nav-item">
+              <a
+                href="/tables/simple.html"
+                class="nav-link flex items-center rounded-lg px-3 py-2 text-gray-300 hover:bg-sidebar-light hover:text-white"
+              >
+                <svg
+                  class="h-5 w-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  />
+                </svg>
+                <span class="ml-3">Tables</span>
+              </a>
+            </li>
+
+            <!-- Apps Section -->
+            <li class="nav-section-header mt-4 px-3 py-2">
+              <span
+                class="nav-section-text text-xs font-semibold tracking-wider text-gray-500 uppercase"
+                >Apps</span
+              >
+              <hr class="nav-section-divider mt-2 hidden border-t border-sidebar-light" />
+            </li>
+
+            <!-- Mailbox -->
+            <li class="nav-item has-treeview">
+              <a
+                href="#"
+                class="nav-link flex items-center rounded-lg px-3 py-2 text-gray-300 hover:bg-sidebar-light hover:text-white"
+              >
+                <svg
+                  class="h-5 w-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                <span class="ml-3 flex-1">Mailbox</span>
+                <svg
+                  class="treeview-icon h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+              <ul class="nav-treeview mt-1 ml-4 hidden space-y-1">
+                <li class="nav-item">
+                  <a
+                    href="/mailbox/inbox.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Inbox</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/mailbox/compose.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Compose</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/mailbox/read.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Read Mail</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Chat -->
+            <li class="nav-item">
+              <a
+                href="/pages/chat.html"
+                class="nav-link flex items-center rounded-lg px-3 py-2 text-gray-300 hover:bg-sidebar-light hover:text-white"
+              >
+                <svg
+                  class="h-5 w-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                  />
+                </svg>
+                <span class="ml-3">Chat</span>
+              </a>
+            </li>
+
+            <!-- Calendar -->
+            <li class="nav-item">
+              <a
+                href="/pages/calendar.html"
+                class="nav-link flex items-center rounded-lg px-3 py-2 text-gray-300 hover:bg-sidebar-light hover:text-white"
+              >
+                <svg
+                  class="h-5 w-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+                <span class="ml-3">Calendar</span>
+              </a>
+            </li>
+
+            <!-- Kanban -->
+            <li class="nav-item">
+              <a
+                href="/pages/kanban.html"
+                class="nav-link flex items-center rounded-lg px-3 py-2 text-gray-300 hover:bg-sidebar-light hover:text-white"
+              >
+                <svg
+                  class="h-5 w-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 5a1 1 0 011-1h4a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v8a1 1 0 01-1 1h-4a1 1 0 01-1-1V5z"
+                  />
+                </svg>
+                <span class="ml-3">Kanban Board</span>
+              </a>
+            </li>
+
+            <!-- File Manager -->
+            <li class="nav-item">
+              <a
+                href="/pages/file-manager.html"
+                class="nav-link flex items-center rounded-lg px-3 py-2 text-gray-300 hover:bg-sidebar-light hover:text-white"
+              >
+                <svg
+                  class="h-5 w-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
+                  />
+                </svg>
+                <span class="ml-3">File Manager</span>
+              </a>
+            </li>
+
+            <!-- Pages Section -->
+            <li class="nav-section-header mt-4 px-3 py-2">
+              <span
+                class="nav-section-text text-xs font-semibold tracking-wider text-gray-500 uppercase"
+                >Pages</span
+              >
+              <hr class="nav-section-divider mt-2 hidden border-t border-sidebar-light" />
+            </li>
+
+            <!-- Pages -->
+            <li class="nav-item has-treeview">
+              <a
+                href="#"
+                class="nav-link flex items-center rounded-lg px-3 py-2 text-gray-300 hover:bg-sidebar-light hover:text-white"
+              >
+                <svg
+                  class="h-5 w-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                  />
+                </svg>
+                <span class="ml-3 flex-1">Pages</span>
+                <svg
+                  class="treeview-icon h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+              <ul class="nav-treeview mt-1 ml-4 hidden space-y-1">
+                <li class="nav-item">
+                  <a
+                    href="/pages/profile.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Profile</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/pages/contacts.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Contacts</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/pages/gallery.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Gallery</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/pages/projects.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Projects</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/pages/invoice.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Invoice</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/pages/pricing.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Pricing</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/pages/settings.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Settings</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/pages/faq.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>FAQ</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/pages/maintenance.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Maintenance</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Section Header -->
+            <li class="nav-section-header mt-4 px-3 py-2">
+              <span
+                class="nav-section-text text-xs font-semibold tracking-wider text-gray-500 uppercase"
+                >Examples</span
+              >
+              <hr class="nav-section-divider mt-2 hidden border-t border-sidebar-light" />
+            </li>
+
+            <!-- Authentication -->
+            <li class="nav-item has-treeview">
+              <a
+                href="#"
+                class="nav-link flex items-center rounded-lg px-3 py-2 text-gray-300 hover:bg-sidebar-light hover:text-white"
+              >
+                <svg
+                  class="h-5 w-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  />
+                </svg>
+                <span class="ml-3 flex-1">Auth Pages</span>
+                <svg
+                  class="treeview-icon h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+              <ul class="nav-treeview mt-1 ml-4 hidden space-y-1">
+                <li class="nav-item">
+                  <a
+                    href="/examples/login.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Login</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/examples/register.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Register</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/examples/lockscreen.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Lockscreen</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Error Pages -->
+            <li class="nav-item has-treeview">
+              <a
+                href="#"
+                class="nav-link flex items-center rounded-lg px-3 py-2 text-gray-300 hover:bg-sidebar-light hover:text-white"
+              >
+                <svg
+                  class="h-5 w-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  />
+                </svg>
+                <span class="ml-3 flex-1">Error Pages</span>
+                <svg
+                  class="treeview-icon h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+              <ul class="nav-treeview mt-1 ml-4 hidden space-y-1">
+                <li class="nav-item">
+                  <a
+                    href="/pages/404.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Error 404</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/pages/500.html"
+                    class="nav-link flex items-center rounded-lg px-3 py-2 text-sm text-gray-400 hover:bg-sidebar-light hover:text-white"
+                  >
+                    <span class="mr-3 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                    <span>Error 500</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Blank Page -->
+            <li class="nav-item">
+              <a
+                href="/pages/blank.html"
+                class="nav-link flex items-center rounded-lg px-3 py-2 text-gray-300 hover:bg-sidebar-light hover:text-white"
+              >
+                <svg
+                  class="h-5 w-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+                <span class="ml-3">Blank Page</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- User Panel -->
+        <div class="flex-shrink-0 border-t border-sidebar-light p-4">
+          <div class="flex items-center gap-3">
+            <img
+              src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff"
+              alt="Admin"
+              class="h-10 w-10 rounded-full"
+            />
+            <div>
+              <p class="text-sm font-medium text-white">Admin User</p>
+              <p class="text-xs text-gray-400">Administrator</p>
+            </div>
           </div>
         </div>
-      </div>
-</aside>
+      </aside>
 
-    <div class="sidebar-overlay"></div>
+      <div class="sidebar-overlay"></div>
 
-    <!-- Main Content -->
-    <main class="main-content ml-sidebar pt-14 min-h-screen transition-[margin] duration-300">
-      <div class="p-6">
-        <!-- Page Header -->
-        <div class="mb-6 flex items-center justify-between">
-          <div>
-            <h1 class="text-2xl font-semibold text-gray-800">Gallery</h1>
-            <nav class="breadcrumb mt-1">
-              <span class="breadcrumb-item"><a href="/">Home</a></span>
-              <span class="breadcrumb-item"><a href="#">Applications</a></span>
-              <span class="breadcrumb-item active">Gallery</span>
+      <!-- Main Content -->
+      <main class="main-content ml-sidebar min-h-screen pt-14 transition-[margin] duration-300">
+        <div class="p-6">
+          <!-- Page Header -->
+          <div class="mb-6 flex items-center justify-between">
+            <div>
+              <h1 class="text-2xl font-semibold text-gray-800">Gallery</h1>
+              <nav class="breadcrumb mt-1">
+                <span class="breadcrumb-item"><a href="/">Home</a></span>
+                <span class="breadcrumb-item"><a href="#">Applications</a></span>
+                <span class="breadcrumb-item active">Gallery</span>
+              </nav>
+            </div>
+            <button class="btn btn-primary">
+              <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                />
+              </svg>
+              Upload Images
+            </button>
+          </div>
+
+          <!-- Filter Tabs -->
+          <div class="mb-6">
+            <div class="flex flex-wrap gap-2">
+              <button class="btn btn-primary">All</button>
+              <button class="btn btn-outline-secondary">Nature</button>
+              <button class="btn btn-outline-secondary">Architecture</button>
+              <button class="btn btn-outline-secondary">People</button>
+              <button class="btn btn-outline-secondary">Technology</button>
+            </div>
+          </div>
+
+          <!-- Gallery Grid -->
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <!-- Image 1 -->
+            <div class="card group overflow-hidden">
+              <div class="relative aspect-square">
+                <img
+                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop"
+                  alt="Mountain landscape"
+                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 flex items-center justify-center gap-2 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                >
+                  <button class="rounded-full bg-white p-2 text-gray-800 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  </button>
+                  <button class="rounded-full bg-white p-2 text-gray-800 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      />
+                    </svg>
+                  </button>
+                  <button class="rounded-full bg-white p-2 text-red-600 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="p-3">
+                <h6 class="truncate font-medium text-gray-800">Mountain Landscape</h6>
+                <p class="text-sm text-gray-500">Nature</p>
+              </div>
+            </div>
+
+            <!-- Image 2 -->
+            <div class="card group overflow-hidden">
+              <div class="relative aspect-square">
+                <img
+                  src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400&h=400&fit=crop"
+                  alt="City skyline"
+                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 flex items-center justify-center gap-2 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                >
+                  <button class="rounded-full bg-white p-2 text-gray-800 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  </button>
+                  <button class="rounded-full bg-white p-2 text-gray-800 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      />
+                    </svg>
+                  </button>
+                  <button class="rounded-full bg-white p-2 text-red-600 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="p-3">
+                <h6 class="truncate font-medium text-gray-800">City Skyline</h6>
+                <p class="text-sm text-gray-500">Architecture</p>
+              </div>
+            </div>
+
+            <!-- Image 3 -->
+            <div class="card group overflow-hidden">
+              <div class="relative aspect-square">
+                <img
+                  src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=400&fit=crop"
+                  alt="Laptop coding"
+                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 flex items-center justify-center gap-2 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                >
+                  <button class="rounded-full bg-white p-2 text-gray-800 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  </button>
+                  <button class="rounded-full bg-white p-2 text-gray-800 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      />
+                    </svg>
+                  </button>
+                  <button class="rounded-full bg-white p-2 text-red-600 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="p-3">
+                <h6 class="truncate font-medium text-gray-800">Coding Session</h6>
+                <p class="text-sm text-gray-500">Technology</p>
+              </div>
+            </div>
+
+            <!-- Image 4 -->
+            <div class="card group overflow-hidden">
+              <div class="relative aspect-square">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
+                  alt="Portrait"
+                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 flex items-center justify-center gap-2 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                >
+                  <button class="rounded-full bg-white p-2 text-gray-800 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  </button>
+                  <button class="rounded-full bg-white p-2 text-gray-800 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      />
+                    </svg>
+                  </button>
+                  <button class="rounded-full bg-white p-2 text-red-600 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="p-3">
+                <h6 class="truncate font-medium text-gray-800">Portrait Shot</h6>
+                <p class="text-sm text-gray-500">People</p>
+              </div>
+            </div>
+
+            <!-- Image 5 -->
+            <div class="card group overflow-hidden">
+              <div class="relative aspect-square">
+                <img
+                  src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&h=400&fit=crop"
+                  alt="Forest"
+                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 flex items-center justify-center gap-2 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                >
+                  <button class="rounded-full bg-white p-2 text-gray-800 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  </button>
+                  <button class="rounded-full bg-white p-2 text-gray-800 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      />
+                    </svg>
+                  </button>
+                  <button class="rounded-full bg-white p-2 text-red-600 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="p-3">
+                <h6 class="truncate font-medium text-gray-800">Forest Path</h6>
+                <p class="text-sm text-gray-500">Nature</p>
+              </div>
+            </div>
+
+            <!-- Image 6 -->
+            <div class="card group overflow-hidden">
+              <div class="relative aspect-square">
+                <img
+                  src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=400&fit=crop"
+                  alt="Tech setup"
+                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 flex items-center justify-center gap-2 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                >
+                  <button class="rounded-full bg-white p-2 text-gray-800 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  </button>
+                  <button class="rounded-full bg-white p-2 text-gray-800 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      />
+                    </svg>
+                  </button>
+                  <button class="rounded-full bg-white p-2 text-red-600 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="p-3">
+                <h6 class="truncate font-medium text-gray-800">Tech Setup</h6>
+                <p class="text-sm text-gray-500">Technology</p>
+              </div>
+            </div>
+
+            <!-- Image 7 -->
+            <div class="card group overflow-hidden">
+              <div class="relative aspect-square">
+                <img
+                  src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=400&fit=crop"
+                  alt="City street"
+                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 flex items-center justify-center gap-2 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                >
+                  <button class="rounded-full bg-white p-2 text-gray-800 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  </button>
+                  <button class="rounded-full bg-white p-2 text-gray-800 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      />
+                    </svg>
+                  </button>
+                  <button class="rounded-full bg-white p-2 text-red-600 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="p-3">
+                <h6 class="truncate font-medium text-gray-800">City Street</h6>
+                <p class="text-sm text-gray-500">Architecture</p>
+              </div>
+            </div>
+
+            <!-- Image 8 -->
+            <div class="card group overflow-hidden">
+              <div class="relative aspect-square">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+                  alt="Portrait man"
+                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 flex items-center justify-center gap-2 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                >
+                  <button class="rounded-full bg-white p-2 text-gray-800 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  </button>
+                  <button class="rounded-full bg-white p-2 text-gray-800 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      />
+                    </svg>
+                  </button>
+                  <button class="rounded-full bg-white p-2 text-red-600 hover:bg-gray-100">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="p-3">
+                <h6 class="truncate font-medium text-gray-800">Professional Portrait</h6>
+                <p class="text-sm text-gray-500">People</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="mt-6 flex justify-center">
+            <nav class="pagination">
+              <a href="#" class="pagination-item">&laquo;</a>
+              <a href="#" class="pagination-item active">1</a>
+              <a href="#" class="pagination-item">2</a>
+              <a href="#" class="pagination-item">3</a>
+              <a href="#" class="pagination-item">&raquo;</a>
             </nav>
           </div>
-          <button class="btn btn-primary">
-            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
-            </svg>
-            Upload Images
-          </button>
         </div>
 
-        <!-- Filter Tabs -->
-        <div class="mb-6">
-          <div class="flex flex-wrap gap-2">
-            <button class="btn btn-primary">All</button>
-            <button class="btn btn-outline-secondary">Nature</button>
-            <button class="btn btn-outline-secondary">Architecture</button>
-            <button class="btn btn-outline-secondary">People</button>
-            <button class="btn btn-outline-secondary">Technology</button>
+        <!-- Footer -->
+        <footer class="border-t border-gray-200 bg-white p-4">
+          <div
+            class="flex flex-col text-sm text-gray-500 md:flex-row md:items-center md:justify-between"
+          >
+            <div>
+              <strong
+                >Copyright &copy; 2026
+                <a href="https://adminlte.io" class="text-blue-600 hover:underline">AdminLTE.io</a
+                >.</strong
+              >
+              All rights reserved.
+            </div>
+            <div class="mt-2 md:mt-0"><b>Version</b> 4.0.0-tailwind</div>
           </div>
-        </div>
+        </footer>
+      </main>
+    </div>
 
-        <!-- Gallery Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          <!-- Image 1 -->
-          <div class="card group overflow-hidden">
-            <div class="relative aspect-square">
-              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop"
-                   alt="Mountain landscape"
-                   class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-              <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
-                <button class="p-2 bg-white rounded-full text-gray-800 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                  </svg>
-                </button>
-                <button class="p-2 bg-white rounded-full text-gray-800 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                  </svg>
-                </button>
-                <button class="p-2 bg-white rounded-full text-red-600 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div class="p-3">
-              <h6 class="font-medium text-gray-800 truncate">Mountain Landscape</h6>
-              <p class="text-sm text-gray-500">Nature</p>
-            </div>
-          </div>
-
-          <!-- Image 2 -->
-          <div class="card group overflow-hidden">
-            <div class="relative aspect-square">
-              <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400&h=400&fit=crop"
-                   alt="City skyline"
-                   class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-              <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
-                <button class="p-2 bg-white rounded-full text-gray-800 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                  </svg>
-                </button>
-                <button class="p-2 bg-white rounded-full text-gray-800 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                  </svg>
-                </button>
-                <button class="p-2 bg-white rounded-full text-red-600 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div class="p-3">
-              <h6 class="font-medium text-gray-800 truncate">City Skyline</h6>
-              <p class="text-sm text-gray-500">Architecture</p>
-            </div>
-          </div>
-
-          <!-- Image 3 -->
-          <div class="card group overflow-hidden">
-            <div class="relative aspect-square">
-              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=400&fit=crop"
-                   alt="Laptop coding"
-                   class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-              <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
-                <button class="p-2 bg-white rounded-full text-gray-800 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                  </svg>
-                </button>
-                <button class="p-2 bg-white rounded-full text-gray-800 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                  </svg>
-                </button>
-                <button class="p-2 bg-white rounded-full text-red-600 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div class="p-3">
-              <h6 class="font-medium text-gray-800 truncate">Coding Session</h6>
-              <p class="text-sm text-gray-500">Technology</p>
-            </div>
-          </div>
-
-          <!-- Image 4 -->
-          <div class="card group overflow-hidden">
-            <div class="relative aspect-square">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
-                   alt="Portrait"
-                   class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-              <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
-                <button class="p-2 bg-white rounded-full text-gray-800 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                  </svg>
-                </button>
-                <button class="p-2 bg-white rounded-full text-gray-800 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                  </svg>
-                </button>
-                <button class="p-2 bg-white rounded-full text-red-600 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div class="p-3">
-              <h6 class="font-medium text-gray-800 truncate">Portrait Shot</h6>
-              <p class="text-sm text-gray-500">People</p>
-            </div>
-          </div>
-
-          <!-- Image 5 -->
-          <div class="card group overflow-hidden">
-            <div class="relative aspect-square">
-              <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&h=400&fit=crop"
-                   alt="Forest"
-                   class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-              <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
-                <button class="p-2 bg-white rounded-full text-gray-800 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                  </svg>
-                </button>
-                <button class="p-2 bg-white rounded-full text-gray-800 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                  </svg>
-                </button>
-                <button class="p-2 bg-white rounded-full text-red-600 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div class="p-3">
-              <h6 class="font-medium text-gray-800 truncate">Forest Path</h6>
-              <p class="text-sm text-gray-500">Nature</p>
-            </div>
-          </div>
-
-          <!-- Image 6 -->
-          <div class="card group overflow-hidden">
-            <div class="relative aspect-square">
-              <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=400&fit=crop"
-                   alt="Tech setup"
-                   class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-              <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
-                <button class="p-2 bg-white rounded-full text-gray-800 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                  </svg>
-                </button>
-                <button class="p-2 bg-white rounded-full text-gray-800 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                  </svg>
-                </button>
-                <button class="p-2 bg-white rounded-full text-red-600 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div class="p-3">
-              <h6 class="font-medium text-gray-800 truncate">Tech Setup</h6>
-              <p class="text-sm text-gray-500">Technology</p>
-            </div>
-          </div>
-
-          <!-- Image 7 -->
-          <div class="card group overflow-hidden">
-            <div class="relative aspect-square">
-              <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=400&fit=crop"
-                   alt="City street"
-                   class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-              <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
-                <button class="p-2 bg-white rounded-full text-gray-800 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                  </svg>
-                </button>
-                <button class="p-2 bg-white rounded-full text-gray-800 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                  </svg>
-                </button>
-                <button class="p-2 bg-white rounded-full text-red-600 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div class="p-3">
-              <h6 class="font-medium text-gray-800 truncate">City Street</h6>
-              <p class="text-sm text-gray-500">Architecture</p>
-            </div>
-          </div>
-
-          <!-- Image 8 -->
-          <div class="card group overflow-hidden">
-            <div class="relative aspect-square">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
-                   alt="Portrait man"
-                   class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-              <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
-                <button class="p-2 bg-white rounded-full text-gray-800 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                  </svg>
-                </button>
-                <button class="p-2 bg-white rounded-full text-gray-800 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                  </svg>
-                </button>
-                <button class="p-2 bg-white rounded-full text-red-600 hover:bg-gray-100">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div class="p-3">
-              <h6 class="font-medium text-gray-800 truncate">Professional Portrait</h6>
-              <p class="text-sm text-gray-500">People</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pagination -->
-        <div class="mt-6 flex justify-center">
-          <nav class="pagination">
-            <a href="#" class="pagination-item">&laquo;</a>
-            <a href="#" class="pagination-item active">1</a>
-            <a href="#" class="pagination-item">2</a>
-            <a href="#" class="pagination-item">3</a>
-            <a href="#" class="pagination-item">&raquo;</a>
-          </nav>
-        </div>
-      </div>
-
-      <!-- Footer -->
-      <footer class="bg-white border-t border-gray-200 p-4">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between text-sm text-gray-500">
-          <div><strong>Copyright &copy; 2026 <a href="https://adminlte.io" class="text-blue-600 hover:underline">AdminLTE.io</a>.</strong> All rights reserved.</div>
-          <div class="mt-2 md:mt-0"><b>Version</b> 4.0.0-tailwind</div>
-        </div>
-      </footer>
-    </main>
-  </div>
-
-  <script type="module" src="/src/main.ts"></script>
-</body>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
