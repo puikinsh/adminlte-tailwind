@@ -56,7 +56,7 @@ export function createPushMenu(selector: string, options?: any) {
 
       // Set up toggle buttons
       document.querySelectorAll(options?.selectors?.toggle || '[data-lte-toggle="sidebar"]').forEach(btn => {
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener('click', (e: Event) => {
           e.preventDefault()
           this.toggle()
         })
@@ -116,7 +116,7 @@ export function createTreeview(selector: string, options?: any) {
         const submenu = item?.querySelector(options?.selectors?.treeviewMenu || '.nav-treeview') as HTMLElement
 
         if (submenu) {
-          link.addEventListener('click', (e) => {
+          link.addEventListener('click', (e: Event) => {
             e.preventDefault()
 
             const isOpen = item?.classList.contains(options?.classNames?.menuOpen || 'menu-open')
@@ -124,7 +124,7 @@ export function createTreeview(selector: string, options?: any) {
             // Accordion: close siblings
             if (options?.accordion) {
               const parent = item?.parentElement
-              parent?.querySelectorAll(`.${options?.classNames?.menuOpen || 'menu-open'}`).forEach(openItem => {
+              parent?.querySelectorAll(`.${options?.classNames?.menuOpen || 'menu-open'}`).forEach((openItem: Element) => {
                 if (openItem !== item) {
                   openItem.classList.remove(options?.classNames?.menuOpen || 'menu-open')
                   const openSubmenu = openItem.querySelector(options?.selectors?.treeviewMenu || '.nav-treeview') as HTMLElement
@@ -239,7 +239,7 @@ export class Dropdown {
       const menu = dropdown.querySelector(options?.selectors?.menu || '.dropdown-menu')
 
       if (toggle && menu) {
-        toggle.addEventListener('click', (e) => {
+        toggle.addEventListener('click', (e: Event) => {
           e.preventDefault()
           e.stopPropagation()
           dropdown.classList.toggle(options?.classNames?.open || 'dropdown-open')

@@ -164,7 +164,7 @@ async function initWorldMap() {
     cancelAnimationFrame(frame)
     frame = requestAnimationFrame(() => map.updateSize())
   }
-  if ('ResizeObserver' in window) {
+  if (typeof ResizeObserver !== 'undefined') {
     new ResizeObserver(refit).observe(target)
   } else {
     window.addEventListener('resize', refit)
