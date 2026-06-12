@@ -19,6 +19,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   generated social preview image) across all pages.
 - **Developer tooling**: TypeScript type-checking (`tsconfig.json` + `npm run typecheck`),
   ESLint + Prettier (`npm run lint` / `format`), and a GitHub Actions CI pipeline.
+- **Chrome drift check** (`npm run check:chrome`, runs in CI): with no templating system the
+  navbar/sidebar/footer are duplicated on every page — the check fails if any page's chrome
+  differs from `index.html`.
 
 ### Changed
 
@@ -27,12 +30,24 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   so `@apply`-based component classes render correctly in dark mode.
 - Refined the navbar brand bottom border and slightly reduced the hamburger icon size.
 - Replaced the Twitter logo with the X logo in the Traffic Sources widget.
+- **Faster first paint on every page**: the always-on theme, accessibility and search modules
+  are now statically imported instead of lazy-loaded, removing a request waterfall (three extra
+  round trips after `main.js`). Debug `console.log` calls no longer ship in production.
+- **Dropped OverlayScrollbars** (~42KB JS+CSS per page): the thin auto-hiding sidebar scrollbar
+  is now pure CSS (`scrollbar-width` + `scrollbar-color` with hover/focus reveal).
+- **⌘K search index is generated at build time** from the same HTML discovery as the build
+  (a `virtual:pages` Vite module parsing each page's `<title>`), so new pages can no longer be
+  missing from search.
+- Compressed the social preview image (`og-image.png`) from 197KB to 23KB.
 
 ### Fixed
 
 - Numerous dark-mode contrast issues where light surfaces/text leaked through (white info-box
   cards, unreadable highlighted rows, bright table headers, low-contrast breadcrumbs, etc.).
 - Accessible names for icon-only navbar toggles (sidebar, fullscreen, user menu).
+- Restored the full navbar (search trigger, theme toggle, notifications, fullscreen,
+  Home/Contact links) on six pages that had drifted: Inbox, Calendar, Contacts, Gallery,
+  Kanban and Profile.
 
 ## [0.1.0]
 
