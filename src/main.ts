@@ -7,10 +7,14 @@
 import { initAll } from '@adminlte/headless'
 import { Dropdown, createModal, createToastManager } from './lib/headless-stub'
 
+// Always-on modules are imported statically so they ship in the main chunk —
+// a dynamic import() here would cost an extra network round trip on every page.
+import initA11y from './a11y'
+import initTheme from './theme'
+import initSearch from './search'
+
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('AdminLTE Tailwind initializing...')
-
   // Submenus start hidden via display:none (the treeview animates display,
   // not Tailwind's `hidden` class).
   document.querySelectorAll('.nav-treeview').forEach((el) => {
@@ -34,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   // Initialize Dropdowns
-  const dropdowns = Dropdown.initAll({
+  Dropdown.initAll({
     classNames: {
       dropdown: 'dropdown',
       open: 'dropdown-open',
@@ -49,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
       item: '.dropdown-item'
     }
   })
-  console.log(`Initialized ${dropdowns.length} dropdown(s)`)
 
   // Initialize Modal
   const demoModal = createModal('#demo-modal', {
@@ -121,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   // Accessibility helpers (skip link, aria-labels)
-  import('./a11y').then(({ default: initA11y }) => initA11y())
+  initA11y()
 
   // Custom thin sidebar scrollbar (OverlayScrollbars)
   if (document.querySelector('.sidebar-menu')) {
@@ -129,10 +132,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Color mode (light / dark / auto)
-  import('./theme').then(({ default: initTheme }) => initTheme())
+  initTheme()
 
   // Command-K search palette (lightweight, available on every page)
-  import('./search').then(({ default: initSearch }) => initSearch())
+  initSearch()
 
   // Data tables (sortable / searchable / paginated) — only where present
   if (document.querySelector('table[data-datatable]')) {
@@ -163,8 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
   ) {
     import('./charts').then(({ default: initCharts }) => initCharts())
   }
-
-  console.log('AdminLTE Tailwind initialized!')
 })
 
 /**
