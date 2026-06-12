@@ -51,7 +51,6 @@
     "@adminlte/headless": "^0.1.0",
     "apexcharts": "^5.13.0",
     "jsvectormap": "^1.7.0",
-    "overlayscrollbars": "^2.16.0",
     "simple-datatables": "^10.2.0"
   }
 }

@@ -126,11 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Accessibility helpers (skip link, aria-labels)
   initA11y()
 
-  // Custom thin sidebar scrollbar (OverlayScrollbars)
-  if (document.querySelector('.sidebar-menu')) {
-    import('./scrollbar').then(({ default: initScrollbars }) => initScrollbars())
-  }
-
   // Color mode (light / dark / auto)
   initTheme()
 

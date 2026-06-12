@@ -1164,6 +1164,19 @@ html.maximized-card::before {
   box-shadow: 0 1px 0 0 var(--color-sidebar-light);
 }
 
+/* Thin auto-hiding sidebar scrollbar: invisible until the sidebar is hovered
+   or focused, light thumb to suit the dark background. Older browsers without
+   scrollbar-color support simply show their default scrollbar. */
+.sidebar-menu {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.sidebar-menu:hover,
+.sidebar-menu:focus-within {
+  scrollbar-color: rgb(255 255 255 / 0.25) transparent;
+}
+
 /* Header sidebar toggle (hamburger): slightly smaller icon */
 [data-lte-toggle='sidebar'] svg {
   width: 1.25rem;
