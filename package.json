@@ -13,7 +13,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "check:chrome": "node scripts/check-chrome.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
