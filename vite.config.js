@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
-import { readdirSync, statSync } from 'fs'
+import { readdirSync, readFileSync, statSync } from 'fs'
 import tailwindcss from '@tailwindcss/vite'
 
 const root = resolve(__dirname)
@@ -21,6 +21,38 @@ function htmlInputs(dir = root, inputs = {}) {
   return inputs
 }
 
+// Expose the discovered pages to the client as `virtual:pages` so the search
+// palette's index is generated from the same file discovery as the build and
+// can never drift from the actual pages. Titles come from each page's <title>.
+function pagesIndex() {
+  const VIRTUAL_ID = 'virtual:pages'
+  const RESOLVED_ID = '\0' + VIRTUAL_ID
+  return {
+    name: 'pages-index',
+    resolveId(id) {
+      return id === VIRTUAL_ID ? RESOLVED_ID : undefined
+    },
+    load(id) {
+      if (id !== RESOLVED_ID) return
+      const pages = Object.values(htmlInputs()).map((file) => {
+        this.addWatchFile(file)
+        const html = readFileSync(file, 'utf8')
+        const title = (html.match(/<title>(.*?)<\/title>/s)?.[1] ?? file)
+          .replace(/\s*\|[^|]*$/, '')
+          .trim()
+        const path =
+          '/' +
+          file
+            .slice(root.length + 1)
+            .split(/[\\/]/)
+            .join('/')
+        return { path, title }
+      })
+      return `export const pages = ${JSON.stringify(pages)}`
+    }
+  }
+}
+
 // Apply the stored color mode before first paint to avoid a light flash.
 const NO_FLASH =
   "<script>(function(){try{var k='adminlte.theme',v=localStorage.getItem(k)||'auto'," +
@@ -39,7 +71,7 @@ function themeNoFlash() {
 }
 
 export default defineConfig({
-  plugins: [tailwindcss(), themeNoFlash()],
+  plugins: [tailwindcss(), pagesIndex(), themeNoFlash()],
   build: {
     // ApexCharts + jsVectorMap form a large vendor chunk, but it's lazy-loaded
     // only on pages with a visualisation — so the size warning is benign here.

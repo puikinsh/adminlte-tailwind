@@ -6,6 +6,11 @@
  * arrow keys, and press Enter to jump to a page.
  */
 
+// The page list (path + title) is generated at build time by the pagesIndex
+// plugin in vite.config.js from the same HTML discovery as the build itself,
+// so new pages appear here automatically.
+import { pages } from 'virtual:pages'
+
 interface SearchItem {
   title: string
   path: string
@@ -13,184 +18,83 @@ interface SearchItem {
   keywords?: string
 }
 
-// In-memory index of every page in the template.
-const PAGES: SearchItem[] = [
-  {
-    title: 'Dashboard v1',
-    path: '/index.html',
-    category: 'Dashboards',
-    keywords: 'home main analytics overview'
-  },
-  {
-    title: 'Dashboard v2',
-    path: '/index2.html',
-    category: 'Dashboards',
-    keywords: 'analytics visitors'
-  },
-  {
-    title: 'Dashboard v3',
-    path: '/index3.html',
-    category: 'Dashboards',
-    keywords: 'analytics ecommerce revenue'
-  },
-  {
-    title: 'Small Box',
-    path: '/widgets/small-box.html',
-    category: 'Widgets',
-    keywords: 'stat box number'
-  },
-  { title: 'Info Box', path: '/widgets/info-box.html', category: 'Widgets', keywords: 'stat icon' },
-  { title: 'Cards', path: '/widgets/cards.html', category: 'Widgets', keywords: 'panel box' },
-  {
-    title: 'General UI',
-    path: '/UI/general.html',
-    category: 'UI Elements',
-    keywords: 'alerts badges callouts progress accordion tabs'
-  },
-  {
-    title: 'Timeline',
-    path: '/UI/timeline.html',
-    category: 'UI Elements',
-    keywords: 'activity history'
-  },
-  { title: 'Buttons', path: '/UI/buttons.html', category: 'UI Elements', keywords: 'btn actions' },
-  {
-    title: 'Modals',
-    path: '/UI/modals.html',
-    category: 'UI Elements',
-    keywords: 'dialog popup overlay'
-  },
-  {
-    title: 'Form Elements',
-    path: '/forms/elements.html',
-    category: 'Forms & Tables',
-    keywords: 'input validation select checkbox'
-  },
-  {
-    title: 'Tables',
-    path: '/tables/simple.html',
-    category: 'Forms & Tables',
-    keywords: 'data grid rows'
-  },
-  {
-    title: 'Calendar',
-    path: '/pages/calendar.html',
-    category: 'Apps',
-    keywords: 'events schedule dates'
-  },
-  {
-    title: 'Kanban Board',
-    path: '/pages/kanban.html',
-    category: 'Apps',
-    keywords: 'tasks board drag'
-  },
-  {
-    title: 'Profile',
-    path: '/pages/profile.html',
-    category: 'Apps',
-    keywords: 'user account settings'
-  },
-  {
-    title: 'Contacts',
-    path: '/pages/contacts.html',
-    category: 'Apps',
-    keywords: 'people directory'
-  },
-  {
-    title: 'Gallery',
-    path: '/pages/gallery.html',
-    category: 'Apps',
-    keywords: 'images photos media'
-  },
-  {
-    title: 'Mailbox',
-    path: '/mailbox/inbox.html',
-    category: 'Apps',
-    keywords: 'email inbox messages'
-  },
-  {
-    title: 'Compose Mail',
-    path: '/mailbox/compose.html',
-    category: 'Apps',
-    keywords: 'email write new message'
-  },
-  {
-    title: 'Read Mail',
-    path: '/mailbox/read.html',
-    category: 'Apps',
-    keywords: 'email message view'
-  },
-  { title: 'Chat', path: '/pages/chat.html', category: 'Apps', keywords: 'messages conversation' },
-  {
-    title: 'File Manager',
-    path: '/pages/file-manager.html',
-    category: 'Apps',
-    keywords: 'files folders storage'
-  },
-  {
-    title: 'Invoice',
-    path: '/pages/invoice.html',
-    category: 'Pages',
-    keywords: 'bill payment receipt'
-  },
-  {
-    title: 'Pricing',
-    path: '/pages/pricing.html',
-    category: 'Pages',
-    keywords: 'plans tiers subscription'
-  },
-  {
-    title: 'Projects',
-    path: '/pages/projects.html',
-    category: 'Pages',
-    keywords: 'tasks team progress'
-  },
-  {
-    title: 'Settings',
-    path: '/pages/settings.html',
-    category: 'Pages',
-    keywords: 'preferences account config'
-  },
-  { title: 'FAQ', path: '/pages/faq.html', category: 'Pages', keywords: 'help questions support' },
-  {
-    title: 'Maintenance',
-    path: '/pages/maintenance.html',
-    category: 'Pages',
-    keywords: 'down offline coming soon'
-  },
-  {
-    title: 'Icons',
-    path: '/UI/icons.html',
-    category: 'UI Elements',
-    keywords: 'svg glyphs symbols'
-  },
-  {
-    title: 'Login',
-    path: '/examples/login.html',
-    category: 'Auth',
-    keywords: 'sign in authentication'
-  },
-  {
-    title: 'Register',
-    path: '/examples/register.html',
-    category: 'Auth',
-    keywords: 'sign up create account'
-  },
-  {
-    title: 'Lock Screen',
-    path: '/examples/lockscreen.html',
-    category: 'Auth',
-    keywords: 'lock password'
-  },
-  {
-    title: 'Blank Page',
-    path: '/pages/blank.html',
-    category: 'Other',
-    keywords: 'starter template empty'
-  },
-  { title: 'Error 404', path: '/pages/404.html', category: 'Other', keywords: 'not found missing' },
-  { title: 'Error 500', path: '/pages/500.html', category: 'Other', keywords: 'server error' }
+// Optional curated metadata per page: a category override and extra match
+// keywords. Pages not listed here still appear — they fall back to a
+// category derived from their directory.
+const META: Record<string, { category?: string; keywords?: string }> = {
+  '/index.html': { keywords: 'home main analytics overview' },
+  '/index2.html': { keywords: 'analytics visitors' },
+  '/index3.html': { keywords: 'analytics ecommerce revenue' },
+  '/widgets/small-box.html': { keywords: 'stat box number' },
+  '/widgets/info-box.html': { keywords: 'stat icon' },
+  '/widgets/cards.html': { keywords: 'panel box' },
+  '/UI/general.html': { keywords: 'alerts badges callouts progress accordion tabs' },
+  '/UI/timeline.html': { keywords: 'activity history' },
+  '/UI/buttons.html': { keywords: 'btn actions' },
+  '/UI/modals.html': { keywords: 'dialog popup overlay' },
+  '/UI/icons.html': { keywords: 'svg glyphs symbols' },
+  '/forms/elements.html': { keywords: 'input validation select checkbox' },
+  '/tables/simple.html': { keywords: 'data grid rows' },
+  '/pages/calendar.html': { category: 'Apps', keywords: 'events schedule dates' },
+  '/pages/kanban.html': { category: 'Apps', keywords: 'tasks board drag' },
+  '/pages/profile.html': { category: 'Apps', keywords: 'user account settings' },
+  '/pages/contacts.html': { category: 'Apps', keywords: 'people directory' },
+  '/pages/gallery.html': { category: 'Apps', keywords: 'images photos media' },
+  '/pages/chat.html': { category: 'Apps', keywords: 'messages conversation' },
+  '/pages/file-manager.html': { category: 'Apps', keywords: 'files folders storage' },
+  '/mailbox/inbox.html': { keywords: 'email inbox messages' },
+  '/mailbox/compose.html': { keywords: 'email write new message' },
+  '/mailbox/read.html': { keywords: 'email message view' },
+  '/pages/invoice.html': { keywords: 'bill payment receipt' },
+  '/pages/pricing.html': { keywords: 'plans tiers subscription' },
+  '/pages/projects.html': { keywords: 'tasks team progress' },
+  '/pages/settings.html': { keywords: 'preferences account config' },
+  '/pages/faq.html': { keywords: 'help questions support' },
+  '/pages/maintenance.html': { keywords: 'down offline coming soon' },
+  '/examples/login.html': { keywords: 'sign in authentication' },
+  '/examples/register.html': { keywords: 'sign up create account' },
+  '/examples/lockscreen.html': { keywords: 'lock password' },
+  '/pages/blank.html': { category: 'Other', keywords: 'starter template empty' },
+  '/pages/404.html': { category: 'Other', keywords: 'not found missing' },
+  '/pages/500.html': { category: 'Other', keywords: 'server error' }
+}
+
+// Default category per top-level directory ('' = repo root).
+const DIR_CATEGORIES: Record<string, string> = {
+  '': 'Dashboards',
+  widgets: 'Widgets',
+  UI: 'UI Elements',
+  forms: 'Forms & Tables',
+  tables: 'Forms & Tables',
+  pages: 'Pages',
+  mailbox: 'Apps',
+  examples: 'Auth'
+}
+
+const CATEGORY_ORDER = [
+  'Dashboards',
+  'Widgets',
+  'UI Elements',
+  'Forms & Tables',
+  'Apps',
+  'Pages',
+  'Auth',
+  'Other'
 ]
+
+function categoryOf(path: string): string {
+  const dir = path.split('/').slice(1, -1).join('/')
+  return META[path]?.category ?? DIR_CATEGORIES[dir] ?? 'Other'
+}
+
+function categoryRank(category: string): number {
+  const i = CATEGORY_ORDER.indexOf(category)
+  return i === -1 ? CATEGORY_ORDER.length : i
+}
+
+const PAGES: SearchItem[] = pages
+  .map((p) => ({ ...p, category: categoryOf(p.path), keywords: META[p.path]?.keywords }))
+  .sort((a, b) => categoryRank(a.category) - categoryRank(b.category))
 
 const ICON_SEARCH =
   '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>'
