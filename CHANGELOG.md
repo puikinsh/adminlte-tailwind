@@ -6,6 +6,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-07-01
+
 ### Added
 
 - **Interactive calendar** (`/pages/calendar.html`): month grid + agenda list, add/edit/delete
@@ -48,6 +50,19 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Restored the full navbar (search trigger, theme toggle, notifications, fullscreen,
   Home/Contact links) on six pages that had drifted: Inbox, Calendar, Contacts, Gallery,
   Kanban and Profile.
+
+### Dependencies
+
+- Updated all runtime and dev dependencies to their latest stable releases. Notable bumps:
+  apexcharts 5.13.0 → 5.15.0, Vite 8.0.14 → 8.0.16, ESLint 10.4.1 → 10.5.0, Tailwind CSS and
+  `@tailwindcss/vite` 4.3.0 → 4.3.1, typescript-eslint 8.60.0 → 8.61.1, and Prettier 3.8.3 → 3.8.4.
+  No breaking changes were required — every package was already on its current major (Vite 8,
+  ESLint 10, TypeScript 6, Tailwind 4). Lint, type-check, format, chrome-drift and build all pass.
+
+### Security
+
+- Cleared a high-severity advisory in a transitive dependency as part of the dependency refresh
+  (`npm audit` now reports 0 vulnerabilities).
 
 ## [0.1.0]
 
