@@ -6,6 +6,38 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- **ApexCharts 5 → 7** (major upgrade across two majors). The v7 headline change is that nine
+  features (trellis, storyboard, perspectives, ink, canvas renderer, linked views, measure,
+  rewind, context menu) became opt-in imports — this template uses none of them, and neither
+  of the other two v7 breaking changes applies (`plotOptions.bar.borderRadiusWhenStacked` is
+  unused, and `dataLabels` are disabled on every chart, so the new animate-by-default has no
+  effect). v6's two default behavior changes (coherent variable-length data transitions and
+  mobile pinch/pan gestures) are additive for these static demo charts.
+- **Charts bundle is 31% smaller** (264.5 kB → 180.9 kB gzip; 925 kB → 641 kB raw). ApexCharts 7
+  ships per-chart-type entry points, so `src/charts.ts` now imports `apexcharts/core` plus only
+  the `area`, `bar` and `donut` types and the `legend` feature instead of the full default
+  bundle. The chunk is lazy-loaded, so this is a saving on the three dashboard pages.
+
+### Dependencies
+
+- Updated every runtime and dev dependency to its latest stable release: apexcharts 5.15.0 → 7.1.0,
+  Vite 8.0.16 → 8.2.2, ESLint 10.5.0 → 10.10.0, typescript-eslint 8.61.1 → 8.69.0, Prettier
+  3.8.4 → 3.9.6, prettier-plugin-tailwindcss 0.8.0 → 0.8.1, Tailwind CSS and `@tailwindcss/vite`
+  4.3.1 → 4.3.3, simple-datatables 10.2.0 → 10.3.0, lightningcss 1.32.0 → 1.33.0, globals
+  17.6.0 → 17.12.0.
+- **TypeScript stays on 6.0.3** (latest 6.x) rather than 7.0.2. TypeScript 7 is the native port
+  and ships without the JavaScript compiler API that typescript-eslint reads type information
+  through; typescript-eslint 8.69.0 still declares `typescript: >=4.8.4 <6.1.0`, so installing
+  TS 7 alongside it fails to resolve. Revisit once TypeScript 7.1 ships its stable API.
+- Reformatted two files for Prettier 3.9's HTML/`for`-loop output changes.
+
+### Security
+
+- `npm audit` reports 0 vulnerabilities (three high-severity advisories in transitive
+  dependencies — `brace-expansion`, `nanoid`, `postcss` — cleared by the refresh).
+
 ## [0.2.0] - 2026-07-01
 
 ### Added

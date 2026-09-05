@@ -7,7 +7,11 @@
  * Every initializer is guarded by an element lookup, so a single import can be
  * dropped on any page and only the visualisations that actually exist render.
  */
-import ApexCharts from 'apexcharts'
+import ApexCharts from 'apexcharts/core'
+import 'apexcharts/area' // line/area/scatter chart types
+import 'apexcharts/bar'
+import 'apexcharts/donut'
+import 'apexcharts/features/legend'
 import 'jsvectormap/dist/jsvectormap.min.css'
 
 // Template palette (Tailwind) so charts match the rest of the UI

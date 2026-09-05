@@ -39,7 +39,7 @@ function extract(html, tag) {
   const token = new RegExp(`<${tag}[\\s>]|</${tag}>`, 'g')
   token.lastIndex = start
   let depth = 0
-  for (let m; (m = token.exec(html)); ) {
+  for (let m; (m = token.exec(html));) {
     depth += m[0].startsWith('</') ? -1 : 1
     if (depth === 0) return html.slice(start, token.lastIndex)
   }
