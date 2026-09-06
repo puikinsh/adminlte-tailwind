@@ -2,10 +2,10 @@
  * AdminLTE Tailwind - Main Entry Point
  */
 
-// Core component behaviours come from the published @adminlte/headless package.
-// Dropdown, Modal and Toast aren't in that package yet, so they stay local.
+// Core component behaviours come from the published @adminlte/headless package;
+// Dropdown, Modal and Toast are implemented locally (see lib/components.ts).
 import { initAll } from '@adminlte/headless'
-import { Dropdown, createModal, createToastManager } from './lib/headless-stub'
+import { Dropdown, createModal, createToastManager } from './lib/components'
 
 // Always-on modules are imported statically so they ship in the main chunk —
 // a dynamic import() here would cost an extra network round trip on every page.

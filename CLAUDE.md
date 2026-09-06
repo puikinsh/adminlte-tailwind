@@ -39,7 +39,7 @@ Every page loads the single entry point `<script type="module" src="/src/main.ts
 ### Behavior split: headless package vs. local stub
 
 - **`@adminlte/headless`** (npm dependency): `initAll({ accessibility: false })` in `main.ts` wires up Layout, PushMenu (sidebar toggle), Treeview, CardWidget (collapse/maximize/remove), DirectChat, and FullScreen. Accessibility is disabled because the local `src/a11y.ts` handles it.
-- **`src/lib/headless-stub.ts`** (local): Dropdown, Modal, and Toast implementations — these aren't in the published headless package yet. When the package gains them, the stub should be retired.
+- **`src/lib/components.ts`** (local): Dropdown, Modal and Toast. These are owned code, not a temporary stub — `@adminlte/headless` has published nothing since 0.1.0 (December 2025). Their option shapes mirror the package's conventions, so swapping to upstream equivalents would be an import change in `main.ts`.
 
 Components auto-initialize from `data-lte-toggle` attributes in markup: `sidebar`, `dropdown`, `fullscreen`, `treeview`, `card-collapse`, `card-maximize`, `card-remove`, `card-refresh`.
 

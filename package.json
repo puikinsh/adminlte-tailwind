@@ -2,6 +2,7 @@
   "name": "@adminlte/tailwind",
   "version": "0.2.0",
   "type": "module",
+  "private": true,
   "description": "AdminLTE dashboard template built with Tailwind CSS and @adminlte/headless",
   "engines": {
     "node": ">=22"
@@ -47,10 +48,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ColorlibHQ/adminlte-tailwind.git"
+    "url": "git+https://github.com/puikinsh/adminlte-tailwind.git"
   },
   "bugs": {
-    "url": "https://github.com/ColorlibHQ/adminlte-tailwind/issues"
+    "url": "https://github.com/puikinsh/adminlte-tailwind/issues"
   },
   "homepage": "https://adminlte.io",
   "dependencies": {

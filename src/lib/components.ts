@@ -1,6 +1,15 @@
 /**
- * Stub implementation of @adminlte/headless
- * This provides minimal implementations until the real package is available
+ * Dropdown, Modal and Toast — the components this template implements itself.
+ *
+ * Everything else (Layout, PushMenu, Treeview, CardWidget, DirectChat,
+ * FullScreen) comes from the published @adminlte/headless package. These three
+ * were written here as a temporary stand-in on the assumption the package would
+ * grow them, but @adminlte/headless has not published a release since 0.1.0 in
+ * December 2025, so they are treated as owned code: framework-agnostic
+ * behaviour, styled by the classes passed in from main.ts.
+ *
+ * If the package ever ships equivalents, swapping is a matter of changing the
+ * import in main.ts — the option shapes here mirror its conventions.
  */
 
 type EventCallback = (data: any) => void

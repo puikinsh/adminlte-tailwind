@@ -6,6 +6,52 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- **End-to-end test suite** (`npm test`): 115 Playwright tests against the production build.
+  Pages are discovered with the same rule the Vite build uses, so new pages are covered
+  automatically. Every page must load with no console error, no failed request and no
+  third-party request; the charts, map, calendar, kanban and datatable must render; and the
+  sidebar, treeview, theme cycle, RTL toggle, ⌘K palette and skip link must work. CI gains an
+  `e2e` job.
+- **Local images.** All avatars are generated SVGs (`scripts/generate-avatars.mjs`,
+  `npm run gen:avatars`) and all photographs are bundled AVIF with a mozjpeg fallback behind
+  `<picture>`. The template now makes zero third-party requests.
+- **`partials/`**: the navbar, sidebar and footer exist once each and are pulled into pages with
+  `<!-- @include name -->`, expanded at build time.
+- **SEO**: per-page canonical URLs and `og:url`, absolute social-image URLs, `sitemap.xml`,
+  `robots.txt` and a web manifest — all generated from one `SITE_URL` constant.
+
+### Changed
+
+- **`src/lib/headless-stub.ts` is now `src/lib/components.ts`.** Dropdown, Modal and Toast were
+  written as a temporary stand-in pending `@adminlte/headless`, which has published nothing since
+  0.1.0 in December 2025. They are treated as owned code rather than a stub in waiting.
+- `package.json` is marked `private` — this is a template to clone, not a package to install, and
+  it has no library entry point. The `repository` and `bugs` URLs pointed at a repository that
+  does not exist; they now point at the real one.
+- README rewritten: it advertised an `npm install` for an unpublished package, described dark
+  mode as "coming soon" when it has shipped, and documented a two-file project structure.
+
+### Fixed
+
+- **Every form control now has an accessible name.** 91 of 123 had none — no `<label for>`, no
+  wrapping label, no `aria-label` — so screen readers announced them as bare "edit text". Visible
+  labels are now associated with their controls, placeholder-only fields take their name from the
+  placeholder, and the rest got names written from their surroundings.
+- 33 `<img>` tags had no `alt` attribute. All were avatars followed by the person's name in the
+  markup, so they take `alt=""` rather than announcing the name twice.
+- Credential fields gained `autocomplete` attributes and the invalid-state demo's password inputs
+  were moved inside a form, clearing every console warning on `forms/elements.html`.
+- Photographs carry intrinsic `width`/`height` to prevent layout shift.
+
+### Removed
+
+- **`scripts/check-chrome.mjs`** and its CI step. It detected chrome drift across the 30 duplicated
+  layouts; with a single copy in `partials/`, drift is impossible rather than merely detectable.
+  The one failure it could not catch — a page missing its chrome entirely — is now an e2e
+  assertion.
+
 ### Changed
 
 - **ApexCharts 5 → 7** (major upgrade across two majors). The v7 headline change is that nine
