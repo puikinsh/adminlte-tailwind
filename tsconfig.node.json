@@ -1,0 +1,12 @@
+{
+  /* The end-to-end tests and their config run in Node, not the browser, so they
+     get their own project: the root tsconfig deliberately sets `types: []` to
+     keep Node globals out of the application source. */
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "lib": ["ES2022"],
+    "noEmit": true
+  },
+  "include": ["tests", "playwright.config.ts"]
+}

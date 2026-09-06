@@ -22,3 +22,9 @@ npm-debug.log*
 
 # Cache
 .cache/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/.playwright/

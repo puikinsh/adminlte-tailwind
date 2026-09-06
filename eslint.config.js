@@ -28,6 +28,20 @@ export default tseslint.config(
     languageOptions: { globals: globals.node }
   },
 
+  // End-to-end tests and their config (Node, TypeScript)
+  {
+    files: ['tests/**/*.ts', 'playwright.config.ts'],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    languageOptions: { globals: globals.node }
+  },
+
+  // Build scripts (Node, ESM)
+  {
+    files: ['scripts/**/*.mjs'],
+    extends: [js.configs.recommended],
+    languageOptions: { globals: globals.node }
+  },
+
   // Keep formatting concerns to Prettier
   prettier
 )
