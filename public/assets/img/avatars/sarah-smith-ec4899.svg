@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Sarah Smith">
+  <defs>
+    <linearGradient id="gec4899" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f070af"/>
+      <stop offset="1" stop-color="#ec4899"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" fill="url(#gec4899)"/>
+  <text x="64" y="64" dy=".35em" fill="#fff" text-anchor="middle" font-size="52" font-weight="600" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">SS</text>
+</svg>

@@ -37,5 +37,8 @@ jobs:
       - name: Check chrome drift
         run: npm run check:chrome
 
+      - name: Check avatars are in sync
+        run: npm run check:avatars
+
       - name: Build
         run: npm run build

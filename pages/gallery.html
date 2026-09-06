@@ -135,7 +135,7 @@
               </div>
               <a href="#" class="dropdown-item flex items-start gap-3 px-4 py-3 hover:bg-gray-50">
                 <img
-                  src="https://ui-avatars.com/api/?name=John+Doe&background=3b82f6&color=fff&size=40"
+                  src="/assets/img/avatars/john-doe-3b82f6.svg"
                   alt="John Doe"
                   class="h-10 w-10 rounded-full"
                 />
@@ -151,7 +151,7 @@
               </a>
               <a href="#" class="dropdown-item flex items-start gap-3 px-4 py-3 hover:bg-gray-50">
                 <img
-                  src="https://ui-avatars.com/api/?name=Alice+Smith&background=22c55e&color=fff&size=40"
+                  src="/assets/img/avatars/alice-smith-22c55e.svg"
                   alt="Alice Smith"
                   class="h-10 w-10 rounded-full"
                 />
@@ -167,7 +167,7 @@
               </a>
               <a href="#" class="dropdown-item flex items-start gap-3 px-4 py-3 hover:bg-gray-50">
                 <img
-                  src="https://ui-avatars.com/api/?name=Bob+Wilson&background=f59e0b&color=fff&size=40"
+                  src="/assets/img/avatars/bob-wilson-f59e0b.svg"
                   alt="Bob Wilson"
                   class="h-10 w-10 rounded-full"
                 />
@@ -405,7 +405,7 @@
               class="flex items-center rounded-lg p-1.5 hover:bg-gray-100"
             >
               <img
-                src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff"
+                src="/assets/img/avatars/admin-user-3b82f6.svg"
                 alt="Admin"
                 class="h-8 w-8 rounded-full"
               />
@@ -1189,7 +1189,7 @@
         <div class="flex-shrink-0 border-t border-sidebar-light p-4">
           <div class="flex items-center gap-3">
             <img
-              src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff"
+              src="/assets/img/avatars/admin-user-3b82f6.svg"
               alt="Admin"
               class="h-10 w-10 rounded-full"
             />
@@ -1245,11 +1245,18 @@
             <!-- Image 1 -->
             <div class="card group overflow-hidden">
               <div class="relative aspect-square">
-                <img
-                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop"
-                  alt="Mountain landscape"
-                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
+                <picture class="contents">
+                  <source srcset="/assets/img/gallery/mountain.avif" type="image/avif" />
+                  <img
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
+                    src="/assets/img/gallery/mountain.jpg"
+                    alt="Mountain landscape"
+                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                </picture>
                 <div
                   class="absolute inset-0 flex items-center justify-center gap-2 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 >
@@ -1300,11 +1307,18 @@
             <!-- Image 2 -->
             <div class="card group overflow-hidden">
               <div class="relative aspect-square">
-                <img
-                  src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400&h=400&fit=crop"
-                  alt="City skyline"
-                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
+                <picture class="contents">
+                  <source srcset="/assets/img/gallery/city-skyline.avif" type="image/avif" />
+                  <img
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
+                    src="/assets/img/gallery/city-skyline.jpg"
+                    alt="City skyline"
+                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                </picture>
                 <div
                   class="absolute inset-0 flex items-center justify-center gap-2 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 >
@@ -1355,11 +1369,18 @@
             <!-- Image 3 -->
             <div class="card group overflow-hidden">
               <div class="relative aspect-square">
-                <img
-                  src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=400&fit=crop"
-                  alt="Laptop coding"
-                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
+                <picture class="contents">
+                  <source srcset="/assets/img/gallery/laptop-coding.avif" type="image/avif" />
+                  <img
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
+                    src="/assets/img/gallery/laptop-coding.jpg"
+                    alt="Laptop coding"
+                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                </picture>
                 <div
                   class="absolute inset-0 flex items-center justify-center gap-2 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 >
@@ -1410,11 +1431,18 @@
             <!-- Image 4 -->
             <div class="card group overflow-hidden">
               <div class="relative aspect-square">
-                <img
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
-                  alt="Portrait"
-                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
+                <picture class="contents">
+                  <source srcset="/assets/img/gallery/portrait-woman.avif" type="image/avif" />
+                  <img
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
+                    src="/assets/img/gallery/portrait-woman.jpg"
+                    alt="Portrait"
+                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                </picture>
                 <div
                   class="absolute inset-0 flex items-center justify-center gap-2 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 >
@@ -1465,11 +1493,18 @@
             <!-- Image 5 -->
             <div class="card group overflow-hidden">
               <div class="relative aspect-square">
-                <img
-                  src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&h=400&fit=crop"
-                  alt="Forest"
-                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
+                <picture class="contents">
+                  <source srcset="/assets/img/gallery/forest.avif" type="image/avif" />
+                  <img
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
+                    src="/assets/img/gallery/forest.jpg"
+                    alt="Forest"
+                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                </picture>
                 <div
                   class="absolute inset-0 flex items-center justify-center gap-2 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 >
@@ -1520,11 +1555,18 @@
             <!-- Image 6 -->
             <div class="card group overflow-hidden">
               <div class="relative aspect-square">
-                <img
-                  src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=400&fit=crop"
-                  alt="Tech setup"
-                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
+                <picture class="contents">
+                  <source srcset="/assets/img/gallery/tech-setup.avif" type="image/avif" />
+                  <img
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
+                    src="/assets/img/gallery/tech-setup.jpg"
+                    alt="Tech setup"
+                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                </picture>
                 <div
                   class="absolute inset-0 flex items-center justify-center gap-2 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 >
@@ -1575,11 +1617,18 @@
             <!-- Image 7 -->
             <div class="card group overflow-hidden">
               <div class="relative aspect-square">
-                <img
-                  src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=400&fit=crop"
-                  alt="City street"
-                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
+                <picture class="contents">
+                  <source srcset="/assets/img/gallery/city-street.avif" type="image/avif" />
+                  <img
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
+                    src="/assets/img/gallery/city-street.jpg"
+                    alt="City street"
+                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                </picture>
                 <div
                   class="absolute inset-0 flex items-center justify-center gap-2 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 >
@@ -1630,11 +1679,18 @@
             <!-- Image 8 -->
             <div class="card group overflow-hidden">
               <div class="relative aspect-square">
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
-                  alt="Portrait man"
-                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
+                <picture class="contents">
+                  <source srcset="/assets/img/gallery/portrait-man.avif" type="image/avif" />
+                  <img
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
+                    src="/assets/img/gallery/portrait-man.jpg"
+                    alt="Portrait man"
+                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                </picture>
                 <div
                   class="absolute inset-0 flex items-center justify-center gap-2 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 >

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Tom Lee">
+  <defs>
+    <linearGradient id="g84cc16" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9fd749"/>
+      <stop offset="1" stop-color="#84cc16"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" fill="url(#g84cc16)"/>
+  <text x="64" y="64" dy=".35em" fill="#fff" text-anchor="middle" font-size="52" font-weight="600" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">TL</text>
+</svg>
