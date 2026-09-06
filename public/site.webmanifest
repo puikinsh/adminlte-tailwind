@@ -1,0 +1,14 @@
+{
+  "name": "AdminLTE Tailwind",
+  "short_name": "AdminLTE",
+  "description": "A responsive, dark-mode admin dashboard template built with Tailwind CSS v4.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a1d21",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" },
+    { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" }
+  ]
+}

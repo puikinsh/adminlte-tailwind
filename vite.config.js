@@ -1,10 +1,26 @@
 import { defineConfig } from 'vite'
-import { resolve } from 'path'
+import { resolve, relative, sep } from 'path'
 import { readdirSync, readFileSync, statSync } from 'fs'
 import tailwindcss from '@tailwindcss/vite'
 
 const root = resolve(__dirname)
 const IGNORE = new Set(['node_modules', 'dist', '.git', 'src', 'public', '.claude'])
+
+// Public URL the template is served from. Canonical tags, og:url, absolute
+// social-image URLs, sitemap.xml and robots.txt are all derived from this one
+// value so they can never disagree with each other. Override for a fork or a
+// staging deploy with `SITE_URL=https://example.com/ npm run build`.
+const SITE_URL = (process.env.SITE_URL || 'https://adminlte.io/themes/tailwind/').replace(
+  /\/*$/,
+  '/'
+)
+
+// Pages that should not be advertised to search engines: error and maintenance
+// screens, and the auth demos (which are duplicate-ish content, not destinations).
+const NOINDEX = /^\/(pages\/(404|500|maintenance)|examples\/)/
+
+/** '/index.html' -> site root; '/pages/x.html' -> absolute URL for that page. */
+const pageUrl = (path) => SITE_URL + (path === '/index.html' ? '' : path.replace(/^\//, ''))
 
 // Discover every .html page so the multi-page build emits all of them.
 function htmlInputs(dir = root, inputs = {}) {
@@ -53,6 +69,61 @@ function pagesIndex() {
   }
 }
 
+/**
+ * Per-page SEO head tags.
+ *
+ * Canonical URLs and og:url are unique per page, so hand-maintaining them across
+ * 35 duplicated <head> blocks would drift immediately. They are derived here from
+ * the page's own path instead. Social images are rewritten from root-relative to
+ * absolute because scrapers do not resolve relative og:image values.
+ */
+function seoTags() {
+  return {
+    name: 'seo-tags',
+    transformIndexHtml(html, ctx) {
+      const path = '/' + relative(root, ctx.filename).split(sep).join('/')
+      const url = pageUrl(path)
+      const tags = [
+        `<link rel="canonical" href="${url}" />`,
+        `<meta property="og:url" content="${url}" />`,
+        '<link rel="manifest" href="/site.webmanifest" />'
+      ]
+      if (NOINDEX.test(path)) tags.push('<meta name="robots" content="noindex, follow" />')
+      return html
+        .replace(
+          /(content=")(\/(?:og-image\.png|assets\/[^"]*))"/g,
+          (_, a, p) => a + SITE_URL.slice(0, -1) + p + '"'
+        )
+        .replace('</head>', '  ' + tags.join('\n    ') + '\n  </head>')
+    }
+  }
+}
+
+/** Emit sitemap.xml and robots.txt from the same page discovery as the build. */
+function sitemap() {
+  return {
+    name: 'sitemap',
+    generateBundle() {
+      const urls = Object.values(htmlInputs())
+        .map((file) => '/' + relative(root, file).split(sep).join('/'))
+        .filter((p) => !NOINDEX.test(p))
+        .sort()
+        .map((p) => `  <url><loc>${pageUrl(p)}</loc></url>`)
+        .join('\n')
+      this.emitFile({
+        type: 'asset',
+        fileName: 'sitemap.xml',
+        source: `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
+      })
+      this.emitFile({
+        type: 'asset',
+        fileName: 'robots.txt',
+        source: `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}sitemap.xml\n`
+      })
+    }
+  }
+}
+
 // Apply the stored color mode before first paint to avoid a light flash.
 const NO_FLASH =
   "<script>(function(){try{var k='adminlte.theme',v=localStorage.getItem(k)||'auto'," +
@@ -71,7 +142,7 @@ function themeNoFlash() {
 }
 
 export default defineConfig({
-  plugins: [tailwindcss(), pagesIndex(), themeNoFlash()],
+  plugins: [tailwindcss(), pagesIndex(), seoTags(), sitemap(), themeNoFlash()],
   build: {
     // ApexCharts + jsVectorMap form a large vendor chunk, but it's lazy-loaded
     // only on pages with a visualisation — so the size warning is benign here.
