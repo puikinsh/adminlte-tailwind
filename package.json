@@ -16,7 +16,6 @@
     "format:check": "prettier --check .",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
-    "check:chrome": "node scripts/check-chrome.mjs",
     "check:avatars": "node scripts/generate-avatars.mjs --check",
     "gen:avatars": "node scripts/generate-avatars.mjs"
   },

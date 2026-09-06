@@ -3,7 +3,16 @@ import { readdirSync, statSync } from 'fs'
 import { resolve, relative, sep } from 'path'
 
 const root = resolve(import.meta.dirname, '..')
-const IGNORE = new Set(['node_modules', 'dist', '.git', 'src', 'public', '.claude', 'tests'])
+const IGNORE = new Set([
+  'node_modules',
+  'dist',
+  '.git',
+  'src',
+  'public',
+  '.claude',
+  'tests',
+  'partials'
+])
 
 /** Same discovery rule as the Vite build, so a new page is covered automatically. */
 function pages(dir = root, out: string[] = []) {
@@ -60,6 +69,28 @@ test.describe('images are served from this origin', () => {
       })
       await page.goto(path, { waitUntil: 'networkidle' })
       expect(external, `${path} loaded a third-party resource`).toEqual([])
+    })
+  }
+})
+
+/** Pages that intentionally stand alone: auth screens and error pages. */
+const STANDALONE = new Set([
+  '/examples/lockscreen.html',
+  '/examples/login.html',
+  '/examples/register.html',
+  '/pages/404.html',
+  '/pages/500.html'
+])
+
+test.describe('shared chrome is present', () => {
+  for (const path of ALL) {
+    if (STANDALONE.has(path)) continue
+    test(`${path} renders the navbar, sidebar and footer`, async ({ page }) => {
+      await page.goto(path)
+      // Catches a page that lost or misspelled one of its @include comments.
+      await expect(page.locator('.app-sidebar')).toBeVisible()
+      await expect(page.locator('[data-lte-toggle="sidebar"]').first()).toBeVisible()
+      await expect(page.locator('footer').first()).toBeAttached()
     })
   }
 })

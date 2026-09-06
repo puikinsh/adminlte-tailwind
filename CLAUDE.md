@@ -12,14 +12,17 @@ AdminLTE Tailwind is a Tailwind CSS v4 implementation of the AdminLTE admin dash
 npm run dev           # Vite dev server with HMR
 npm run build         # Production build (all HTML pages)
 npm run preview       # Preview production build
-npm run typecheck     # tsc --noEmit
+npm run typecheck     # tsc --noEmit (browser project + tsconfig.node.json for tests)
 npm run lint          # ESLint (flat config)
 npm run format        # Prettier (writes)
 npm run format:check  # Prettier (check only, used in CI)
-npm run check:chrome  # Fails if shared chrome (navbar/sidebar/footer) drifts between pages
+npm test              # Playwright end-to-end suite (builds, previews, drives Chromium)
+npm run test:ui       # Playwright UI mode
+npm run gen:avatars   # Regenerate public/assets/img/avatars/*.svg from page references
+npm run check:avatars # Fails if a page references an avatar that has not been generated
 ```
 
-Node >= 22 required (`.nvmrc` says 22). There is no test suite. CI (`.github/workflows/ci.yml`) runs lint, format:check, typecheck, check:chrome, and build on Node 22/24/26.
+Node >= 22 required (`.nvmrc` says 22). CI (`.github/workflows/ci.yml`) runs lint, format:check, typecheck, check:avatars and build on Node 22/24/26, plus a separate `e2e` job running `npm test` on Node 22.
 
 ## Architecture
 
@@ -27,7 +30,9 @@ Node >= 22 required (`.nvmrc` says 22). There is no test suite. CI (`.github/wor
 
 `vite.config.js` recursively discovers every `.html` file (excluding `node_modules`, `dist`, `src`, `public`, etc.) and registers it as a Rollup input. Pages live at the root (`index.html`, `index2.html`, `index3.html`) and under `pages/`, `UI/`, `examples/`, `forms/`, `tables/`, `widgets/`, `mailbox/`. Adding a new `.html` file anywhere outside the ignored dirs automatically includes it in the build — no config change needed.
 
-**There is no templating system.** Every page duplicates the full layout markup (sidebar, header, footer). A change to shared chrome (e.g. a new sidebar link) must be replicated across all HTML pages — `npm run check:chrome` (also in CI) extracts the navbar/sidebar/footer from each full-layout page and fails if any differ from `index.html`, so drift can't ship silently.
+**Shared chrome lives in `partials/`.** The navbar, sidebar and footer exist once each in `partials/navbar.html`, `partials/sidebar.html` and `partials/footer.html`. The 30 full-layout pages reference them with `<!-- @include navbar -->`, which the `htmlIncludes` plugin in `vite.config.js` expands at build time (and in dev, where editing a partial triggers a full reload). A sidebar link is now a one-file edit.
+
+`partials/` is excluded from page discovery, so its files never become pages. The 5 standalone pages — the three auth screens and the two error pages — deliberately have no chrome; the e2e suite asserts every other page renders a sidebar, which catches a dropped or misspelled include.
 
 Every page loads the single entry point `<script type="module" src="/src/main.ts">`.
 
@@ -60,6 +65,34 @@ Page-specific modules are dynamically imported only when their DOM hook exists:
 
 The sidebar scrollbar is pure CSS (`scrollbar-width`/`scrollbar-color` on `.sidebar-menu` in `styles.css`) — no JS library.
 
+### Build-time generation in `vite.config.js`
+
+Besides the multi-page input discovery, the config owns four small plugins:
+
+| Plugin | What it does |
+| --- | --- |
+| `htmlIncludes` | Expands `<!-- @include name -->` from `partials/` |
+| `pagesIndex` | Exposes discovered pages as the `virtual:pages` module for ⌘K search |
+| `seoTags` | Injects per-page `<link rel="canonical">`, `og:url` and the manifest link, and rewrites social images to absolute URLs |
+| `sitemap` | Emits `sitemap.xml` and `robots.txt` |
+| `themeNoFlash` | Applies the stored color mode and direction before first paint |
+
+`seoTags` and `sitemap` both derive from the single `SITE_URL` constant, so they cannot disagree. Override it with `SITE_URL=https://example.com/ npm run build`. Error, maintenance and auth pages are marked `noindex` and kept out of the sitemap.
+
+### Images
+
+All images are local — the template makes no third-party requests, and the e2e suite asserts that.
+
+Avatars are generated SVGs in `public/assets/img/avatars/`, named `<person-slug>-<hex>.svg`. `scripts/generate-avatars.mjs` derives the set from the pages themselves, so adding an avatar means referencing the path and running `npm run gen:avatars`. Because SVG scales, one file serves every size the page needs.
+
+Photographs live in `public/assets/img/gallery/` as AVIF with a mozjpeg fallback, wired up with `<picture class="contents">` — the `contents` class stops the wrapper generating a box so the `<img>`'s sizing classes still resolve against the original parent.
+
+### Testing
+
+`tests/pages.spec.ts` runs against the production build (Playwright starts `npm run build && npm run preview`). It discovers pages with the same rule as the build, so new pages are covered automatically, and asserts: no console errors or failed requests, no third-party requests, shared chrome present, charts/map/calendar/kanban/datatable rendering, and the sidebar, treeview, theme cycle, RTL toggle, ⌘K palette and skip link behaviours.
+
+Tests are Node code and are type-checked through `tsconfig.node.json`; the root `tsconfig.json` keeps `types: []` so Node globals stay out of the browser source.
+
 ### Search page index (`virtual:pages`)
 
 The `pagesIndex` plugin in `vite.config.js` exposes the build's HTML discovery as a `virtual:pages` module (path + `<title>`-derived name per page), so new pages appear in the ⌘K palette automatically. `search.ts` keeps only optional curated metadata (category overrides + extra keywords in its `META` map); pages without an entry fall back to a directory-derived category.
@@ -78,4 +111,6 @@ Class-based dark mode: `.dark` on `<html>`, defined via `@custom-variant dark` i
 ### Gotchas
 
 - Sidebar submenus (`.nav-treeview`) animate via inline `display`, not Tailwind's `hidden` class — `main.ts` strips `hidden` and sets `display: none` on load. Don't add `hidden` to treeview markup.
+- Edit shared chrome in `partials/`, never in a page — a page only carries the `<!-- @include ... -->` comment.
+- TypeScript is pinned to 6.x on purpose. TypeScript 7 is the native port and ships without the JS compiler API typescript-eslint reads types through (it peers on `typescript <6.1.0`), so upgrading breaks linting. Revisit when TS 7.1 ships its stable API.
 - Active menu highlighting is URL-based at runtime (`initActiveMenuItem` in `main.ts`) — don't hardcode active classes on sidebar links.

@@ -34,9 +34,6 @@ jobs:
       - name: Check formatting
         run: npm run format:check
 
-      - name: Check chrome drift
-        run: npm run check:chrome
-
       - name: Check avatars are in sync
         run: npm run check:avatars
 

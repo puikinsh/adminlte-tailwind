@@ -4,7 +4,7 @@ import { readdirSync, readFileSync, statSync } from 'fs'
 import tailwindcss from '@tailwindcss/vite'
 
 const root = resolve(__dirname)
-const IGNORE = new Set(['node_modules', 'dist', '.git', 'src', 'public', '.claude'])
+const IGNORE = new Set(['node_modules', 'dist', '.git', 'src', 'public', '.claude', 'partials'])
 
 // Public URL the template is served from. Canonical tags, og:url, absolute
 // social-image URLs, sitemap.xml and robots.txt are all derived from this one
@@ -21,6 +21,47 @@ const NOINDEX = /^\/(pages\/(404|500|maintenance)|examples\/)/
 
 /** '/index.html' -> site root; '/pages/x.html' -> absolute URL for that page. */
 const pageUrl = (path) => SITE_URL + (path === '/index.html' ? '' : path.replace(/^\//, ''))
+
+const PARTIALS = resolve(root, 'partials')
+const INCLUDE = /^([ \t]*)<!--[ \t]*@include[ \t]+([\w-]+)[ \t]*-->[ \t]*$/gm
+
+/**
+ * Expands `<!-- @include name -->` with partials/name.html.
+ *
+ * The pages have no templating system, so the navbar, sidebar and footer used to
+ * be copy-pasted into all 30 full-layout pages — a sidebar link meant a 30-file
+ * edit, guarded by a drift check that caught divergence but could not prevent it.
+ * There is now one copy of each block and the duplication happens at build time.
+ *
+ * The include's own indentation is re-applied to every line of the partial so the
+ * emitted HTML stays readable.
+ */
+function htmlIncludes() {
+  const read = (name) => readFileSync(resolve(PARTIALS, `${name}.html`), 'utf8').trimEnd()
+  return {
+    name: 'html-includes',
+    configureServer(server) {
+      // A partial is not an entry point, so Vite would not watch it on its own.
+      server.watcher.add(PARTIALS)
+      server.watcher.on('change', (file) => {
+        if (!file.startsWith(PARTIALS)) return
+        const hot = server.hot ?? server.ws
+        hot?.send({ type: 'full-reload' })
+      })
+    },
+    transformIndexHtml: {
+      order: 'pre',
+      handler(html) {
+        return html.replace(INCLUDE, (_, indent, name) =>
+          read(name)
+            .split('\n')
+            .map((line) => (line ? indent + line : line))
+            .join('\n')
+        )
+      }
+    }
+  }
+}
 
 // Discover every .html page so the multi-page build emits all of them.
 function htmlInputs(dir = root, inputs = {}) {
@@ -142,7 +183,7 @@ function themeNoFlash() {
 }
 
 export default defineConfig({
-  plugins: [tailwindcss(), pagesIndex(), seoTags(), sitemap(), themeNoFlash()],
+  plugins: [tailwindcss(), htmlIncludes(), pagesIndex(), seoTags(), sitemap(), themeNoFlash()],
   build: {
     // ApexCharts + jsVectorMap form a large vendor chunk, but it's lazy-loaded
     // only on pages with a visualisation — so the size warning is benign here.
