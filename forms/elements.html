@@ -1226,8 +1226,12 @@
               <div class="card-body">
                 <form data-validate novalidate class="space-y-4">
                   <div>
-                    <label class="mb-1 block text-sm font-medium text-gray-700">Full Name</label>
+                    <label class="mb-1 block text-sm font-medium text-gray-700" for="full-name"
+                      >Full Name</label
+                    >
                     <input
+                      id="full-name"
+                      autocomplete="name"
                       type="text"
                       name="name"
                       required
@@ -1238,8 +1242,12 @@
                     <p class="invalid-feedback">Please enter at least 3 characters.</p>
                   </div>
                   <div>
-                    <label class="mb-1 block text-sm font-medium text-gray-700">Email</label>
+                    <label class="mb-1 block text-sm font-medium text-gray-700" for="email"
+                      >Email</label
+                    >
                     <input
+                      id="email"
+                      autocomplete="username"
                       type="email"
                       name="email"
                       required
@@ -1249,10 +1257,14 @@
                     <p class="invalid-feedback">Please enter a valid email address.</p>
                   </div>
                   <div>
-                    <label class="mb-1 block text-sm font-medium text-gray-700">Password</label>
+                    <label class="mb-1 block text-sm font-medium text-gray-700" for="password"
+                      >Password</label
+                    >
                     <input
+                      id="password"
                       type="password"
                       name="password"
+                      autocomplete="new-password"
                       required
                       minlength="8"
                       class="form-control"
@@ -1261,10 +1273,14 @@
                     <p class="invalid-feedback">Password must be at least 8 characters.</p>
                   </div>
                   <div>
-                    <label class="mb-1 block text-sm font-medium text-gray-700"
+                    <label
+                      class="mb-1 block text-sm font-medium text-gray-700"
+                      for="website-optional"
                       >Website <span class="font-normal text-gray-400">(optional)</span></label
                     >
                     <input
+                      id="website-optional"
+                      autocomplete="url"
                       type="url"
                       name="url"
                       class="form-control"
@@ -1307,24 +1323,38 @@
                   <div data-wizard-step class="space-y-4">
                     <h4 class="font-medium text-gray-800">Account</h4>
                     <div>
-                      <label class="mb-1 block text-sm font-medium text-gray-700">Username</label>
-                      <input type="text" class="form-control" placeholder="johndoe" />
+                      <label class="mb-1 block text-sm font-medium text-gray-700" for="username"
+                        >Username</label
+                      >
+                      <input id="username" type="text" class="form-control" placeholder="johndoe" />
                     </div>
                     <div>
-                      <label class="mb-1 block text-sm font-medium text-gray-700">Email</label>
-                      <input type="email" class="form-control" placeholder="you@example.com" />
+                      <label class="mb-1 block text-sm font-medium text-gray-700" for="email-2"
+                        >Email</label
+                      >
+                      <input
+                        id="email-2"
+                        type="email"
+                        class="form-control"
+                        placeholder="you@example.com"
+                      />
                     </div>
                   </div>
                   <!-- Step 2 -->
                   <div data-wizard-step class="hidden space-y-4">
                     <h4 class="font-medium text-gray-800">Profile</h4>
                     <div>
-                      <label class="mb-1 block text-sm font-medium text-gray-700">First Name</label>
-                      <input type="text" class="form-control" placeholder="John" />
+                      <label class="mb-1 block text-sm font-medium text-gray-700" for="first-name"
+                        >First Name</label
+                      >
+                      <input id="first-name" type="text" class="form-control" placeholder="John" />
                     </div>
                     <div>
-                      <label class="mb-1 block text-sm font-medium text-gray-700">Bio</label>
+                      <label class="mb-1 block text-sm font-medium text-gray-700" for="bio"
+                        >Bio</label
+                      >
                       <textarea
+                        id="bio"
                         class="form-control"
                         rows="3"
                         placeholder="Tell us about yourself"
@@ -1371,24 +1401,42 @@
               <div class="card-body">
                 <form>
                   <div class="form-group">
-                    <label class="form-label">Text Input</label>
-                    <input type="text" class="form-control" placeholder="Enter text..." />
+                    <label class="form-label" for="text-input">Text Input</label>
+                    <input
+                      id="text-input"
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter text..."
+                    />
                   </div>
 
                   <div class="form-group">
-                    <label class="form-label">Email Input</label>
-                    <input type="email" class="form-control" placeholder="name@example.com" />
+                    <label class="form-label" for="email-input">Email Input</label>
+                    <input
+                      id="email-input"
+                      autocomplete="username"
+                      type="email"
+                      class="form-control"
+                      placeholder="name@example.com"
+                    />
                     <p class="form-text">We'll never share your email with anyone else.</p>
                   </div>
 
                   <div class="form-group">
-                    <label class="form-label">Password</label>
-                    <input type="password" class="form-control" placeholder="Enter password..." />
+                    <label class="form-label" for="password-2">Password</label>
+                    <input
+                      id="password-2"
+                      type="password"
+                      autocomplete="current-password"
+                      class="form-control"
+                      placeholder="Enter password..."
+                    />
                   </div>
 
                   <div class="form-group">
-                    <label class="form-label">Textarea</label>
+                    <label class="form-label" for="textarea">Textarea</label>
                     <textarea
+                      id="textarea"
                       class="form-control"
                       rows="3"
                       placeholder="Enter your message..."
@@ -1396,8 +1444,8 @@
                   </div>
 
                   <div class="form-group">
-                    <label class="form-label">Select</label>
-                    <select class="form-control">
+                    <label class="form-label" for="select">Select</label>
+                    <select id="select" class="form-control">
                       <option value="">Choose an option...</option>
                       <option value="1">Option 1</option>
                       <option value="2">Option 2</option>
@@ -1408,8 +1456,8 @@
                   </div>
 
                   <div class="form-group">
-                    <label class="form-label">File Input</label>
-                    <input type="file" class="form-control" />
+                    <label class="form-label" for="file-input">File Input</label>
+                    <input id="file-input" type="file" class="form-control" />
                   </div>
 
                   <div class="flex gap-2">
@@ -1427,8 +1475,9 @@
               <div class="card-body">
                 <form>
                   <div class="form-group">
-                    <label class="form-label">Small Input</label>
+                    <label class="form-label" for="small-input">Small Input</label>
                     <input
+                      id="small-input"
                       type="text"
                       class="form-control form-control-sm"
                       placeholder="Small input"
@@ -1436,13 +1485,19 @@
                   </div>
 
                   <div class="form-group">
-                    <label class="form-label">Default Input</label>
-                    <input type="text" class="form-control" placeholder="Default input" />
+                    <label class="form-label" for="default-input">Default Input</label>
+                    <input
+                      id="default-input"
+                      type="text"
+                      class="form-control"
+                      placeholder="Default input"
+                    />
                   </div>
 
                   <div class="form-group">
-                    <label class="form-label">Large Input</label>
+                    <label class="form-label" for="large-input">Large Input</label>
                     <input
+                      id="large-input"
                       type="text"
                       class="form-control form-control-lg"
                       placeholder="Large input"
@@ -1450,13 +1505,25 @@
                   </div>
 
                   <div class="form-group">
-                    <label class="form-label">Disabled Input</label>
-                    <input type="text" class="form-control" placeholder="Disabled input" disabled />
+                    <label class="form-label" for="disabled-input">Disabled Input</label>
+                    <input
+                      id="disabled-input"
+                      type="text"
+                      class="form-control"
+                      placeholder="Disabled input"
+                      disabled
+                    />
                   </div>
 
                   <div class="form-group">
-                    <label class="form-label">Readonly Input</label>
-                    <input type="text" class="form-control" value="This is readonly" readonly />
+                    <label class="form-label" for="readonly-input">Readonly Input</label>
+                    <input
+                      id="readonly-input"
+                      type="text"
+                      class="form-control"
+                      value="This is readonly"
+                      readonly
+                    />
                   </div>
                 </form>
               </div>
@@ -1522,17 +1589,27 @@
             <div class="card-body space-y-4">
               <div class="input-group">
                 <span class="input-group-text">@</span>
-                <input type="text" class="form-control" placeholder="Username" />
+                <input
+                  aria-label="Username"
+                  type="text"
+                  class="form-control"
+                  placeholder="Username"
+                />
               </div>
 
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Recipient's email" />
+                <input
+                  aria-label="Recipient&#x27;s email"
+                  type="text"
+                  class="form-control"
+                  placeholder="Recipient's email"
+                />
                 <span class="input-group-text">@example.com</span>
               </div>
 
               <div class="input-group">
                 <span class="input-group-text">$</span>
-                <input type="text" class="form-control" placeholder="Amount" />
+                <input aria-label="Amount" type="text" class="form-control" placeholder="Amount" />
                 <span class="input-group-text">.00</span>
               </div>
 
@@ -1547,7 +1624,12 @@
                     />
                   </svg>
                 </span>
-                <input type="text" class="form-control" placeholder="Search..." />
+                <input
+                  aria-label="Search"
+                  type="text"
+                  class="form-control"
+                  placeholder="Search..."
+                />
               </div>
 
               <div class="input-group">
@@ -1561,7 +1643,12 @@
                     />
                   </svg>
                 </span>
-                <input type="email" class="form-control" placeholder="Email address" />
+                <input
+                  aria-label="Email address"
+                  type="email"
+                  class="form-control"
+                  placeholder="Email address"
+                />
                 <button class="btn btn-primary">Subscribe</button>
               </div>
             </div>
@@ -1575,22 +1662,28 @@
               </div>
               <div class="card-body">
                 <div class="form-group">
-                  <label class="form-label">Valid Input</label>
-                  <input type="text" class="form-control is-valid" value="This is valid" />
+                  <label class="form-label" for="valid-input">Valid Input</label>
+                  <input
+                    id="valid-input"
+                    type="text"
+                    class="form-control is-valid"
+                    value="This is valid"
+                  />
                   <p class="form-text form-text-valid">Looks good!</p>
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label">Valid Select</label>
-                  <select class="form-control is-valid">
+                  <label class="form-label" for="valid-select">Valid Select</label>
+                  <select id="valid-select" class="form-control is-valid">
                     <option value="1" selected>Valid option selected</option>
                   </select>
                   <p class="form-text form-text-valid">Great choice!</p>
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label">Valid Textarea</label>
-                  <textarea class="form-control is-valid">This content is valid.</textarea>
+                  <label class="form-label" for="valid-textarea">Valid Textarea</label>
+                  <textarea id="valid-textarea" class="form-control is-valid">
+This content is valid.</textarea>
                   <p class="form-text form-text-valid">Perfect!</p>
                 </div>
               </div>
@@ -1601,23 +1694,44 @@
                 <h3 class="text-lg font-medium text-gray-800">Invalid Input States</h3>
               </div>
               <div class="card-body">
-                <div class="form-group">
-                  <label class="form-label">Invalid Input</label>
-                  <input type="text" class="form-control is-invalid" value="" />
-                  <p class="form-text form-text-invalid">Please provide a valid value.</p>
-                </div>
+                <form novalidate>
+                  <div class="form-group">
+                    <label class="form-label" for="invalid-input">Invalid Input</label>
+                    <input
+                      id="invalid-input"
+                      type="text"
+                      class="form-control is-invalid"
+                      value=""
+                    />
+                    <p class="form-text form-text-invalid">Please provide a valid value.</p>
+                  </div>
 
-                <div class="form-group">
-                  <label class="form-label">Invalid Email</label>
-                  <input type="email" class="form-control is-invalid" value="invalid-email" />
-                  <p class="form-text form-text-invalid">Please enter a valid email address.</p>
-                </div>
+                  <div class="form-group">
+                    <label class="form-label" for="invalid-email">Invalid Email</label>
+                    <input
+                      id="invalid-email"
+                      autocomplete="username"
+                      type="email"
+                      class="form-control is-invalid"
+                      value="invalid-email"
+                    />
+                    <p class="form-text form-text-invalid">Please enter a valid email address.</p>
+                  </div>
 
-                <div class="form-group">
-                  <label class="form-label">Invalid Password</label>
-                  <input type="password" class="form-control is-invalid" value="123" />
-                  <p class="form-text form-text-invalid">Password must be at least 8 characters.</p>
-                </div>
+                  <div class="form-group">
+                    <label class="form-label" for="invalid-password">Invalid Password</label>
+                    <input
+                      id="invalid-password"
+                      type="password"
+                      autocomplete="current-password"
+                      class="form-control is-invalid"
+                      value="123"
+                    />
+                    <p class="form-text form-text-invalid">
+                      Password must be at least 8 characters.
+                    </p>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -1630,23 +1744,38 @@
             <div class="card-body">
               <form>
                 <div class="mb-4 grid grid-cols-1 items-center gap-4 md:grid-cols-4">
-                  <label class="form-label mb-0 md:text-right">Email</label>
+                  <label class="form-label mb-0 md:text-right" for="email-3">Email</label>
                   <div class="md:col-span-3">
-                    <input type="email" class="form-control" placeholder="Enter email" />
+                    <input
+                      id="email-3"
+                      autocomplete="username"
+                      type="email"
+                      class="form-control"
+                      placeholder="Enter email"
+                    />
                   </div>
                 </div>
 
                 <div class="mb-4 grid grid-cols-1 items-center gap-4 md:grid-cols-4">
-                  <label class="form-label mb-0 md:text-right">Password</label>
+                  <label class="form-label mb-0 md:text-right" for="password-3">Password</label>
                   <div class="md:col-span-3">
-                    <input type="password" class="form-control" placeholder="Enter password" />
+                    <input
+                      id="password-3"
+                      type="password"
+                      autocomplete="current-password"
+                      class="form-control"
+                      placeholder="Enter password"
+                    />
                   </div>
                 </div>
 
                 <div class="mb-4 grid grid-cols-1 items-start gap-4 md:grid-cols-4">
-                  <label class="form-label mb-0 md:pt-2 md:text-right">Description</label>
+                  <label class="form-label mb-0 md:pt-2 md:text-right" for="description"
+                    >Description</label
+                  >
                   <div class="md:col-span-3">
                     <textarea
+                      id="description"
                       class="form-control"
                       rows="3"
                       placeholder="Enter description"
@@ -1681,10 +1810,10 @@
             <div class="card-body">
               <form class="flex flex-wrap items-center gap-3">
                 <div class="min-w-[200px] flex-1">
-                  <input type="text" class="form-control" placeholder="Name" />
+                  <input aria-label="Name" type="text" class="form-control" placeholder="Name" />
                 </div>
                 <div class="min-w-[200px] flex-1">
-                  <input type="email" class="form-control" placeholder="Email" />
+                  <input aria-label="Email" type="email" class="form-control" placeholder="Email" />
                 </div>
                 <div>
                   <div class="form-check">
@@ -1706,28 +1835,34 @@
               <form>
                 <div class="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div class="form-group mb-0">
-                    <label class="form-label">First Name</label>
-                    <input type="text" class="form-control" placeholder="John" />
+                    <label class="form-label" for="first-name-2">First Name</label>
+                    <input id="first-name-2" type="text" class="form-control" placeholder="John" />
                   </div>
                   <div class="form-group mb-0">
-                    <label class="form-label">Last Name</label>
-                    <input type="text" class="form-control" placeholder="Doe" />
+                    <label class="form-label" for="last-name">Last Name</label>
+                    <input id="last-name" type="text" class="form-control" placeholder="Doe" />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label">Email</label>
-                  <input type="email" class="form-control" placeholder="john.doe@example.com" />
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label">Address</label>
-                  <input type="text" class="form-control" placeholder="1234 Main St" />
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label">Address 2</label>
+                  <label class="form-label" for="email-4">Email</label>
                   <input
+                    id="email-4"
+                    type="email"
+                    class="form-control"
+                    placeholder="john.doe@example.com"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="address">Address</label>
+                  <input id="address" type="text" class="form-control" placeholder="1234 Main St" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="address-2">Address 2</label>
+                  <input
+                    id="address-2"
                     type="text"
                     class="form-control"
                     placeholder="Apartment, studio, or floor"
@@ -1736,12 +1871,12 @@
 
                 <div class="mb-4 grid grid-cols-1 gap-4 md:grid-cols-3">
                   <div class="form-group mb-0 md:col-span-1">
-                    <label class="form-label">City</label>
-                    <input type="text" class="form-control" placeholder="City" />
+                    <label class="form-label" for="city">City</label>
+                    <input id="city" type="text" class="form-control" placeholder="City" />
                   </div>
                   <div class="form-group mb-0">
-                    <label class="form-label">State</label>
-                    <select class="form-control">
+                    <label class="form-label" for="state">State</label>
+                    <select id="state" class="form-control">
                       <option value="">Choose...</option>
                       <option>California</option>
                       <option>New York</option>
@@ -1749,8 +1884,8 @@
                     </select>
                   </div>
                   <div class="form-group mb-0">
-                    <label class="form-label">Zip</label>
-                    <input type="text" class="form-control" placeholder="12345" />
+                    <label class="form-label" for="zip">Zip</label>
+                    <input id="zip" type="text" class="form-control" placeholder="12345" />
                   </div>
                 </div>
 

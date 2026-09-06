@@ -7,7 +7,7 @@
  * Every initializer is guarded by an element lookup, so a single import can be
  * dropped on any page and only the visualisations that actually exist render.
  */
-import ApexCharts from 'apexcharts/core'
+import ApexCharts, { type ApexOptions } from 'apexcharts/core'
 import 'apexcharts/area' // line/area/scatter chart types
 import 'apexcharts/bar'
 import 'apexcharts/donut'
@@ -32,7 +32,7 @@ const get = (sel: string) => document.querySelector<HTMLElement>(sel)
 function initSalesAreaChart() {
   const target = get('#revenue-chart')
   if (!target) return
-  const options: any = {
+  const options: ApexOptions = {
     series: [
       { name: 'This Month', data: [28, 48, 40, 19, 86, 27, 90] },
       { name: 'Last Month', data: [65, 59, 80, 81, 56, 55, 40] }
@@ -73,7 +73,7 @@ function initSalesAreaChart() {
 function initVisitorsAreaChart() {
   const target = get('#visitors-chart')
   if (!target) return
-  const options: any = {
+  const options: ApexOptions = {
     series: [
       { name: 'This Week', data: [31, 40, 28, 51, 42, 85, 77] },
       { name: 'Last Week', data: [11, 32, 45, 32, 34, 52, 41] }
@@ -100,7 +100,7 @@ function initVisitorsAreaChart() {
 function initSalesDonut() {
   const target = get('#sales-donut')
   if (!target) return
-  const options: any = {
+  const options: ApexOptions = {
     series: [12500, 8200, 5300, 3100],
     labels: ['Electronics', 'Clothing', 'Home & Garden', 'Sports'],
     chart: { type: 'donut', height: 250, fontFamily: 'inherit', foreColor: '#94a3b8' },
@@ -128,7 +128,7 @@ function initSalesDonut() {
 function initRevenueBarChart() {
   const target = get('#revenue-bar')
   if (!target) return
-  const options: any = {
+  const options: ApexOptions = {
     series: [
       { name: 'Revenue', data: [44, 55, 57, 56, 61, 58, 63, 60] },
       { name: 'Expenses', data: [26, 34, 35, 30, 40, 36, 42, 38] }
@@ -164,6 +164,7 @@ async function initWorldMap() {
   const { default: jsVectorMap } = await import('jsvectormap')
   ;(window as any).jsVectorMap = jsVectorMap
   await import('jsvectormap/dist/maps/world.js')
+  // jsvectormap ships no type definitions, so its options and instance stay untyped.
   const map: any = new jsVectorMap({
     selector: '#world-map',
     map: 'world',

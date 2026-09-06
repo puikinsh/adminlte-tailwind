@@ -1219,7 +1219,11 @@
             <div class="grid h-[32rem] grid-cols-1 md:grid-cols-3">
               <div class="overflow-y-auto border-r border-gray-200">
                 <div class="border-b border-gray-200 p-3">
-                  <input class="form-control" placeholder="Search contacts..." />
+                  <input
+                    aria-label="Search contacts"
+                    class="form-control"
+                    placeholder="Search contacts..."
+                  />
                 </div>
 
                 <a href="#" class="flex items-center gap-3 bg-blue-50 p-3 hover:bg-gray-50">
@@ -1336,11 +1340,11 @@
                 </div>
                 <div class="border-t border-gray-200 p-3">
                   <form class="flex gap-2" onsubmit="return false">
-                    <input class="form-control flex-1" placeholder="Type a message..." /><button
-                      class="btn btn-primary"
-                    >
-                      Send
-                    </button>
+                    <input
+                      aria-label="Type a message"
+                      class="form-control flex-1"
+                      placeholder="Type a message..."
+                    /><button class="btn btn-primary">Send</button>
                   </form>
                 </div>
               </div>

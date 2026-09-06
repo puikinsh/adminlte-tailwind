@@ -1221,24 +1221,28 @@
             </div>
             <div class="card-body space-y-4">
               <div>
-                <label class="mb-1 block text-sm font-medium text-gray-700">To</label
-                ><input class="form-control" placeholder="recipient@example.com" />
+                <label class="mb-1 block text-sm font-medium text-gray-700" for="to">To</label
+                ><input id="to" class="form-control" placeholder="recipient@example.com" />
               </div>
               <div>
-                <label class="mb-1 block text-sm font-medium text-gray-700">Subject</label
-                ><input class="form-control" placeholder="Subject" />
+                <label class="mb-1 block text-sm font-medium text-gray-700" for="subject"
+                  >Subject</label
+                ><input id="subject" class="form-control" placeholder="Subject" />
               </div>
               <div>
-                <label class="mb-1 block text-sm font-medium text-gray-700">Message</label
+                <label class="mb-1 block text-sm font-medium text-gray-700" for="message"
+                  >Message</label
                 ><textarea
+                  id="message"
                   class="form-control"
                   rows="10"
                   placeholder="Write your message..."
                 ></textarea>
               </div>
               <div>
-                <label class="mb-1 block text-sm font-medium text-gray-700">Attachments</label
-                ><input type="file" multiple class="block text-sm text-gray-600" />
+                <label class="mb-1 block text-sm font-medium text-gray-700" for="attachments"
+                  >Attachments</label
+                ><input id="attachments" type="file" multiple class="block text-sm text-gray-600" />
               </div>
             </div>
             <div class="card-footer flex justify-between">

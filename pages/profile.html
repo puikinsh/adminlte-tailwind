@@ -1582,6 +1582,7 @@
                         />
                         <div class="flex-1">
                           <textarea
+                            aria-label="Write a comment"
                             class="form-control"
                             rows="2"
                             placeholder="Write a comment..."
@@ -1650,25 +1651,45 @@
                   <div id="settings" class="tab-pane hidden">
                     <form>
                       <div class="mb-4">
-                        <label class="form-label">Name</label>
-                        <input type="text" class="form-control" value="Alexander Pierce" />
+                        <label class="form-label" for="name">Name</label>
+                        <input
+                          id="name"
+                          type="text"
+                          class="form-control"
+                          value="Alexander Pierce"
+                        />
                       </div>
                       <div class="mb-4">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-control" value="alex@example.com" />
+                        <label class="form-label" for="email">Email</label>
+                        <input
+                          id="email"
+                          type="email"
+                          class="form-control"
+                          value="alex@example.com"
+                        />
                       </div>
                       <div class="mb-4">
-                        <label class="form-label">Bio</label>
-                        <textarea class="form-control" rows="3">
+                        <label class="form-label" for="bio">Bio</label>
+                        <textarea id="bio" class="form-control" rows="3">
 Web Developer with expertise in UI/UX design. Loves to code and create amazing web experiences.</textarea>
                       </div>
                       <div class="mb-4">
-                        <label class="form-label">Location</label>
-                        <input type="text" class="form-control" value="San Francisco, CA" />
+                        <label class="form-label" for="location">Location</label>
+                        <input
+                          id="location"
+                          type="text"
+                          class="form-control"
+                          value="San Francisco, CA"
+                        />
                       </div>
                       <div class="mb-4">
-                        <label class="form-label">Website</label>
-                        <input type="url" class="form-control" value="https://example.com" />
+                        <label class="form-label" for="website">Website</label>
+                        <input
+                          id="website"
+                          type="url"
+                          class="form-control"
+                          value="https://example.com"
+                        />
                       </div>
                       <div class="flex justify-end">
                         <button type="submit" class="btn btn-primary">Save Changes</button>

@@ -56,7 +56,7 @@
 
           <form>
             <div class="form-group">
-              <label class="form-label">Email Address</label>
+              <label class="form-label" for="email-address">Email Address</label>
               <div class="relative">
                 <span class="absolute top-1/2 left-3 -translate-y-1/2 text-gray-400">
                   <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -68,7 +68,13 @@
                     />
                   </svg>
                 </span>
-                <input type="email" class="form-control pl-10" placeholder="admin@example.com" />
+                <input
+                  id="email-address"
+                  type="email"
+                  autocomplete="username"
+                  class="form-control pl-10"
+                  placeholder="admin@example.com"
+                />
               </div>
             </div>
 
@@ -89,7 +95,9 @@
                   </svg>
                 </span>
                 <input
+                  aria-label="Enter your password"
                   type="password"
+                  autocomplete="current-password"
                   class="form-control pl-10"
                   placeholder="Enter your password"
                 />
