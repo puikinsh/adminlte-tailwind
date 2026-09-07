@@ -148,4 +148,7 @@ adminlte-tailwind/
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE).
+
+The bundled photographs come from Unsplash under the Unsplash License, and
+`simple-datatables` is LGPL-3.0. [CREDITS.md](CREDITS.md) has the details.
