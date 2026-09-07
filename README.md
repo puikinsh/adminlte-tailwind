@@ -35,7 +35,7 @@ Node 22 or newer is required.
 | `npm run typecheck`   | TypeScript, browser and Node projects                      |
 | `npm run gen:avatars` | Regenerate the local avatar SVGs                           |
 
-First run of the test suite needs the browser: `npx playwright install chromium`.
+First run of the test suite needs the browsers: `npx playwright install chromium firefox webkit`.
 
 ## What's included
 

@@ -15,7 +15,14 @@ export default defineConfig({
     baseURL: 'http://localhost:4173',
     trace: 'retain-on-failure'
   },
-  projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
+  // WebKit matters most here: the template leans on `display: contents` for the
+  // <picture> wrappers and on scrollbar-color for the sidebar, both of which
+  // behave differently in Safari.
+  projects: [
+    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+    { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
+    { name: 'webkit', use: { ...devices['Desktop Safari'] } }
+  ],
   webServer: {
     command: 'npm run build && npm run preview -- --port 4173',
     url: 'http://localhost:4173',

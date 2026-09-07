@@ -16,8 +16,10 @@ npm run typecheck     # tsc --noEmit (browser project + tsconfig.node.json for t
 npm run lint          # ESLint (flat config)
 npm run format        # Prettier (writes)
 npm run format:check  # Prettier (check only, used in CI)
-npm test              # Playwright end-to-end suite (builds, previews, drives Chromium)
+npm test              # Playwright suite (builds, previews, drives Chromium/Firefox/WebKit)
 npm run test:ui       # Playwright UI mode
+npm run build:demo    # The adminlte.io demo build (subpath base + canonical URLs)
+npm run preview:demo  # Serve that demo build
 npm run gen:avatars   # Regenerate public/assets/img/avatars/*.svg from page references
 npm run check:avatars # Fails if a page references an avatar that has not been generated
 ```
@@ -96,7 +98,13 @@ Photographs live in `public/assets/img/gallery/` as AVIF with a mozjpeg fallback
 
 `tests/pages.spec.ts` runs against the production build (Playwright starts `npm run build && npm run preview`). It discovers pages with the same rule as the build, so new pages are covered automatically, and asserts: no console errors or failed requests, no third-party requests, shared chrome present, charts/map/calendar/kanban/datatable rendering, and the sidebar, treeview, theme cycle, RTL toggle, ⌘K palette and skip link behaviours.
 
-Tests are Node code and are type-checked through `tsconfig.node.json`; the root `tsconfig.json` keeps `types: []` so Node globals stay out of the browser source.
+It also asserts that every button, link and form control has an accessible name, and that no page scrolls sideways at 375px (including the fixed navbar, whose overflow never grows the document).
+
+The suite runs on Chromium, Firefox and WebKit. WebKit is the one that matters most: the template relies on `display: contents` for the `<picture>` wrappers and `scrollbar-color` for the sidebar. One test branches on `browserName` — Safari only moves Tab focus to links when Full Keyboard Access is enabled, so the skip link is focused directly there instead of via Tab.
+
+Tests are Node code and are type-checked through `tsconfig.node.json`; the root `tsconfig.json` keeps `types: []` so Node globals stay out of the browser source, while the test project adds the DOM lib because `page.evaluate()` callbacks run in the browser.
+
+Note that `reuseExistingServer` is on outside CI: if you already have `npm run preview` running, the suite will use it and skip its own build, so rebuild or stop that server before trusting a run.
 
 ### Search page index (`virtual:pages`)
 

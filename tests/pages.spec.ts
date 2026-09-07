@@ -232,10 +232,21 @@ test.describe('core interactions work', () => {
     await expect(page).toHaveURL(/kanban\.html/)
   })
 
-  test('a skip link is the first thing keyboard focus reaches', async ({ page }) => {
+  test('a skip link is the first thing keyboard focus reaches', async ({ page, browserName }) => {
     await page.goto('/index.html')
-    await page.keyboard.press('Tab')
-    await expect(page.locator('.skip-link')).toBeFocused()
+    const skip = page.locator('.skip-link')
+
+    if (browserName === 'webkit') {
+      // Safari only moves Tab focus to links when Full Keyboard Access is on, so
+      // the Tab order is not assertable there. Check the link is focusable and
+      // reveals itself, which is the part the template is responsible for.
+      await skip.focus()
+    } else {
+      await page.keyboard.press('Tab')
+    }
+
+    await expect(skip).toBeFocused()
+    await expect(skip).toBeVisible()
   })
 
   test('a sidebar treeview opens on click', async ({ page }) => {
