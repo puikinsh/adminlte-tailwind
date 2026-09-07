@@ -8,6 +8,40 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **`CREDITS.md`**: provenance and licence terms for the bundled photographs, and a note that
+  `simple-datatables` is LGPL-3.0 rather than MIT.
+- **Cross-browser tests**: the suite runs on Chromium, Firefox and WebKit (555 tests).
+- **`npm run build:demo` / `preview:demo`**: the adminlte.io demo deployment, which is served from
+  a subpath, is now an explicit workflow rather than the default. `scripts/check-base.mjs` fails
+  the demo build if any reference escapes the base path.
+
+### Changed
+
+- **`npm run build` now produces a plain root deployment.** `SITE_URL` previously defaulted to
+  `https://adminlte.io/themes/tailwind/`, so anyone cloning the template got canonical tags and a
+  sitemap pointing at a domain they do not own. It now has no default: canonical, `og:url` and
+  `sitemap.xml` are simply not emitted until you name your own domain. `BASE_PATH` serves the site
+  from a subdirectory.
+
+### Fixed
+
+- **Every button and link now has an accessible name.** 112 icon-only buttons had none — card
+  controls, the contacts and gallery action rows, mailbox toolbar and stars, kanban menus, the
+  social sign-in buttons — so a screen reader announced them all as just "button". The ⌘K palette
+  was unnamed on every page and is now a labelled dialog with a labelled input.
+- **Heading hierarchy**: only 6 of 35 pages had a valid outline; card titles were `<h3>` directly
+  under the page `<h1>`, and some titles dropped to `<h5>`/`<h6>`. All 35 are now clean. No CSS
+  targets heading tags, so this is purely semantic.
+- **Horizontal overflow on phones**: the data table had no scroll container of its own (127px of
+  page overflow) and the contacts action row could not wrap (21px). Separately, the navbar brand
+  reserved the full 250px sidebar width below 992px — where the sidebar is an off-canvas overlay —
+  pushing the navbar icons 15px off the right edge of a 375px screen on _every_ page. Because the
+  navbar is fixed, that never showed up as document overflow.
+- `import.meta.dirname` replaces `__dirname` in the Vite config, clearing a deprecation warning on
+  every dev and preview start.
+
+### Added
+
 - **End-to-end test suite** (`npm test`): 115 Playwright tests against the production build.
   Pages are discovered with the same rule the Vite build uses, so new pages are covered
   automatically. Every page must load with no console error, no failed request and no
