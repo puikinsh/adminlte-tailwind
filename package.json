@@ -10,6 +10,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:demo": "SITE_URL=https://adminlte.io/themes/tailwind/ BASE_PATH=/themes/tailwind/ vite build && BASE_PATH=/themes/tailwind/ node scripts/check-base.mjs",
+    "preview:demo": "SITE_URL=https://adminlte.io/themes/tailwind/ BASE_PATH=/themes/tailwind/ vite preview",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json",
     "lint": "eslint .",

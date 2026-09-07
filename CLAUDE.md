@@ -72,12 +72,17 @@ Besides the multi-page input discovery, the config owns four small plugins:
 | Plugin | What it does |
 | --- | --- |
 | `htmlIncludes` | Expands `<!-- @include name -->` from `partials/` |
+| `basePaths` | Prefixes internal page links with `BASE_PATH` (no-op at root) |
 | `pagesIndex` | Exposes discovered pages as the `virtual:pages` module for ⌘K search |
 | `seoTags` | Injects per-page `<link rel="canonical">`, `og:url` and the manifest link, and rewrites social images to absolute URLs |
 | `sitemap` | Emits `sitemap.xml` and `robots.txt` |
 | `themeNoFlash` | Applies the stored color mode and direction before first paint |
 
-`seoTags` and `sitemap` both derive from the single `SITE_URL` constant, so they cannot disagree. Override it with `SITE_URL=https://example.com/ npm run build`. Error, maintenance and auth pages are marked `noindex` and kept out of the sitemap.
+`seoTags` and `sitemap` both derive from the single `SITE_URL` constant, so they cannot disagree. Error, maintenance and auth pages are marked `noindex` and kept out of the sitemap.
+
+**Deployment defaults matter here.** `npm run build` is what a user cloning the template gets: base `/`, and `SITE_URL` unset so no canonical, `og:url` or `sitemap.xml` is emitted at all — a canonical pointing at a domain they do not own would be worse than none. `robots.txt` is always emitted, gaining its `Sitemap:` line only when `SITE_URL` is set.
+
+The adminlte.io demo is the one deployment served from a subpath, and it is our own concern rather than the template's default: `npm run build:demo` sets `SITE_URL` and `BASE_PATH` together, and `npm run preview:demo` serves it. Vite rewrites asset references for a base but leaves `<a href>` page links alone, so the `basePaths` plugin rewrites those; `scripts/check-base.mjs` runs after `build:demo` and fails if any reference escapes the base. `search.ts` and `main.ts` read `import.meta.env.BASE_URL` so runtime navigation and active-menu matching work under a subpath too.
 
 ### Images
 

@@ -115,6 +115,9 @@ function escapeHtml(s: string): string {
   )
 }
 
+/** Page paths in the index are root-relative; links must sit under the base. */
+const withBase = (path: string) => import.meta.env.BASE_URL.replace(/\/$/, '') + path
+
 function navigate(path: string) {
   close()
   window.location.href = path
@@ -166,7 +169,7 @@ function render(query: string) {
 
     for (const item of list) {
       const el = document.createElement('a')
-      el.href = item.path
+      el.href = withBase(item.path)
       el.className =
         'search-item flex items-center gap-3 mx-2 px-2 py-2 rounded-lg cursor-pointer text-gray-700 no-underline'
       el.innerHTML =
@@ -177,7 +180,7 @@ function render(query: string) {
       const idx = items.length
       el.addEventListener('click', (e) => {
         e.preventDefault()
-        navigate(item.path)
+        navigate(withBase(item.path))
       })
       el.addEventListener('mousemove', () => setSelected(idx))
       items.push(el)

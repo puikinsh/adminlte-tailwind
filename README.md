@@ -95,13 +95,32 @@ file under `@layer components`.
 
 ## Deploying
 
-Canonical URLs, `og:url`, absolute social-image URLs, `sitemap.xml` and
-`robots.txt` are all generated from a single `SITE_URL` constant in
-`vite.config.js`. Point it at your own domain when you deploy:
+`npm run build` produces a site that works when dropped at the root of any
+host, with no URLs baked in that belong to anyone else.
+
+Two environment variables adjust that:
+
+| Variable    | Default | Effect                                                                          |
+| ----------- | ------- | ------------------------------------------------------------------------------- |
+| `SITE_URL`  | unset   | Turns on canonical tags, `og:url`, absolute social-image URLs and `sitemap.xml` |
+| `BASE_PATH` | `/`     | Serves the site from a subdirectory                                             |
+
+`SITE_URL` has no default on purpose — a canonical tag pointing at a domain you
+do not own is worse than none at all, so those tags are simply omitted until you
+say what your domain is:
 
 ```bash
 SITE_URL=https://example.com/ npm run build
 ```
+
+To serve from a subdirectory, set both:
+
+```bash
+SITE_URL=https://example.com/admin/ BASE_PATH=/admin/ npm run build
+```
+
+`node scripts/check-base.mjs` (with the same `BASE_PATH`) verifies no link
+escapes the subdirectory.
 
 ## Project structure
 

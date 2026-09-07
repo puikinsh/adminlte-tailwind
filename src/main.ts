@@ -168,8 +168,11 @@ document.addEventListener('DOMContentLoaded', () => {
  * Opens parent treeview menus and applies active styling to the current page link.
  */
 function initActiveMenuItem() {
-  // Treat the site root as /index.html so the dashboard link highlights correctly
-  const currentPath = window.location.pathname === '/' ? '/index.html' : window.location.pathname
+  // Treat the site root as index.html so the dashboard link highlights correctly.
+  // Under a base path the root is the base itself, not '/'.
+  const base = import.meta.env.BASE_URL
+  const currentPath =
+    window.location.pathname === base ? base + 'index.html' : window.location.pathname
   const sidebarMenu = document.querySelector('.sidebar-menu')
 
   if (!sidebarMenu) return
