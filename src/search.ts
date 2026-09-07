@@ -211,12 +211,17 @@ function buildOverlay() {
   overlay = document.createElement('div')
   overlay.id = 'search-overlay'
   overlay.className = 'fixed inset-0 z-[100] hidden'
+  // The palette is a modal dialog and needs to announce itself as one; the
+  // input needs its own name because the placeholder is not one.
+  overlay.setAttribute('role', 'dialog')
+  overlay.setAttribute('aria-modal', 'true')
+  overlay.setAttribute('aria-label', 'Search pages')
   overlay.innerHTML =
     '<div class="search-backdrop absolute inset-0 bg-gray-900/50 backdrop-blur-sm"></div>' +
     '<div class="search-panel absolute left-1/2 top-[14vh] -translate-x-1/2 w-[92%] max-w-xl bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden">' +
     '<div class="flex items-center gap-3 px-4 border-b border-gray-100">' +
     `<span class="text-gray-400 shrink-0">${ICON_SEARCH}</span>` +
-    '<input type="text" class="search-input flex-1 py-3.5 text-sm text-gray-800 outline-none placeholder-gray-400 bg-transparent" placeholder="Search pages…" autocomplete="off" spellcheck="false">' +
+    '<input type="text" aria-label="Search pages" class="search-input flex-1 py-3.5 text-sm text-gray-800 outline-none placeholder-gray-400 bg-transparent" placeholder="Search pages…" autocomplete="off" spellcheck="false">' +
     '<kbd class="text-[11px] text-gray-400 border border-gray-200 rounded px-1.5 py-0.5 shrink-0">esc</kbd>' +
     '</div>' +
     '<div class="search-results max-h-[58vh] overflow-y-auto py-2"></div>' +

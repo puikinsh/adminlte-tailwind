@@ -95,6 +95,43 @@ test.describe('shared chrome is present', () => {
   }
 })
 
+test.describe('everything interactive has an accessible name', () => {
+  for (const path of ALL) {
+    test(`${path} names every control`, async ({ page }) => {
+      await page.goto(path)
+      const nameless = await page.evaluate(() => {
+        const described = (el: Element) =>
+          (el.getAttribute('aria-label') || '').trim() ||
+          el.getAttribute('aria-labelledby') ||
+          el.getAttribute('title')
+
+        const out: string[] = []
+
+        // Buttons and links: a name can also come from visible text or an
+        // <img alt>, which is how most of them are named.
+        for (const el of document.querySelectorAll('button, [role="button"], a[href]')) {
+          if (described(el)) continue
+          if ((el.textContent || '').replace(/\s+/g, ' ').trim()) continue
+          if (el.querySelector('img[alt]:not([alt=""])')) continue
+          out.push(`${el.tagName.toLowerCase()}.${(el.className || '').toString().slice(0, 40)}`)
+        }
+
+        // Form controls: a <label for> or a wrapping <label> also names them.
+        for (const el of document.querySelectorAll('input, select, textarea')) {
+          const type = el.getAttribute('type') || 'text'
+          if (['hidden', 'submit', 'button', 'reset', 'image'].includes(type)) continue
+          if (described(el)) continue
+          if (el.id && document.querySelector(`label[for="${CSS.escape(el.id)}"]`)) continue
+          if (el.closest('label')) continue
+          out.push(`${el.tagName.toLowerCase()}[type=${type}]`)
+        }
+        return out
+      })
+      expect(nameless, `${path} has controls a screen reader cannot announce`).toEqual([])
+    })
+  }
+})
+
 test.describe('interactive features render', () => {
   const CASES: Array<[string, string, string]> = [
     ['/index.html', 'sales area chart', '#revenue-chart .apexcharts-area-series'],

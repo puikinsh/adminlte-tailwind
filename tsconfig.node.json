@@ -5,7 +5,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "types": ["node"],
-    "lib": ["ES2022"],
+    /* Test files run in Node, but page.evaluate() callbacks are serialised and
+       run in the browser, so they need the DOM lib to type-check. */
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "noEmit": true
   },
   "include": ["tests", "playwright.config.ts"]
