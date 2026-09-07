@@ -1714,6 +1714,22 @@ textarea:focus-visible,
   }
 }
 
+/* Below the sidebar's breakpoint the sidebar is an off-canvas overlay, so the
+   brand no longer needs to reserve its width — holding 250px there squeezed the
+   navbar's icon cluster off the right edge of a 375px screen. */
+@media (max-width: 991px) {
+  .app-brand {
+    width: auto;
+  }
+}
+
+/* simple-datatables builds this container around the table; without a scroll
+   axis a wide table pushes the whole page sideways on a phone. The hand-written
+   tables get the same treatment from .table-responsive. */
+.datatable-container {
+  overflow-x: auto;
+}
+
 /* ============================================
    DARK MODE
    Unlayered rules (win over Tailwind's layered utilities) that remap the

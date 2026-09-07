@@ -132,6 +132,29 @@ test.describe('everything interactive has an accessible name', () => {
   }
 })
 
+test.describe('nothing overflows a phone screen', () => {
+  test.use({ viewport: { width: 375, height: 812 } })
+  for (const path of ALL) {
+    test(`${path} fits 375px`, async ({ page }) => {
+      await page.goto(path, { waitUntil: 'networkidle' })
+      const { over, navPast } = await page.evaluate(() => {
+        const de = document.documentElement
+        // The navbar is fixed, so its own overflow never grows the document —
+        // it just puts the right-hand icons past the edge of the screen.
+        const cluster = [...document.querySelectorAll('nav div')].find(
+          (d) => d.className.includes('items-center') && d.className.includes('gap-1')
+        )
+        return {
+          over: de.scrollWidth - de.clientWidth,
+          navPast: cluster ? Math.round(cluster.getBoundingClientRect().right) - de.clientWidth : 0
+        }
+      })
+      expect(over, `${path} scrolls sideways on a phone`).toBeLessThanOrEqual(1)
+      expect(navPast, `${path} pushes the navbar past the screen edge`).toBeLessThanOrEqual(1)
+    })
+  }
+})
+
 test.describe('interactive features render', () => {
   const CASES: Array<[string, string, string]> = [
     ['/index.html', 'sales area chart', '#revenue-chart .apexcharts-area-series'],
