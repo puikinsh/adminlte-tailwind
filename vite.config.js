@@ -3,7 +3,7 @@ import { resolve, relative, sep } from 'path'
 import { readdirSync, readFileSync, statSync } from 'fs'
 import tailwindcss from '@tailwindcss/vite'
 
-const root = resolve(__dirname)
+const root = import.meta.dirname
 const IGNORE = new Set(['node_modules', 'dist', '.git', 'src', 'public', '.claude', 'partials'])
 
 // Public URL the template is served from. Canonical tags, og:url, absolute
