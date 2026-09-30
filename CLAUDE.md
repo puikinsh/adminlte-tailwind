@@ -63,7 +63,7 @@ Page-specific modules are dynamically imported only when their DOM hook exists:
 | `forms.ts` | `form[data-validate]`, `[data-wizard]` | Validation & wizard |
 | `calendar.ts` | `#calendar-grid` | Interactive calendar |
 | `kanban.ts` | `#kanban-board` | Drag-and-drop board |
-| `charts.ts` | chart/map container IDs | ApexCharts + jsVectorMap (kept out of the base bundle deliberately) |
+| `charts.ts` | chart/map container IDs | Chart.js + jsVectorMap (kept out of the base bundle deliberately); styling from `chart-theme.ts` |
 
 The sidebar scrollbar is pure CSS (`scrollbar-width`/`scrollbar-color` on `.sidebar-menu` in `styles.css`) — no JS library.
 
@@ -109,6 +109,12 @@ Note that `reuseExistingServer` is on outside CI: if you already have `npm run p
 ### Search page index (`virtual:pages`)
 
 The `pagesIndex` plugin in `vite.config.js` exposes the build's HTML discovery as a `virtual:pages` module (path + `<title>`-derived name per page), so new pages appear in the ⌘K palette automatically. `search.ts` keeps only optional curated metadata (category overrides + extra keywords in its `META` map); pages without an entry fall back to a directory-derived category.
+
+### Charts (`charts.ts` + `chart-theme.ts`)
+
+Chart.js 4.5 (MIT), tree-shaken: `charts.ts` registers only the controllers, elements, scales and plugins it uses, so a new chart type needs its pieces added to `Chart.register(...)`. Each chart draws into a `<canvas role="img" aria-label="…">` inside a `relative` container with a fixed height (`maintainAspectRatio` is off globally).
+
+`chart-theme.ts` is the one theme preset. It reads the `--chart-*` variables from `styles.css` (the `.dark` block remaps the neutral ones) into `Chart.defaults`, and a `MutationObserver` on `<html>` re-reads them and calls `chart.update()` whenever `class` (dark mode) or `dir` (RTL: legend/tooltip `rtl`) changes. Pass new charts through `themeChart()` so they are re-themed too, and use scriptable colours (`() => tokens.series[0]`) rather than hex literals.
 
 ### Dark mode & no-flash
 

@@ -157,11 +157,7 @@ test.describe('nothing overflows a phone screen', () => {
 
 test.describe('interactive features render', () => {
   const CASES: Array<[string, string, string]> = [
-    ['/index.html', 'sales area chart', '#revenue-chart .apexcharts-area-series'],
     ['/index.html', 'world map', '#world-map.jvm-container svg [id^="jvm-"]'],
-    ['/index2.html', 'visitors chart', '#visitors-chart .apexcharts-area-series'],
-    ['/index2.html', 'sales donut', '#sales-donut .apexcharts-pie-series'],
-    ['/index3.html', 'revenue bars', '#revenue-bar .apexcharts-bar-series'],
     ['/pages/calendar.html', 'calendar grid', '#calendar-grid [data-date]'],
     ['/pages/kanban.html', 'kanban cards', '#kanban-board [draggable="true"]'],
     ['/tables/simple.html', 'datatable', '.datatable-wrapper .datatable-pagination']
@@ -172,6 +168,60 @@ test.describe('interactive features render', () => {
       await expect(page.locator(selector).first()).toBeVisible({ timeout: 15_000 })
     })
   }
+})
+
+/** Number of non-transparent pixels on a canvas — 0 until Chart.js has drawn. */
+const paintedPixels = (page: Page, selector: string) =>
+  page.$eval(selector, (canvas: HTMLCanvasElement) => {
+    const { data } = canvas.getContext('2d')!.getImageData(0, 0, canvas.width, canvas.height)
+    let n = 0
+    for (let i = 3; i < data.length; i += 4) if (data[i] > 0) n++
+    return n
+  })
+
+/** Canvas contents once the entry animation has settled. */
+async function settledCanvas(page: Page, selector: string) {
+  const read = () => page.$eval(selector, (c: HTMLCanvasElement) => c.toDataURL())
+  let prev = ''
+  await expect
+    .poll(async () => {
+      const next = await read()
+      const same = next === prev
+      prev = next
+      return same
+    })
+    .toBe(true)
+  return prev
+}
+
+test.describe('charts', () => {
+  const CHARTS: Array<[string, string]> = [
+    ['/index.html', '#revenue-chart'],
+    ['/index2.html', '#visitors-chart'],
+    ['/index2.html', '#sales-donut'],
+    ['/index3.html', '#revenue-bar']
+  ]
+  for (const [path, id] of CHARTS) {
+    test(`${path} draws ${id}`, async ({ page }) => {
+      await page.goto(path)
+      await expect
+        .poll(() => paintedPixels(page, `${id} canvas`), { timeout: 15_000 })
+        .toBeGreaterThan(1000)
+    })
+  }
+
+  test('open charts re-theme when the colour mode changes', async ({ page }) => {
+    await page.goto('/index3.html')
+    const canvas = '#revenue-bar canvas'
+    await expect.poll(() => paintedPixels(page, canvas)).toBeGreaterThan(1000)
+    const light = await settledCanvas(page, canvas)
+
+    const toggle = page.locator('[data-theme-toggle]').first()
+    await toggle.click() // auto -> light
+    await toggle.click() // light -> dark
+    await expect(page.locator('html')).toHaveClass(/dark/)
+    expect(await settledCanvas(page, canvas)).not.toBe(light)
+  })
 })
 
 test.describe('core interactions work', () => {

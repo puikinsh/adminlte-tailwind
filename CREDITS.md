@@ -47,7 +47,7 @@ MIT licence. The names they depict are fictional placeholders.
 Runtime dependencies keep their own licences; see `package.json` and
 `npm ls --all` for the full tree. The principal ones are
 [@adminlte/headless](https://github.com/puikinsh/adminlte-headless) (MIT),
-[ApexCharts](https://apexcharts.com) (MIT),
+[Chart.js](https://www.chartjs.org) (MIT),
 [jsVectorMap](https://github.com/themustafaomar/jsvectormap) (MIT),
 [simple-datatables](https://github.com/fiduswriter/simple-datatables) (LGPL-3.0)
 and [Tailwind CSS](https://tailwindcss.com) (MIT).

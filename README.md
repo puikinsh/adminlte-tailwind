@@ -40,7 +40,7 @@ First run of the test suite needs the browsers: `npx playwright install chromium
 ## What's included
 
 **Dashboards** — three variants (`index.html`, `index2.html`, `index3.html`)
-with ApexCharts area, bar and donut charts and a jsVectorMap world map.
+with Chart.js area, bar and doughnut charts and a jsVectorMap world map.
 
 **Applications** — calendar with drag-to-create events, drag-and-drop kanban
 board, mailbox (inbox / compose / read), chat, file manager, contacts, gallery,
@@ -68,6 +68,11 @@ build time. Edit the partial, not the pages.
 **Dark mode** is class-based (`.dark` on `<html>`) with a light/dark/auto cycle
 persisted to `localStorage`. An inline script applies the stored mode — and RTL
 direction — before first paint, so there is no flash.
+
+**Charts** are [Chart.js](https://www.chartjs.org) 4.5 (MIT), lazy-loaded on
+the pages that have one. `src/chart-theme.ts` is the single theme preset: it
+reads the `--chart-*` variables in `src/styles.css` into `Chart.defaults`, and
+re-themes open charts when the colour mode or text direction changes.
 
 **Styling** is a single Tailwind v4 stylesheet (`src/styles.css`) configured in
 CSS via `@theme`; there is no `tailwind.config.js`.
@@ -136,7 +141,8 @@ adminlte-tailwind/
 │   ├── main.ts        # entry point
 │   ├── styles.css     # the whole stylesheet
 │   ├── lib/components.ts   # Dropdown, Modal, Toast
-│   └── theme.ts search.ts a11y.ts calendar.ts kanban.ts charts.ts …
+│   ├── charts.ts chart-theme.ts   # Chart.js charts + their theme preset
+│   └── theme.ts search.ts a11y.ts calendar.ts kanban.ts …
 ├── tests/             # Playwright end-to-end suite
 └── vite.config.js     # multi-page build, includes, SEO, sitemap, no-flash
 ```

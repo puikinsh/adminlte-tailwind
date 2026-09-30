@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Lazy-load charts/maps only on pages that contain a visualisation container.
-  // Keeps ApexCharts/jsVectorMap out of the bundle for pages that don't need them.
+  // Keeps Chart.js/jsVectorMap out of the bundle for pages that don't need them.
   if (
     document.querySelector(
       '#revenue-chart, #visitors-chart, #sales-donut, #revenue-bar, #world-map'

@@ -1731,6 +1731,27 @@ textarea:focus-visible,
 }
 
 /* ============================================
+   CHART TOKENS
+   Read by src/chart-theme.ts (Chart.js). The series colours are the
+   template's blue/green/yellow/red/gray; the `.dark` block below remaps the
+   neutral ones, and open charts re-read them when the colour mode changes.
+   ============================================ */
+:root {
+  --chart-1: #3b82f6;
+  --chart-2: #22c55e;
+  --chart-3: #eab308;
+  --chart-4: #ef4444;
+  --chart-muted: #9ca3af;
+  --chart-text: #94a3b8;
+  --chart-strong: #1f2937;
+  --chart-grid: #f1f5f9;
+  --chart-surface: #ffffff;
+  --chart-tooltip-bg: #111827;
+  --chart-tooltip-text: #ffffff;
+  --chart-tooltip-border: #111827;
+}
+
+/* ============================================
    DARK MODE
    Unlayered rules (win over Tailwind's layered utilities) that remap the
    template's light surfaces, text and borders when <html> has `.dark`.
@@ -1744,6 +1765,13 @@ textarea:focus-visible,
   --d-text: #e9ecef;
   --d-text-2: #adb5bd;
   --d-text-3: #868e96;
+  --chart-text: var(--d-text-2);
+  --chart-strong: var(--d-text);
+  --chart-grid: var(--d-border);
+  --chart-surface: var(--d-surface);
+  --chart-tooltip-bg: var(--d-elevated);
+  --chart-tooltip-text: var(--d-text);
+  --chart-tooltip-border: var(--d-border);
   color-scheme: dark;
 }
 

@@ -193,8 +193,13 @@
                 </div>
               </div>
               <div class="card-body">
-                <!-- Visitors chart (ApexCharts) -->
-                <div id="visitors-chart" class="min-h-[290px]"></div>
+                <!-- Visitors chart (Chart.js) -->
+                <div id="visitors-chart" class="relative h-[300px]">
+                  <canvas
+                    role="img"
+                    aria-label="Area chart of daily visitors this week versus last week"
+                  ></canvas>
+                </div>
               </div>
               <div class="card-footer">
                 <div class="grid grid-cols-4 gap-4 text-center">
@@ -238,8 +243,13 @@
                 </button>
               </div>
               <div class="card-body">
-                <!-- Sales by Category donut (ApexCharts) -->
-                <div id="sales-donut" class="mb-4"></div>
+                <!-- Sales by Category donut (Chart.js) -->
+                <div id="sales-donut" class="relative mb-4 h-[250px]">
+                  <canvas
+                    role="img"
+                    aria-label="Donut chart of sales by category, $29,100 in total"
+                  ></canvas>
+                </div>
                 <!-- Legend -->
                 <div class="space-y-2">
                   <div class="flex items-center justify-between">

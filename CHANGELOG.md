@@ -6,6 +6,31 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- **Charts now use [Chart.js](https://www.chartjs.org) 4.5 (MIT) instead of ApexCharts.** From
+  5.2.0 ApexCharts is no longer MIT-licensed, which does not fit a free MIT template. All four
+  dashboard charts were rebuilt with the same data and look: the Sales Overview and Visitors
+  gradient areas, the Sales by Category doughnut with its "Total" centre label, and the Revenue
+  Overview grouped columns. Only the Chart.js pieces those charts use are registered, and no
+  Chart.js plugins are needed.
+- **One chart theme preset**, `src/chart-theme.ts`. It reads new `--chart-*` variables from
+  `styles.css` into `Chart.defaults` (font, text, dashed gridlines, rounded bars, tooltip and
+  legend styling), so chart colours live next to the rest of the palette.
+- **Charts follow the colour mode and text direction live.** Switching to dark mode re-themes the
+  open charts: ApexCharts kept light-mode gridlines (bright dashed lines on the dark cards) and a
+  white doughnut outline. Switching to RTL flips legends and tooltips.
+- **Charts bundle is 70% smaller**: 180.9 kB → 67.8 kB gzip (641 kB → 194 kB raw). The chunk is
+  still lazy-loaded on the three dashboards only, so the raised `chunkSizeWarningLimit` in
+  `vite.config.js` is gone.
+- Each chart draws into a `<canvas role="img">` with an `aria-label` describing it.
+- The Sales Overview x-axis shows month names (Jan–Jul); its datetime axis had put ticks on
+  arbitrary days ("08 Jan", "05 Feb").
+
+### Removed
+
+- `apexcharts` dependency.
+
 ### Added
 
 - **`CREDITS.md`**: provenance and licence terms for the bundled photographs, and a note that

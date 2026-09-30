@@ -1,155 +1,236 @@
 /**
  * AdminLTE Tailwind - Charts & Maps
  *
- * Real data visualisations powered by ApexCharts and jsVectorMap, mirroring the
- * libraries used by the original AdminLTE (Bootstrap) template.
+ * Real data visualisations powered by Chart.js (MIT) and jsVectorMap. Chart
+ * styling comes from the shared preset in `chart-theme.ts`, which also keeps
+ * open charts in step with the colour mode and text direction.
  *
  * Every initializer is guarded by an element lookup, so a single import can be
  * dropped on any page and only the visualisations that actually exist render.
  */
-import ApexCharts, { type ApexOptions } from 'apexcharts/core'
-import 'apexcharts/area' // line/area/scatter chart types
-import 'apexcharts/bar'
-import 'apexcharts/donut'
-import 'apexcharts/features/legend'
+import {
+  ArcElement,
+  BarController,
+  BarElement,
+  CategoryScale,
+  Chart,
+  DoughnutController,
+  Filler,
+  Legend,
+  LinearScale,
+  LineController,
+  LineElement,
+  PointElement,
+  Tooltip,
+  type Plugin,
+  type ScriptableContext
+} from 'chart.js'
 import 'jsvectormap/dist/jsvectormap.min.css'
+import { alpha, initChartTheme, themeChart, tokens } from './chart-theme'
 
-// Template palette (Tailwind) so charts match the rest of the UI
-const COLORS = {
-  primary: '#3b82f6', // blue-500
-  success: '#22c55e', // green-500
-  warning: '#eab308', // yellow-500
-  danger: '#ef4444', // red-500
-  gray: '#9ca3af' // gray-400
-}
-
-const GRID = { borderColor: '#f1f5f9', strokeDashArray: 4 }
-const AXIS_BORDER = { axisBorder: { show: false }, axisTicks: { show: false } }
+Chart.register(
+  LineController,
+  LineElement,
+  PointElement,
+  BarController,
+  BarElement,
+  DoughnutController,
+  ArcElement,
+  CategoryScale,
+  LinearScale,
+  Filler,
+  Legend,
+  Tooltip
+)
 
 const get = (sel: string) => document.querySelector<HTMLElement>(sel)
+const canvas = (sel: string) => document.querySelector<HTMLCanvasElement>(`${sel} canvas`)
+
+/** Series colour by index, read live so a theme change can swap palettes. */
+const series = (i: number) => () => tokens.series[i]
+const muted = () => tokens.muted
+
+/** Vertical gradient area fill (40% → 5%), sized to the chart area. */
+function areaFill(color: () => string) {
+  return ({ chart }: ScriptableContext<'line'>) => {
+    const area = chart.chartArea
+    if (!area) return alpha(color(), 0.2)
+    const g = chart.ctx.createLinearGradient(0, area.top, 0, area.bottom)
+    g.addColorStop(0, alpha(color(), 0.4))
+    g.addColorStop(1, alpha(color(), 0.05))
+    return g
+  }
+}
+
+const money = (v: number | string) => '$' + v + 'k'
 
 /** Dashboard v1 — Sales Overview (smooth area, this month vs last month) */
 function initSalesAreaChart() {
-  const target = get('#revenue-chart')
-  if (!target) return
-  const options: ApexOptions = {
-    series: [
-      { name: 'This Month', data: [28, 48, 40, 19, 86, 27, 90] },
-      { name: 'Last Month', data: [65, 59, 80, 81, 56, 55, 40] }
-    ],
-    chart: {
-      height: 215,
-      type: 'area',
-      toolbar: { show: false },
-      fontFamily: 'inherit',
-      foreColor: '#94a3b8'
-    },
-    colors: [COLORS.primary, COLORS.gray],
-    fill: { type: 'gradient', gradient: { opacityFrom: 0.4, opacityTo: 0.05 } },
-    dataLabels: { enabled: false },
-    legend: { show: false },
-    stroke: { curve: 'smooth', width: 2 },
-    grid: GRID,
-    xaxis: {
-      type: 'datetime',
-      categories: [
-        '2024-01-01',
-        '2024-02-01',
-        '2024-03-01',
-        '2024-04-01',
-        '2024-05-01',
-        '2024-06-01',
-        '2024-07-01'
-      ],
-      ...AXIS_BORDER
-    },
-    yaxis: { labels: { formatter: (v: number) => '$' + v + 'k' } },
-    tooltip: { x: { format: 'MMMM yyyy' } }
-  }
-  new ApexCharts(target, options).render()
+  const el = canvas('#revenue-chart')
+  if (!el) return
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
+  themeChart(
+    new Chart(el, {
+      type: 'line',
+      data: {
+        labels: months.map((m) => m.slice(0, 3)),
+        datasets: [
+          {
+            label: 'This Month',
+            data: [28, 48, 40, 19, 86, 27, 90],
+            borderColor: series(0),
+            backgroundColor: areaFill(series(0)),
+            pointBackgroundColor: series(0),
+            fill: 'origin'
+          },
+          {
+            label: 'Last Month',
+            data: [65, 59, 80, 81, 56, 55, 40],
+            borderColor: muted,
+            backgroundColor: areaFill(muted),
+            pointBackgroundColor: muted,
+            fill: 'origin'
+          }
+        ]
+      },
+      options: {
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              title: (items) => `${months[items[0].dataIndex]} 2024`,
+              label: (item) => `${item.dataset.label}: ${money(item.parsed.y ?? 0)}`
+            }
+          }
+        },
+        scales: {
+          y: { beginAtZero: true, ticks: { callback: money, maxTicksLimit: 6 } }
+        }
+      }
+    })
+  )
 }
 
 /** Dashboard v2 — Visitors (area, this week vs last week) */
 function initVisitorsAreaChart() {
-  const target = get('#visitors-chart')
-  if (!target) return
-  const options: ApexOptions = {
-    series: [
-      { name: 'This Week', data: [31, 40, 28, 51, 42, 85, 77] },
-      { name: 'Last Week', data: [11, 32, 45, 32, 34, 52, 41] }
-    ],
-    chart: {
-      height: 290,
-      type: 'area',
-      toolbar: { show: false },
-      fontFamily: 'inherit',
-      foreColor: '#94a3b8'
-    },
-    colors: [COLORS.primary, COLORS.success],
-    fill: { type: 'gradient', gradient: { opacityFrom: 0.4, opacityTo: 0.05 } },
-    dataLabels: { enabled: false },
-    legend: { position: 'top', horizontalAlign: 'right' },
-    stroke: { curve: 'smooth', width: 2 },
-    grid: GRID,
-    xaxis: { categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], ...AXIS_BORDER }
-  }
-  new ApexCharts(target, options).render()
+  const el = canvas('#visitors-chart')
+  if (!el) return
+  themeChart(
+    new Chart(el, {
+      type: 'line',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [
+          {
+            label: 'This Week',
+            data: [31, 40, 28, 51, 42, 85, 77],
+            borderColor: series(0),
+            backgroundColor: areaFill(series(0)),
+            pointBackgroundColor: series(0),
+            fill: 'origin'
+          },
+          {
+            label: 'Last Week',
+            data: [11, 32, 45, 32, 34, 52, 41],
+            borderColor: series(1),
+            backgroundColor: areaFill(series(1)),
+            pointBackgroundColor: series(1),
+            fill: 'origin'
+          }
+        ]
+      },
+      options: {
+        plugins: { legend: { position: 'top', align: 'end' } },
+        scales: { y: { beginAtZero: true, ticks: { maxTicksLimit: 6 } } }
+      }
+    })
+  )
 }
+
+/** Writes a two-line "Total / $29,100" label in the middle of a doughnut. */
+const centreText = (label: string, value: string): Plugin<'doughnut'> => ({
+  id: 'centreText',
+  afterDatasetsDraw(chart) {
+    const arc = chart.getDatasetMeta(0).data[0]
+    if (!arc) return
+    const { x, y } = arc
+    const { ctx } = chart
+    ctx.save()
+    ctx.textAlign = 'center'
+    ctx.textBaseline = 'middle'
+    ctx.fillStyle = tokens.text
+    ctx.font = `400 14px ${tokens.font}`
+    ctx.fillText(label, x, y - 13)
+    ctx.fillStyle = tokens.strong
+    ctx.font = `600 22px ${tokens.font}`
+    ctx.fillText(value, x, y + 12)
+    ctx.restore()
+  }
+})
 
 /** Dashboard v2 — Sales by Category (donut) */
 function initSalesDonut() {
-  const target = get('#sales-donut')
-  if (!target) return
-  const options: ApexOptions = {
-    series: [12500, 8200, 5300, 3100],
-    labels: ['Electronics', 'Clothing', 'Home & Garden', 'Sports'],
-    chart: { type: 'donut', height: 250, fontFamily: 'inherit', foreColor: '#94a3b8' },
-    colors: [COLORS.primary, COLORS.success, COLORS.warning, COLORS.danger],
-    legend: { show: false },
-    dataLabels: { enabled: false },
-    stroke: { width: 2 },
-    plotOptions: {
-      pie: {
-        donut: {
-          size: '65%',
-          labels: {
-            show: true,
-            total: { show: true, label: 'Total', formatter: () => '$29,100' }
+  const el = canvas('#sales-donut')
+  if (!el) return
+  themeChart(
+    new Chart(el, {
+      type: 'doughnut',
+      data: {
+        labels: ['Electronics', 'Clothing', 'Home & Garden', 'Sports'],
+        datasets: [
+          {
+            data: [12500, 8200, 5300, 3100],
+            backgroundColor: ({ dataIndex }) => tokens.series[dataIndex % tokens.series.length],
+            borderColor: () => tokens.surface,
+            hoverBorderColor: () => tokens.surface,
+            hoverOffset: 6
+          }
+        ]
+      },
+      options: {
+        cutout: '65%',
+        layout: { padding: 6 },
+        interaction: { mode: 'nearest', intersect: true },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (item) => `${item.label}: $${item.parsed.toLocaleString()}`
+            }
           }
         }
-      }
-    },
-    tooltip: { y: { formatter: (v: number) => '$' + v.toLocaleString() } }
-  }
-  new ApexCharts(target, options).render()
+      },
+      plugins: [centreText('Total', '$29,100')]
+    })
+  )
 }
 
 /** Dashboard v3 — Revenue Overview (grouped columns) */
 function initRevenueBarChart() {
-  const target = get('#revenue-bar')
-  if (!target) return
-  const options: ApexOptions = {
-    series: [
-      { name: 'Revenue', data: [44, 55, 57, 56, 61, 58, 63, 60] },
-      { name: 'Expenses', data: [26, 34, 35, 30, 40, 36, 42, 38] }
-    ],
-    chart: {
-      height: 260,
+  const el = canvas('#revenue-bar')
+  if (!el) return
+  themeChart(
+    new Chart(el, {
       type: 'bar',
-      toolbar: { show: false },
-      fontFamily: 'inherit',
-      foreColor: '#94a3b8'
-    },
-    colors: [COLORS.primary, COLORS.gray],
-    plotOptions: { bar: { borderRadius: 4, columnWidth: '55%' } },
-    dataLabels: { enabled: false },
-    legend: { position: 'top', horizontalAlign: 'right' },
-    stroke: { show: true, width: 2, colors: ['transparent'] },
-    grid: GRID,
-    xaxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'], ...AXIS_BORDER },
-    yaxis: { labels: { formatter: (v: number) => '$' + v + 'k' } }
-  }
-  new ApexCharts(target, options).render()
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+        datasets: [
+          { label: 'Revenue', data: [44, 55, 57, 56, 61, 58, 63, 60], backgroundColor: series(0) },
+          { label: 'Expenses', data: [26, 34, 35, 30, 40, 36, 42, 38], backgroundColor: muted }
+        ]
+      },
+      options: {
+        datasets: { bar: { categoryPercentage: 0.6, barPercentage: 0.8, maxBarThickness: 18 } },
+        plugins: {
+          legend: { position: 'top', align: 'end' },
+          tooltip: {
+            callbacks: { label: (item) => `${item.dataset.label}: ${money(item.parsed.y ?? 0)}` }
+          }
+        },
+        scales: { y: { beginAtZero: true, ticks: { callback: money, maxTicksLimit: 6 } } }
+      }
+    })
+  )
 }
 
 /**
@@ -172,7 +253,7 @@ async function initWorldMap() {
     zoomOnScroll: false,
     regionStyle: {
       initial: { fill: '#e2e8f0', stroke: '#fff', strokeWidth: 0.4 },
-      hover: { fill: COLORS.primary }
+      hover: { fill: tokens.series[0] }
     },
     markers: [
       { name: 'United States', coords: [40.71, -74.0] },
@@ -182,8 +263,8 @@ async function initWorldMap() {
       { name: 'Australia', coords: [-33.86, 151.2] }
     ],
     markerStyle: {
-      initial: { fill: COLORS.danger, stroke: '#fff', strokeWidth: 1, r: 5 },
-      hover: { fill: COLORS.warning }
+      initial: { fill: tokens.series[3], stroke: '#fff', strokeWidth: 1, r: 5 },
+      hover: { fill: tokens.series[2] }
     }
   })
 
@@ -204,6 +285,7 @@ async function initWorldMap() {
 
 /** Render every visualisation that exists on the current page. */
 export default function initCharts() {
+  initChartTheme()
   initSalesAreaChart()
   initVisitorsAreaChart()
   initSalesDonut()

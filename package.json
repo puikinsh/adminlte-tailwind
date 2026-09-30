@@ -58,7 +58,7 @@
   "homepage": "https://adminlte.io",
   "dependencies": {
     "@adminlte/headless": "^0.1.0",
-    "apexcharts": "^7.1.0",
+    "chart.js": "^4.5.1",
     "jsvectormap": "^1.7.0",
     "simple-datatables": "^10.3.0"
   }

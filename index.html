@@ -257,8 +257,13 @@
                 </div>
               </div>
               <div class="card-body">
-                <!-- Sales Overview chart (ApexCharts) -->
-                <div id="revenue-chart" class="min-h-[215px]"></div>
+                <!-- Sales Overview chart (Chart.js) -->
+                <div id="revenue-chart" class="relative h-[230px]">
+                  <canvas
+                    role="img"
+                    aria-label="Area chart of sales this month versus last month, January to July"
+                  ></canvas>
+                </div>
                 <!-- KPI strip -->
                 <div
                   class="mt-3 grid grid-cols-2 gap-4 border-t border-gray-100 pt-4 lg:grid-cols-4"
