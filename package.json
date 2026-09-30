@@ -1,6 +1,6 @@
 {
   "name": "@adminlte/tailwind",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "private": true,
   "description": "AdminLTE dashboard template built with Tailwind CSS and @adminlte/headless",

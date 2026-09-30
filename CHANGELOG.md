@@ -6,6 +6,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-10-01
+
 ### Changed
 
 - **Charts now use [Chart.js](https://www.chartjs.org) 4.5 (MIT) instead of ApexCharts.** From
