@@ -5,6 +5,12 @@ import { defineConfig, devices } from '@playwright/test'
  * bundle — chunked, minified, with the build-time SEO and no-flash injections —
  * that ships to users, so that is what gets checked.
  */
+// Set PORT to run on a different port (parallel runs, a busy 4173). A custom
+// port never reuses a server that is already listening, so the suite always
+// tests the build it just made.
+const port = Number(process.env.PORT ?? 4173)
+const url = `http://localhost:${port}`
+
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
@@ -12,7 +18,7 @@ export default defineConfig({
   retries: 0,
   reporter: process.env.CI ? 'github' : 'list',
   use: {
-    baseURL: 'http://localhost:4173',
+    baseURL: url,
     trace: 'retain-on-failure'
   },
   // WebKit matters most here: the template leans on `display: contents` for the
@@ -24,9 +30,9 @@ export default defineConfig({
     { name: 'webkit', use: { ...devices['Desktop Safari'] } }
   ],
   webServer: {
-    command: 'npm run build && npm run preview -- --port 4173',
-    url: 'http://localhost:4173',
-    reuseExistingServer: !process.env.CI,
+    command: `npm run build && npm run preview -- --port ${port} --strictPort`,
+    url,
+    reuseExistingServer: !process.env.CI && !process.env.PORT,
     timeout: 120_000
   }
 })

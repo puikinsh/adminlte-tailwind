@@ -6,6 +6,15 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-11-16
+
+### Changed
+
+- Dependencies updated to their latest releases (Vite 8.3, Tailwind CSS 4.3.5, Chart.js 4.6,
+  ESLint 10.15, Playwright 1.65, Prettier 3.10, typescript-eslint 8.73). `npm audit` reports no
+  vulnerabilities. TypeScript is held at 6.x until typescript-eslint supports TypeScript 7.
+- `PORT=<n> npm test` runs the Playwright suite on a custom port, always against a fresh build.
+
 ## [0.3.0] - 2026-10-01
 
 ### Changed
